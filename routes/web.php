@@ -21,7 +21,7 @@ Route::group(['prefix' => '/'], static function (): void {
     Route::get('/', 'App\Http\Controllers\HomeController@home')->name('home');
     Route::group(['prefix' => '/schedule'], static function (): void {
         Route::get('/', 'App\Http\Controllers\ScheduleController@index')->name('schedule');
-        Route::get('/post', 'App\Http\Controllers\ScheduleController@from')->name('post');
+        Route::get('/post', 'App\Http\Controllers\ScheduleController@from')->name('from');
         Route::post('/post', 'App\Http\Controllers\ScheduleController@post')->name('post');
     });
 });
