@@ -17,11 +17,20 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::group(['prefix' => '/'], static function (): void {
+Route::group(['prefix' => '/login'], static function (): void {
+    Route::get('/', 'App\Http\Controllers\LoginController@login');
+    Route::post('/', 'App\Http\Controllers\LoginController@logincheck')->name('login');
+});
+
+
+Route::group(['prefix' => '/', 'middleware' => 'loggedInCheck'], static function (): void {
+
     Route::get('/', 'App\Http\Controllers\HomeController@home')->name('home');
+
     Route::group(['prefix' => '/schedule'], static function (): void {
         Route::get('/', 'App\Http\Controllers\ScheduleController@index')->name('schedule');
         Route::get('/post', 'App\Http\Controllers\ScheduleController@from')->name('from');
         Route::post('/post', 'App\Http\Controllers\ScheduleController@post')->name('post');
     });
 });
+

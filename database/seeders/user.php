@@ -17,7 +17,7 @@ class user extends Seeder
             'id' => 1,
             'name' => 'test',
             'email' => 'test@test',
-            'password' => 'test'
+            'password' => \Hash::make('test'),
         ]);
     }
 }
