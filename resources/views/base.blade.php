@@ -19,7 +19,7 @@
             </aside>
         @endif
 
-        <h1>@yield('title')</h1>
+        {{-- <h1>@yield('title')</h1> --}}
 
         @section('body')
         @show
