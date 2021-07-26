@@ -21,9 +21,8 @@ class ScheduleController extends Controller
 
     public function post(Request $request)
     {
-        // dd(User::where('id', 1)->get());
         $post = new Schedule;
-        $post->user_id = 1;
+        $post->user_id = session()->get('id');
         $post->title = $request->input('title');
         $post->content = $request->input('content');
         $post->save();
