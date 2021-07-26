@@ -31,6 +31,7 @@ Route::group(['prefix' => '/', 'middleware' => 'loggedInCheck'], static function
         Route::get('/', 'App\Http\Controllers\ScheduleController@index')->name('schedule');
         Route::get('/post', 'App\Http\Controllers\ScheduleController@from')->name('from');
         Route::post('/post', 'App\Http\Controllers\ScheduleController@post')->name('post');
+        Route::get('/post/show/{id}', 'App\Http\Controllers\ScheduleController@show')->name('show');
     });
 });
 

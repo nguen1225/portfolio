@@ -28,4 +28,11 @@ class ScheduleController extends Controller
         $post->save();
         return redirect('schedule');
     }
+
+    public function show(Request $request)
+    {
+        $post_detail = Schedule::find($request->id);
+        // dd($request->id);
+        return view('schedule.show')->with('post_detail', $post_detail);
+    }
 }
