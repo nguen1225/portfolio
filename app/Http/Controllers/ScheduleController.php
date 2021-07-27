@@ -35,4 +35,21 @@ class ScheduleController extends Controller
         // dd($request->id);
         return view('schedule.show')->with('post_detail', $post_detail);
     }
+
+    public function edit(Request $request)
+    {
+        $post_detail = Schedule::find($request->id);
+        return view('schedule.edit')->with('post_detail', $post_detail);
+    }
+
+    public function update(Request $request)
+    {
+        $post_detail = Schedule::find($request->id);
+        $post_detail->title = $request->input('title');
+        $post_detail->content = $request->input('content');
+        $post_detail->save();
+
+        return redirect('schedule');
+
+    }
 }

@@ -31,7 +31,7 @@
         </dl>
     </div>
     <button class="py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-gray-700 hover:bg-gray-900 mt-6">
-        <a href="{{ route('from') }}">編集</a>
+        <a href="{{ route('edit', $post_detail->id) }}">編集</a>
     </button>
     <button type="reset" onclick='window.history.back(-1);'>
         キャンセル

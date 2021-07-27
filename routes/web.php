@@ -29,9 +29,13 @@ Route::group(['prefix' => '/', 'middleware' => 'loggedInCheck'], static function
 
     Route::group(['prefix' => '/schedule'], static function (): void {
         Route::get('/', 'App\Http\Controllers\ScheduleController@index')->name('schedule');
-        Route::get('/post', 'App\Http\Controllers\ScheduleController@from')->name('from');
-        Route::post('/post', 'App\Http\Controllers\ScheduleController@post')->name('post');
-        Route::get('/post/show/{id}', 'App\Http\Controllers\ScheduleController@show')->name('show');
+        Route::group(['prefix' => '/post'], static function (): void {
+            Route::get('/', 'App\Http\Controllers\ScheduleController@from')->name('from');
+            Route::post('/', 'App\Http\Controllers\ScheduleController@post')->name('post');
+            Route::get('/show/{id}', 'App\Http\Controllers\ScheduleController@show')->name('show');
+            Route::get('/{id}/edit', 'App\Http\Controllers\ScheduleController@edit')->name('edit');
+            Route::patch('/{id}/edit', 'App\Http\Controllers\ScheduleController@update')->name('update');
+        });
     });
 });
 
