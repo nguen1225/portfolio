@@ -52,4 +52,12 @@ class ScheduleController extends Controller
         return redirect('schedule');
 
     }
+
+    public function delete(Request $request)
+    {
+        $post_detail = Schedule::find($request->id);
+        $post_detail->delete();
+
+        return redirect('schedule');
+    }
 }

@@ -46,7 +46,7 @@
                             </label>
                           </div>
                         </div>
-                        <button type="submit" class="group relative flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text- text-white bg-gray-700 hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-50 mt-6 mb-6">
+                        <button type="submit" class="py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-gray-700 hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-50 mt-6 mb-6 mr-2">
                             変更
                         </button>
                         <button type="reset" onclick='window.history.back(-1);'>

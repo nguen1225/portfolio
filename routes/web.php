@@ -35,6 +35,7 @@ Route::group(['prefix' => '/', 'middleware' => 'loggedInCheck'], static function
             Route::get('/show/{id}', 'App\Http\Controllers\ScheduleController@show')->name('show');
             Route::get('/{id}/edit', 'App\Http\Controllers\ScheduleController@edit')->name('edit');
             Route::patch('/{id}/edit', 'App\Http\Controllers\ScheduleController@update')->name('update');
+            Route::delete('/{id}/edit', 'App\Http\Controllers\ScheduleController@delete')->name('delete');
         });
     });
 });
