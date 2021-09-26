@@ -37,5 +37,25 @@
     <button class="py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-gray-700 hover:bg-gray-900 mt-6">
         <a href="{{ route('from') }}">記録作成</a>
     </button>
+
+    <div class="global-contents">
+        <h1 class="graph_title">記録図</h1>
+        <div class="samples">
+            <div class="graph_row right">
+                <canvas id="body_height"></canvas>
+            </div>
+            <div class="graph_row">
+                <canvas id="body_weight"></canvas>
+            </div>
+        </div>
+        <div class="samples bottom">
+            <div class="graph_row right">
+                <canvas id="blood_pressure"></canvas>
+            </div>
+            <div class="graph_row">
+                <canvas id="heart_rate"></canvas>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection

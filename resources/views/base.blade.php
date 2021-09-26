@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@yield('title')</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ mix('/css/custom.css') }}" rel="stylesheet">
+    <link href="{{ mix('css/custom.css') }}" rel="stylesheet">
 </head>
 <body>
     @yield('dashboard')
@@ -25,6 +25,6 @@
         @section('body')
         @show
     </main>
-<script src="{{ mix('/js/custom.js') }}"></script>
+<script src="{{ asset('js/custom.js') }}"></script>
 </body>
 </html>

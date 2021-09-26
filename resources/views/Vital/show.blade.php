@@ -64,7 +64,7 @@
                 </dt>
                 <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                     <p>
-                        {!! nl2br(htmlspecialchars($post_detail->blood_pressure)) !!}回
+                        {!! nl2br(htmlspecialchars($post_detail->heart_rate)) !!}回
                     </p>
                 </dd>
             </div>
