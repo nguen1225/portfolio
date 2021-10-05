@@ -25,6 +25,6 @@
         @section('body')
         @show
     </main>
-<script src="{{ asset('js/custom.js') }}"></script>
+<script src="{{ mix('js/custom.js') }}"></script>
 </body>
 </html>

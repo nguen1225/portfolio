@@ -43,6 +43,14 @@ Route::group(['prefix' => '/', 'middleware' => 'loggedInCheck'], static function
     // 身体関係
     Route::group(['prefix' => '/vital'], static function (): void {
         Route::get('/', 'App\Http\Controllers\VitalController@index')->name('vital');
+        Route::get('/height', 'App\Http\Controllers\VitalController@bodyHeight');
+        Route::get('/weight', 'App\Http\Controllers\VitalController@bodyWeight');
+        Route::get('/blood-pressure', 'App\Http\Controllers\VitalController@bodyBloodPressure');
+        Route::get('/heart-rate', 'App\Http\Controllers\VitalController@bodyHeartRate');
+        Route::get('/day', 'App\Http\Controllers\VitalController@oneMonth');
+        
+        
+
         Route::group(['prefix' => '/post'], static function (): void {
             Route::get('/', 'App\Http\Controllers\VitalController@from')->name('from');
             Route::post('/', 'App\Http\Controllers\VitalController@post')->name('post');
@@ -53,4 +61,6 @@ Route::group(['prefix' => '/', 'middleware' => 'loggedInCheck'], static function
         });
     });
 });
+
+// api
 
