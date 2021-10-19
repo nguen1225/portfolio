@@ -72,54 +72,28 @@ class VitalController extends Controller
     }
 
     // 身長のデータ取得
-    public function bodyHeight() 
+    public function health() 
     {
         $user = User::where('id', 1)->first();
-        $get_height = Vital::select(DB::raw('vitals.height'))->join('users', 'user_id', '=', 'users.id')
+        $get_health = Vital::select(DB::raw('
+            DATE_FORMAT(vitals.created_at, "%m.%d") as date, 
+            vitals.height as height, 
+            vitals.body_weight as weight, 
+            vitals.blood_pressure as blood_pressure, 
+            vitals.heart_rate as heart_rate
+        '))
+        ->join('users', 'user_id', '=', 'users.id')
         ->where('vitals.user_id', $user->id)
-        ->groupBy('users.id', 'vitals.height')
+        ->groupBy(
+            'users.id', 
+            'height', 
+            'body_weight', 
+            'blood_pressure', 
+            'heart_rate', 
+            'date'
+        )
         ->get();
-        return response()->json($get_height);
-    }
 
-    // 体重のデータ取得
-    public function bodyWeight() 
-    {
-        $user = User::where('id', 1)->first();
-        $get_weight = Vital::select(DB::raw('vitals.body_weight'))->join('users', 'user_id', '=', 'users.id')
-        ->where('vitals.user_id', $user->id)
-        ->groupBy('users.id', 'vitals.body_weight')
-        ->get();
-        return response()->json($get_weight);
-    }
-
-    // 血圧のデータ取得
-    public function bodyBloodPressure() 
-    {
-        $user = User::where('id', 1)->first();
-        $get_blood_pressure = Vital::select(DB::raw('vitals.blood_pressure'))->join('users', 'user_id', '=', 'users.id')
-        ->where('vitals.user_id', $user->id)
-        ->groupBy('users.id', 'vitals.blood_pressure')
-        ->get();
-        return response()->json($get_blood_pressure);
-    }
-
-    // 心拍数のデータ取得
-    public function bodyHeartRate() 
-    {
-        $user = User::where('id', 1)->first();
-        $get_heart_rate = Vital::select(DB::raw('vitals.heart_rate'))->join('users', 'user_id', '=', 'users.id')
-        ->where('vitals.user_id', $user->id)
-        ->groupBy('users.id', 'vitals.heart_rate')
-        ->get();
-        return response()->json($get_heart_rate);
-    }
-    
-
-    // 一ヶ月間の日数
-    public function oneMonth() 
-    {
-        $user = User::where('id', 1)->first();
         $endDay = date('Y-m-d', strtotime("-1 day"));
         $startDay = date('Y-m-d', strtotime("-31 day"));
         $period = CarbonPeriod::create($startDay, '1 days', $endDay);
@@ -127,10 +101,16 @@ class VitalController extends Controller
         $rows = [];
 
         foreach ($period as $date) {
-            $md = $date->format('Y.m.d');
-            $rows[] = $md;
+            $md = $date->format('m.d');
+            $rows[$md] = 0;
         }
 
-        return response()->json($rows);
+        foreach ($get_health as $item) {
+            $event[$item->date] = $item;
+        }
+
+        $health = array_merge($rows, $event);
+
+        return response()->json($health);
     }
 }
