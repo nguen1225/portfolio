@@ -8,13 +8,13 @@ use App\Http\Requests\Vital\PostVitalRequest;
 use App\Models\User;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\DB;	
 
 class VitalController extends Controller
 {
     public function index()
     {
-        $posts = Vital::all();
+        $posts = Vital::query()->where("user_id", session()->get('id'))->paginate(7);
         return view('vital.index')->with('posts', $posts);
     }
 
@@ -84,7 +84,7 @@ class VitalController extends Controller
     {
         $user = User::where('id', session()->get('id'))->first();
         $get_health = Vital::select(DB::raw('
-            DATE_FORMAT(vitals.created_at, "%c月%d日") as date, 
+            DATE_FORMAT(vitals.created_at, "%c月%e日") as date, 
             vitals.height as height, 
             vitals.body_weight as weight, 
             vitals.blood_pressure as blood_pressure, 

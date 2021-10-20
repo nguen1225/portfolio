@@ -32,6 +32,7 @@
         </dl>
         @endforeach
     </div>
+    {{ $posts->links() }}
     
 
     <button class="py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-gray-700 hover:bg-gray-900 mt-6">
