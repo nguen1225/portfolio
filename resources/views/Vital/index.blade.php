@@ -26,7 +26,7 @@
                         </p>
                 </dt>
                 <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                    作成日:{{$post->created_at}}
+                    作成日 : {{$post->created_at->format('Y年m月d日')}}
                 </dd>
             </div>
         </dl>

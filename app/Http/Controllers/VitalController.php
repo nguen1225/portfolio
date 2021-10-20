@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Vital;
+use App\Http\Requests\Vital\PostVitalRequest;
 use App\Models\User;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
@@ -22,18 +23,25 @@ class VitalController extends Controller
         return view('vital.from');
     }
 
-    public function post(Request $request)
+    public function post(PostVitalRequest $request)
     {
-        $post = new Vital;
-        $post->user_id = session()->get('id');
-        $post->title = $request->input('title');
-        $post->content = $request->input('content');
-        $post->height = $request->input('height');
-        $post->blood_pressure = $request->input('blood_pressure');
-        $post->body_weight = $request->input('body_weight');
-        $post->heart_rate = $request->input('heart_rate');
-        $post->save();
-        return redirect('vital');
+        $now = now()->format('Y-m-d');
+        $created_date = Vital::query()->where('created_at', "LIKE", "%{$now}%")->first();
+
+        if (!$created_date) {
+            $post = new Vital;
+            $post->user_id = session()->get('id');
+            $post->title = $request->input('title');
+            $post->content = $request->input('content');
+            $post->height = $request->input('height');
+            $post->blood_pressure = $request->input('blood_pressure');
+            $post->body_weight = $request->input('body_weight');
+            $post->heart_rate = $request->input('heart_rate');
+            $post->save();
+            return redirect('vital');
+        }
+        session()->flash('flash_message', '検査結果の入力は1日1回です。本日の内容を変えたい場合は編集もしくは削除して再度入力してください。');
+        return redirect('vital/post');
     }
 
     public function show(Request $request)
@@ -74,9 +82,9 @@ class VitalController extends Controller
     // 身長のデータ取得
     public function health() 
     {
-        $user = User::where('id', 1)->first();
+        $user = User::where('id', session()->get('id'))->first();
         $get_health = Vital::select(DB::raw('
-            DATE_FORMAT(vitals.created_at, "%m.%d") as date, 
+            DATE_FORMAT(vitals.created_at, "%c月%d日") as date, 
             vitals.height as height, 
             vitals.body_weight as weight, 
             vitals.blood_pressure as blood_pressure, 
@@ -101,7 +109,7 @@ class VitalController extends Controller
         $rows = [];
 
         foreach ($period as $date) {
-            $md = $date->format('m.d');
+            $md = $date->format('n月j日');
             $rows[$md] = 0;
         }
 

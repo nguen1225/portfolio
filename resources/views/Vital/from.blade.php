@@ -16,7 +16,8 @@
             </p>
         </div>
         <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 border-b border-gray-200">
-            <dt class="text-sm font-medium text-gray-500">
+          <dt class="text-sm font-medium text-gray-500">
+            {{ session('flash_message') }}
                 <form action="{{route('post')}}" method="post">
                     @csrf
                     <div class="">
