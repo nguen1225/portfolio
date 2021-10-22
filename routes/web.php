@@ -27,6 +27,7 @@ Route::group(['prefix' => '/', 'middleware' => 'loggedInCheck'], static function
 
     Route::get('/', 'App\Http\Controllers\HomeController@home')->name('home');
 
+    // スケジュール帳
     Route::group(['prefix' => '/schedule'], static function (): void {
         Route::get('/', 'App\Http\Controllers\ScheduleController@index')->name('schedule');
         Route::group(['prefix' => '/post'], static function (): void {
@@ -38,5 +39,24 @@ Route::group(['prefix' => '/', 'middleware' => 'loggedInCheck'], static function
             Route::delete('/{id}/edit', 'App\Http\Controllers\ScheduleController@delete')->name('delete');
         });
     });
+
+    // 身体関係
+    Route::group(['prefix' => '/vital'], static function (): void {
+        Route::get('/', 'App\Http\Controllers\VitalController@index')->name('vital');
+        Route::get('/health', 'App\Http\Controllers\VitalController@health');
+        
+        
+        
+        Route::group(['prefix' => '/post'], static function (): void {
+            Route::get('/', 'App\Http\Controllers\VitalController@from')->name('from');
+            Route::post('/', 'App\Http\Controllers\VitalController@post')->name('post');
+            Route::get('/show/{id}', 'App\Http\Controllers\VitalController@show')->name('show');
+            Route::get('/{id}/edit', 'App\Http\Controllers\VitalController@edit')->name('edit');
+            Route::patch('/{id}/edit', 'App\Http\Controllers\VitalController@update')->name('update');
+            Route::delete('/{id}/edit', 'App\Http\Controllers\VitalController@delete')->name('delete');
+        });
+    });
 });
+
+// api
 

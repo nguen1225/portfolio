@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Models\Models;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Schedule extends Model
+class Vital extends Model
 {
     use HasFactory;
 
-    protected $fillsble = ['title', 'content', 'user_id'];
+    protected $fillsble = ['title', 'content', 'user_id', 'blood_pressure', 'heart_rate', 'body_weight', 'height'];
 
 
     public function user()
     {
         return $this->belongsTo('App\Models\User');
-    }
+    }   
 }
