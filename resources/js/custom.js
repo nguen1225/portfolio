@@ -2,7 +2,9 @@ import Chart from 'chart.js/auto';
 
 const height = [];
 const weight = [];
-const blood_pressure = [];
+const max_blood_pressure = [];
+const min_blood_pressure = [];
+const avg_blood_pressure = [];
 const heart_rate = [];
 const day_data = [];
 
@@ -43,14 +45,18 @@ function health_data_factory(health_data) {
     Object.keys(health_data).forEach(function (item) {
         height.push(this[item].height || 0);
         weight.push(this[item].weight || 0);
-        blood_pressure.push(this[item].blood_pressure || 0);
+        max_blood_pressure.push(this[item].max_blood_pressure || 0);
+        min_blood_pressure.push(this[item].min_blood_pressure || 0);
+        avg_blood_pressure.push(this[item].avg_blood_pressure || 0);
         heart_rate.push(this[item].heart_rate || 0);
         day_data.push(item);
     }, health_data);
 }
 console.log(height);
 console.log(weight);
-console.log(blood_pressure);
+console.log(max_blood_pressure);
+console.log(min_blood_pressure);
+console.log(avg_blood_pressure);
 console.log(heart_rate);
 console.log(day_data);
 
@@ -178,14 +184,60 @@ class HUMAN_WEIGHT {
 class HUMAN_BLOOD_PRESSURE {
 
     labels = day_data
-    data = blood_pressure
+    max_data = max_blood_pressure
+    min_data = min_blood_pressure
+    avg_data = avg_blood_pressure
 
     data = {
         labels: this.labels,
         datasets: [{
-            label: '血圧 ',
-            data: this.data
-        }]
+            label: '最高血圧 ',
+            data: this.max_data,
+            elements: {
+                line: {
+                    borderColor: "rgba(255,9,5,1)",
+                    backgroundColor: "rgba(247,69,101,0.3)"
+                },
+                point: {
+                    pointRadius: 6,
+                    pointBorderWidth: 2,
+                    pointBorderColor: "rgba(255,9,5,1)",
+                    pointBackgroundColor: "rgba(255, 255, 255, 1)"
+                }
+            },
+        },
+        {
+            label: '最低血圧 ',
+            data: this.min_data,
+            elements: {
+                line: {
+                    borderColor: "rgb(88,73,255)",
+                    backgroundColor: "rgba( 9,206,232 , 0.3 )"
+                },
+                point: {
+                    pointRadius: 6,
+                    pointBorderWidth: 2,
+                    pointBorderColor: "rgb(88,73,255)",
+                    pointBackgroundColor: "rgba(255, 255, 255, 1)"
+                }
+            },
+        },
+        {
+            label: '平均血圧 ',
+            data: this.avg_data,
+            elements: {
+                line: {
+                    borderColor: "rgb(113,22,249,1)",
+                    backgroundColor: "rgb(200,103,252,0.3)"
+                },
+                point: {
+                    pointRadius: 6,
+                    pointBorderWidth: 2,
+                    pointBorderColor: "rgb(113,22,249,1)",
+                    pointBackgroundColor: "rgba(255, 255, 255, 1)"
+                }
+            },
+        }],
     }
 
 
@@ -217,18 +269,7 @@ class HUMAN_BLOOD_PRESSURE {
                     }
                 }
             },
-            elements: {
-                line: {
-                    borderColor: "rgba(255,9,5,1)",
-                    backgroundColor: "rgba(247,69,101,0.3)"
-                },
-                point: {
-                    pointRadius: 6,
-                    pointBorderWidth: 2,
-                    pointBorderColor: "rgba(255,9,5,1)",
-                    pointBackgroundColor: "rgba(255, 255, 255, 1)"
-                }
-            },
+            
             responsive: true,
             maintainAspectRatio: true
         }
@@ -242,7 +283,7 @@ class HUMAN_HEART_RATE {
     data = {
         labels: this.labels,
         datasets: [{
-            label: '心拍数 ',
+            label: '心拍数(1分間) ',
             data: this.data
         }]
     }

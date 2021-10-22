@@ -24,7 +24,7 @@
                         <!-- phpの改行関数を使っていい感じに本文を改行させる -->
                         <!-- <p>{{$post->title}}</p> -->
                         <p>
-                        <a href="{{ route('show', $post->id)}}">
+                        <a href="{{ route('schedule.show', $post->id)}}">
                                 {!! nl2br(htmlspecialchars($post->title)) !!}
                             </a>
                         </p>
@@ -39,7 +39,7 @@
     
 
     <button class="py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-gray-700 hover:bg-gray-900 mt-6">
-        <a href="{{ route('from') }}">日程作成</a>
+        <a href="{{ route('schedule.from') }}">日程作成</a>
     </button>
 </div>
 @endsection

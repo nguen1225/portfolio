@@ -20,7 +20,7 @@
         <dl>
             <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 border-b border-gray-200">
                 <dt class="text-sm font-medium text-gray-500">
-                        <a href="{{ route('show', $post->id)}}">
+                        <a href="{{ route('vital.show', $post->id)}}">
                                 {!! nl2br(htmlspecialchars($post->title)) !!}
                             </a>
                         </p>
@@ -36,7 +36,7 @@
     
 
     <button class="py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-gray-700 hover:bg-gray-900 mt-6">
-        <a href="{{ route('from') }}">記録作成</a>
+        <a href="{{ route('vital.from') }}">記録作成</a>
     </button>
 
     <div class="global-contents">

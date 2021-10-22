@@ -34,7 +34,9 @@ class VitalController extends Controller
             $post->title = $request->input('title');
             $post->content = $request->input('content');
             $post->height = $request->input('height');
-            $post->blood_pressure = $request->input('blood_pressure');
+            $post->max_blood_pressure = $request->input('max_blood_pressure');
+            $post->min_blood_pressure = $request->input('min_blood_pressure');
+            $post->avg_blood_pressure = $request->input('avg_blood_pressure');
             $post->body_weight = $request->input('body_weight');
             $post->heart_rate = $request->input('heart_rate');
             $post->save();
@@ -62,7 +64,9 @@ class VitalController extends Controller
         $post_detail->title = $request->input('title');
         $post_detail->content = $request->input('content');
         $post_detail->height = $request->input('height');
-        $post_detail->blood_pressure = $request->input('blood_pressure');
+        $post_detail->max_blood_pressure = $request->input('max_blood_pressure');
+        $post_detail->min_blood_pressure = $request->input('min_blood_pressure');
+        $post_detail->avg_blood_pressure = $request->input('avg_blood_pressure');
         $post_detail->body_weight = $request->input('body_weight');
         $post_detail->heart_rate = $request->input('heart_rate');
         $post_detail->save();
@@ -87,7 +91,9 @@ class VitalController extends Controller
             DATE_FORMAT(vitals.created_at, "%c月%e日") as date, 
             vitals.height as height, 
             vitals.body_weight as weight, 
-            vitals.blood_pressure as blood_pressure, 
+            vitals.max_blood_pressure as max_blood_pressure, 
+            vitals.min_blood_pressure as min_blood_pressure, 
+            vitals.avg_blood_pressure as avg_blood_pressure, 
             vitals.heart_rate as heart_rate
         '))
         ->join('users', 'user_id', '=', 'users.id')
@@ -96,7 +102,9 @@ class VitalController extends Controller
             'users.id', 
             'height', 
             'body_weight', 
-            'blood_pressure', 
+            'max_blood_pressure', 
+            'min_blood_pressure', 
+            'avg_blood_pressure', 
             'heart_rate', 
             'date'
         )
