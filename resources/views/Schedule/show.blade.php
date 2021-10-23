@@ -32,9 +32,9 @@
     </div>
     <div class="btn-sort mt-6">
         <button class="py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-gray-500 hover:bg-gray-900 mr-3">
-            <a href="{{ route('edit', $post_detail->id) }}">編集</a>
+            <a href="{{ route('schedule.edit', $post_detail->id) }}">編集</a>
         </button>
-        <form action="{{ route('delete', $post_detail->id) }}" method="POST">
+        <form action="{{ route('schedule.delete', $post_detail->id) }}" method="POST">
             @csrf
             @method('DELETE')
             <button class="py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-gray-600 hover:bg-gray-900 mr-3" value="{{ $post_detail->id }}" onclick="return window.confirm('削除しますか？')">

@@ -49,12 +49,32 @@
                 </dd>
                 <dt class="text-sm font-medium text-gray-500">
                         <p>
-                            血圧
+                            最高血圧
                         </p>
                 </dt>
                 <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                     <p>
-                        {!! nl2br(htmlspecialchars($post_detail->blood_pressure)) !!}mmHg
+                        {!! nl2br(htmlspecialchars($post_detail->max_blood_pressure)) !!}mmHg
+                    </p>
+                </dd>
+                <dt class="text-sm font-medium text-gray-500">
+                        <p>
+                            最低血圧
+                        </p>
+                </dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    <p>
+                        {!! nl2br(htmlspecialchars($post_detail->min_blood_pressure)) !!}mmHg
+                    </p>
+                </dd>
+                <dt class="text-sm font-medium text-gray-500">
+                        <p>
+                            平均血圧
+                        </p>
+                </dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    <p>
+                        {!! nl2br(htmlspecialchars($post_detail->avg_blood_pressure)) !!}mmHg
                     </p>
                 </dd>
                 <dt class="text-sm font-medium text-gray-500">
@@ -72,9 +92,9 @@
     </div>
     <div class="btn-sort mt-6">
         <button class="py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-gray-500 hover:bg-gray-900 mr-3">
-            <a href="{{ route('edit', $post_detail->id) }}">編集</a>
+            <a href="{{ route('vital.edit', $post_detail->id) }}">編集</a>
         </button>
-        <form action="{{ route('delete', $post_detail->id) }}" method="POST">
+        <form action="{{ route('vital.delete', $post_detail->id) }}" method="POST">
             @csrf
             @method('DELETE')
             <button class="py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-gray-600 hover:bg-gray-900 mr-3" value="{{ $post_detail->id }}" onclick="return window.confirm('削除しますか？')">
@@ -82,7 +102,7 @@
             </button>
         </form>
         <button type="reset" onclick='window.history.back(-1);'>
-            キャンセル
+            戻る
         </button>
     </div>
     

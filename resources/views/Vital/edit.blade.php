@@ -17,7 +17,7 @@
         </div>
         <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 border-b border-gray-200">
             <dt class="text-sm font-medium text-gray-500">
-                <form action="{{route('update', $post_detail->id)}}" method="post">
+                <form action="{{route('vital.update', $post_detail->id)}}" method="post">
                     @csrf
                     @method('patch')
                     <div class="">
@@ -41,7 +41,7 @@
                                 value="{{old('height') ?? $post_detail->height}}"
                                 type="text"
                                 class="mt-1 block w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 px-3 py-2"
-                                placeholder="タイトルを入力してください"
+                                placeholder="身長を入力してください"
                               />
                             </label>
                             <label class="block">
@@ -51,17 +51,37 @@
                                 value="{{old('body_weight') ?? $post_detail->body_weight}}"
                                 type="text"
                                 class="mt-1 block w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 px-3 py-2"
-                                placeholder="タイトルを入力してください"
+                                placeholder="体重を入力してください"
                               />
                             </label>
                             <label class="block">
-                              <span class="text-gray-700">血圧</span>
+                              <span class="text-gray-700">最高血圧</span>
                               <input
-                                name="blood_pressure" id="blood_pressure"
-                                value="{{old('blood_pressure') ?? $post_detail->blood_pressure}}"
-                                type="text"
+                                name="max_blood_pressure" id="max_blood_pressure"
+                                value="{{old('max_blood_pressure')  ?? $post_detail->max_blood_pressure}}"
                                 class="mt-1 block w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 px-3 py-2"
-                                placeholder="タイトルを入力してください"
+                                type="text"
+                                placeholder="最高血圧を入力してください"
+                              />
+                            </label>
+                            <label class="block">
+                              <span class="text-gray-700">最低血圧</span>
+                              <input
+                                name="min_blood_pressure" id="min_blood_pressure"
+                                value="{{old('min_blood_pressure')  ?? $post_detail->min_blood_pressure}}"
+                                class="mt-1 block w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 px-3 py-2"
+                                type="text"
+                                placeholder="最低血圧を入力してください"
+                              />
+                            </label>
+                            <label class="block">
+                              <span class="text-gray-700">平均血圧</span>
+                              <input
+                                name="avg_blood_pressure" id="avg_blood_pressure"
+                                value="{{old('avg_blood_pressure')  ?? $post_detail->avg_blood_pressure}}"
+                                class="mt-1 block w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 px-3 py-2"
+                                type="text"
+                                placeholder="平均血圧を入力してください"
                               />
                             </label>
                             <label class="block">
@@ -71,7 +91,7 @@
                                 value="{{old('heart_rate') ?? $post_detail->heart_rate}}"
                                 type="text"
                                 class="mt-1 block w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 px-3 py-2"
-                                placeholder="タイトルを入力してください"
+                                placeholder="心拍数を入力してください"
                               />
                             </label>
                             <label class="block">
