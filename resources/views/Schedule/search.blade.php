@@ -8,10 +8,10 @@
         <div class="content_flex px-4 py-5 sm:px-6 border-b border-gray-200">
             <div>
                 <h3 class="text-lg leading-6 font-xl font-semibold text-gray-900">
-                    日程管理
+                    検索結果
                 </h3>
                 <div class="mt-1 max-w-2xl text-sm text-gray-500">
-                    全ての日程を表示します。
+                    検索結果が表示されます。
                 </div>
             </div>
             <div>
@@ -28,29 +28,33 @@
                 </form>
             </div>
         </div>
-        @foreach ($posts as $post)
+        @if ($results)
+        @foreach ($results as $item)
         <dl>
             <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 border-b border-gray-200">
                 <dt class="text-sm font-medium text-gray-500">
-                    {{-- <h2><a href="{{route('posts.show', $post->id)}}">{{$post->title}}</a></h2> --}}
-                        <!-- phpの改行関数を使っていい感じに本文を改行させる -->
-                        <!-- <p>{{$post->title}}</p> -->
-                        <p>
-                        <a href="{{ route('schedule.show', $post->id)}}">
-                                {!! nl2br(htmlspecialchars($post->title)) !!}
-                            </a>
-                        </p>
+                    <p>
+                    <a href="{{ route('schedule.show', $item->id)}}">
+                            {!! nl2br(htmlspecialchars($item->title)) !!}
+                        </a>
+                    </p>
                 </dt>
                 <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                    作成日:{{$post->created_at->format('Y年m月d日')}}
+                    作成日:{{$item->created_at->format('Y年m月d日')}}
                 </dd>
             </div>
         </dl>
         @endforeach
+        @else
+        <dl>
+            <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 border-b border-gray-200">
+                <dt class="text-sm font-medium text-gray-500">
+                    検索結果は0件です。
+                </dt>
+            </div>
+        </dl>
+        @endif
     </div>
-    {{ $posts->links() }}
-    <button class="py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-gray-700 hover:bg-gray-900 mt-6">
-        <a href="{{ route('schedule.from') }}">日程作成</a>
-    </button>
+    {{ $paginate->links() }}
 </div>
 @endsection

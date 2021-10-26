@@ -11,7 +11,7 @@
                 日程詳細
             </h3>
             <p class="mt-1 max-w-2xl text-sm text-gray-500">
-                作成日:{{$post_detail->created_at}}の詳細です。
+                作成日:{{$post_detail->created_at->format('Y年m月d日')}}
             </p>
         </div>
         
@@ -42,7 +42,7 @@
             </button>
         </form>
         <button type="reset" onclick='window.history.back(-1);'>
-            キャンセル
+            戻る
         </button>
     </div>
     
