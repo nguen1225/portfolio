@@ -30,6 +30,7 @@ Route::group(['prefix' => '/', 'middleware' => 'loggedInCheck'], static function
     // スケジュール帳
     Route::group(['prefix' => '/schedule'], static function (): void {
         Route::get('/', 'App\Http\Controllers\ScheduleController@index')->name('schedule');
+        Route::get('/search', 'App\Http\Controllers\ScheduleController@search')->name('schedule.search');
         Route::group(['prefix' => '/post'], static function (): void {
             Route::get('/', 'App\Http\Controllers\ScheduleController@from')->name('schedule.from');
             Route::post('/', 'App\Http\Controllers\ScheduleController@post')->name('schedule.post');
@@ -44,9 +45,9 @@ Route::group(['prefix' => '/', 'middleware' => 'loggedInCheck'], static function
     Route::group(['prefix' => '/vital'], static function (): void {
         Route::get('/', 'App\Http\Controllers\VitalController@index')->name('vital');
         Route::get('/health', 'App\Http\Controllers\VitalController@health');
-        
-        
-        
+
+
+
         Route::group(['prefix' => '/post'], static function (): void {
             Route::get('/', 'App\Http\Controllers\VitalController@from')->name('vital.from');
             Route::post('/', 'App\Http\Controllers\VitalController@post')->name('vital.post');
