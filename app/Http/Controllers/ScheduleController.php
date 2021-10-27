@@ -13,7 +13,7 @@ class ScheduleController extends Controller
         $posts = Schedule::query()
         ->where("user_id", session()->get('id'))
         ->orderByDesc('created_at')
-        ->paginate(8);
+        ->paginate(10);
 
         return view('schedule.index')
         ->with('posts', $posts);
