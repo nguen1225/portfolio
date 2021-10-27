@@ -3,6 +3,7 @@
 @section('body')
 
 <!-- This example requires Tailwind CSS v2.0+ -->
+<div id='calendar'></div>
 <div class="container mx-auto mt-6">
     <div class="bg-gray-200 shadow overflow-hidden sm:rounded-lg">
         <div class="content_flex px-4 py-5 sm:px-6 border-b border-gray-200">
