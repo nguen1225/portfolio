@@ -14,9 +14,11 @@ const mix = require('laravel-mix');
 mix
     .js('resources/js/app.js', 'public/js')
     .js('resources/js/custom.js', 'public/js')
+    .js('resources/js/calendar.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
         require("tailwindcss"),
     ])
+    .sass('resources/scss/calendar.scss', 'public/css')
     .sass('resources/scss/custom.scss', 'public/css');
 
 ;

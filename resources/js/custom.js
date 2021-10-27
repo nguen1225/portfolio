@@ -12,13 +12,13 @@ fetch(location.protocol + "//" + location.host + "/vital/health").then(function 
     const health_data = response.json();
     return health_data;
 }).then(function (health_data) {
-    
+
     health_data_factory(health_data);
     const human_height  = new HUMAN_HEIGHT();
     const human_weight  = new HUMAN_WEIGHT();
     const human_blood_pressure = new HUMAN_BLOOD_PRESSURE();
     const human_heart_rate = new HUMAN_HEART_RATE();
-    
+
     const BODY_HEIGHT = new Chart(
     document.querySelector('.samples #body_height'),
     human_height.config
@@ -269,7 +269,7 @@ class HUMAN_BLOOD_PRESSURE {
                     }
                 }
             },
-            
+
             responsive: true,
             maintainAspectRatio: true
         }
@@ -348,7 +348,7 @@ class HUMAN_HEART_RATE {
 //         location.protocol + "//" + location.host + "/vital/height",
 //         location.protocol + "//" + location.host + "/vital/weight",
 //         location.protocol + "//" + location.host + "/vital/blood-pressure",
-//         location.protocol + "//" + location.host + "/vital/heart-rate" 
+//         location.protocol + "//" + location.host + "/vital/heart-rate"
 //     ]
 
 //     console.log(await Promise.all(urls.map(get)));
