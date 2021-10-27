@@ -1,8 +1,21 @@
 document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
     var calendar = new FullCalendar.Calendar(calendarEl, {
-    initialView: 'dayGridMonth'
+        initialView: 'dayGridMonth',
+        locale: 'ja',
+        editable: true,
+        droppable: true,
+        events: { // you can also specify a plain string like 'json/events-for-resources.json'
+          url: location.protocol + "//" + location.host + "/schedule/schedule-date",
+          backgroundColor: "#2d3e50",
+                    borderColor: "#521794",
+                    textColor: "#ffffff",
+          failure: function() {
+            document.getElementById('script-warning').style.display = 'block';
+          }
+        }
     });
+
     calendar.render();
 });
 

@@ -8,7 +8,7 @@ use App\Http\Requests\Vital\PostVitalRequest;
 use App\Models\User;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
-use Illuminate\Support\Facades\DB;	
+use Illuminate\Support\Facades\DB;
 
 class VitalController extends Controller
 {
@@ -84,28 +84,28 @@ class VitalController extends Controller
     }
 
     // 身長のデータ取得
-    public function health() 
+    public function health()
     {
         $user = User::where('id', session()->get('id'))->first();
         $get_health = Vital::select(DB::raw('
-            DATE_FORMAT(vitals.created_at, "%c月%e日") as date, 
-            vitals.height as height, 
-            vitals.body_weight as weight, 
-            vitals.max_blood_pressure as max_blood_pressure, 
-            vitals.min_blood_pressure as min_blood_pressure, 
-            vitals.avg_blood_pressure as avg_blood_pressure, 
+            DATE_FORMAT(vitals.created_at, "%c月%e日") as date,
+            vitals.height as height,
+            vitals.body_weight as weight,
+            vitals.max_blood_pressure as max_blood_pressure,
+            vitals.min_blood_pressure as min_blood_pressure,
+            vitals.avg_blood_pressure as avg_blood_pressure,
             vitals.heart_rate as heart_rate
         '))
         ->join('users', 'user_id', '=', 'users.id')
         ->where('vitals.user_id', $user->id)
         ->groupBy(
-            'users.id', 
-            'height', 
-            'body_weight', 
-            'max_blood_pressure', 
-            'min_blood_pressure', 
-            'avg_blood_pressure', 
-            'heart_rate', 
+            'users.id',
+            'height',
+            'body_weight',
+            'max_blood_pressure',
+            'min_blood_pressure',
+            'avg_blood_pressure',
+            'heart_rate',
             'date'
         )
         ->get();

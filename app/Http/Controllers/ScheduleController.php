@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Schedule;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class ScheduleController extends Controller
 {
@@ -36,6 +37,22 @@ class ScheduleController extends Controller
         ->with('results', $rows)
         ->with('paginate', $results);
 
+    }
+
+    public function scheduleDate()
+    {
+        $rows = [];
+        $posts = Schedule::select(DB::raw('
+            id,
+            title,
+            DATE_FORMAT(created_at, "%Y-%m-%d") as start
+        '))
+        ->get();
+        foreach ($posts as $post) {
+            $rows[] = $post;
+        }
+
+        return response()->json($rows);
     }
 
     public function from()
