@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
         locale: 'ja',
         editable: true,
         droppable: true,
-        events: { // you can also specify a plain string like 'json/events-for-resources.json'
+        events: {
           url: location.protocol + "//" + location.host + "/schedule/schedule-date",
           backgroundColor: "#2d3e50",
                     borderColor: "#521794",
@@ -13,6 +13,11 @@ document.addEventListener('DOMContentLoaded', function() {
           failure: function() {
             document.getElementById('script-warning').style.display = 'block';
           }
+        },
+        eventClick: function(info) {
+            info.el.onclick=function(){
+              window.location.href = location.protocol + "//" + location.host + "/schedule/post/show/" + info.event.id
+            }
         }
     });
 
