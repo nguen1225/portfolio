@@ -724,6 +724,7 @@ A HORIZONTAL event
 
 }
 .fc .fc-daygrid-day-top {
+    height: 25px    ;
     display: flex;
     flex-direction: row-reverse;
   }
@@ -1840,4 +1841,41 @@ vertical slots in both the header AND the body
 .fc-direction-rtl .fc-datagrid-cell-resizer { left: -3px }
 .fc-direction-ltr .fc-datagrid-expander { margin-right: 3px }
 .fc-direction-rtl .fc-datagrid-expander { margin-left: 3px }
+
+.fc-event-title.fc-sticky {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+// .fc-theme-standard td, .fc-theme-standard th {
+//     overflow-y: scroll;
+//     height: 100px;
+// }
+
+.fc-daygrid-day-events {
+    overflow-y: scroll;
+    height: 58px;
+}
+
+.fc-daygrid-day-events::-webkit-scrollbar {
+    display: none !important;
+}
+
+td.fc-daygrid-day.fc-day.fc-day-sat.fc-day-past {
+    background-color: #eaf4ff;
+}
+
+th.fc-col-header-cell.fc-day.fc-day-sat {
+    background-color: #eaf4ff;
+}
+
+td.fc-daygrid-day.fc-day.fc-day-sun.fc-day-past {
+    background-color: #ffeaea;
+}
+
+th.fc-col-header-cell.fc-day.fc-day-sun {
+    background-color: #ffeaea;
+}
+
 

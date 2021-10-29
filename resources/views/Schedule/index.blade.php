@@ -2,6 +2,7 @@
 @include('dashboard')
 @section('body')
 
+
 <!-- This example requires Tailwind CSS v2.0+ -->
 <div class="container mx-auto mt-7">
     <div class="flex space-x-16">
