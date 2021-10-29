@@ -36,7 +36,7 @@
                     </form>
                 </div>
             </div>
-            <div class="schedule_scroll">
+            <div class="content_scroll">
                 @foreach ($posts as $post)
                 <dl>
                     <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 border-b border-gray-200">
