@@ -91,6 +91,9 @@ class HUMAN_HEIGHT {
                 y: {
                     suggestedMin: 0,
                     suggestedMax: 250,
+                    ticks: {
+                        stepSize: 50
+                    }
                 },
                 x: {
                     ticks: {
@@ -150,7 +153,10 @@ class HUMAN_WEIGHT {
             scales: {
                 y: {
                     suggestedMin: 0,
-                    suggestedMax: 100,
+                    suggestedMax: 150,
+                    ticks: {
+                        stepSize: 10
+                    }
                 },
                 x: {
                     ticks: {
@@ -256,7 +262,10 @@ class HUMAN_BLOOD_PRESSURE {
             scales: {
                 y: {
                     suggestedMin: 0,
-                    suggestedMax: 300,
+                    suggestedMax: 200,
+                    ticks: {
+                        stepSize: 50
+                    }
                 },
                 x: {
                     ticks: {
@@ -304,7 +313,10 @@ class HUMAN_HEART_RATE {
             scales: {
                 y: {
                     suggestedMin: 0,
-                    suggestedMax: 300,
+                    suggestedMax: 150,
+                    ticks: {
+                        stepSize: 50
+                    }
                 },
                 x: {
                     ticks: {
