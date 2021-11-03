@@ -66,8 +66,9 @@ h1.graph_title {
   }
 
 .tab-menu__item {
-box-sizing: border-box;
-padding: 0 5px;
+    box-sizing: border-box;
+    margin: -1px 0px;
+    padding: 0 5px;
 }
 
 
@@ -93,6 +94,9 @@ padding: 0 5px;
 
 /* タブコンテンツ */
 .tab-content {
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-top-right-radius: 8px;
     border: 1px solid #ccc;
 }
 .tab-content__item {
