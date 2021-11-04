@@ -12,10 +12,30 @@ use Illuminate\Support\Facades\DB;
 
 class VitalController extends Controller
 {
-    public function index()
+
+
+    public function index(Request $request)
     {
-        $posts = Vital::query()->where("user_id", session()->get('id'))->paginate(7);
-        return view('vital.index')->with('posts', $posts);
+        $now = now()->format('Y-m-d');
+        $today_date = Vital::select(DB::raw('height, body_weight'))
+        ->where('created_at', "LIKE", "%{$now}%")
+        ->first();
+
+        $bmi = $this->bmi($today_date->height, $today_date->body_weight);
+
+        $posts = Vital::query()
+        ->where("user_id", session()->get('id'))
+        ->orderByDesc('created_at')
+        ->paginate(7);
+
+        return view('vital.index')->with('posts', $posts)->with('bmi', $bmi);
+    }
+
+    public function bmi($height, $weight)
+    {
+        $bmi = $weight / (($height / 100) * ($height / 100));
+        $result = number_format( $bmi, 1, '.', '' );
+        return $result;
     }
 
     public function from()

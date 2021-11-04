@@ -124,8 +124,28 @@ h1.graph_title {
 }
 
 .bmi {
+    display: flex;
     margin-top: 47px;
-    color: white;
-    padding: 40px;
-    background: black;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 25px;
+}
+
+.today_bmi {
+    margin: 30px;
+}
+
+table.bmi_table{
+  width: 560px;
+  border-collapse:collapse;
+}
+
+table.bmi_table th{
+  border:1px solid #000066;
+  background:royalblue;
+}
+
+table.bmi_table td{
+  border:1px solid #000066;
+  background:#ffffff;
 }
