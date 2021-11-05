@@ -77,10 +77,26 @@
             </div>
             <div class="bmi">
                 <div class="today_bmi">
-                    本日のBMI
-                    {{ $bmi }}
+                        <p class="bmi_title font-semibold">
+                            本日のBMI
+                        </p>
+                        <p class="bmi_value">
+                            {{ $bmi }}
+                        </p>
+                        <p class="bmi_title font-semibold">
+                            適正体重
+                        </p>
+                        <p class="bmi_value">
+                            {{ $standard_weight }} kg
+                        </p>
+                        <p class="bmi_title font-semibold">
+                            適性体重と比較
+                        </p>
+                        <p class="bmi_value">
+                            {{ $weight_difference }} kg
+                        </p>
                 </div>
-                <div>
+                <div class="bmi_content">
                     <table class="bmi_table">
                         <thead>
                             <tr>

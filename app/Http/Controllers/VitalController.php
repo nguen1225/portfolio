@@ -22,20 +22,41 @@ class VitalController extends Controller
         ->first();
 
         $bmi = $this->bmi($today_date->height, $today_date->body_weight);
+        $standard_weight = $this->standardWeight($today_date->height);
+        $weight_difference = $this->weightDifference($today_date->body_weight, $standard_weight);
 
         $posts = Vital::query()
         ->where("user_id", session()->get('id'))
         ->orderByDesc('created_at')
         ->paginate(7);
 
-        return view('vital.index')->with('posts', $posts)->with('bmi', $bmi);
+        return view('vital.index')
+        ->with('posts', $posts)
+        ->with('bmi', $bmi)
+        ->with('standard_weight', $standard_weight)
+        ->with('weight_difference', $weight_difference);
     }
 
+    // BMI計算
     public function bmi($height, $weight)
     {
         $bmi = $weight / (($height / 100) * ($height / 100));
         $result = number_format( $bmi, 1, '.', '' );
         return $result;
+    }
+
+    // 標準体重計算
+    public function standardWeight($height){
+        $weight = ($height / 100) * ($height / 100) * 22;
+        $result = number_format($weight, 2, '.', '');
+        return $result;
+    }
+
+    // 適正体重との比較
+    public function weightDifference($weight, $standard_weight) {
+       $weight_difference = $standard_weight - $weight;
+       $result = number_format($weight_difference, 2, '.', '');
+       return $result;
     }
 
     public function from()
