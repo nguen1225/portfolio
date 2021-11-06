@@ -1,4 +1,3 @@
-@section('graph')
 <ul class="tab-menu">
     <li class="tab-menu__item"><span class="tab-trigger js-tab-trigger bg-gray-700 font-semibold text-white is-active" data-id="tab01">身長</span></li>
     <li class="tab-menu__item"><span class="tab-trigger js-tab-trigger bg-gray-700 font-semibold text-white" data-id="tab02">体重</span></li>
@@ -67,4 +66,3 @@
         </p>
     </div><!-- .tab-content__item --> --}}
 </div>
-@endsection

@@ -1,4 +1,3 @@
-@section('bmi')
 <div class="bmi">
     <div class="today_bmi">
         <p class="bmi_title font-semibold">
@@ -57,4 +56,3 @@
         </table>
     </div>
 </div>
-@endsection

@@ -1,5 +1,4 @@
 @extends('layouts.detail')
-@include('vital.components.edit-form')
 @section('body')
 
 <!-- This example requires Tailwind CSS v2.0+ -->
@@ -15,7 +14,7 @@
         </div>
         <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 border-b border-gray-200">
             <dt class="text-sm font-medium text-gray-500">
-                @yield('edit-form')
+                @include('vital.components.edit-form')
             </dt>
         </div>
     </div>

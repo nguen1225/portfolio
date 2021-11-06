@@ -1,4 +1,3 @@
-@section('edit-form')
 <form action="{{route('vital.update', $post_detail->id)}}" method="post">
     @csrf
     @method('patch')
@@ -96,4 +95,3 @@
         </button>
     </div>
 </form>
-@endsection

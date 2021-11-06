@@ -1,4 +1,3 @@
-@section('body-recorde')
 <div class="bg-gray-200 px-4 py-5 sm:px-6 border-b border-gray-200">
     <h3 class="text-lg leading-6 font-xl font-semibold text-gray-900">
         身体記録管理
@@ -25,4 +24,3 @@
     </div>
 </dl>
 @endforeach
-@endsection
