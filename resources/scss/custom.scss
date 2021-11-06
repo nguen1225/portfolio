@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
 }
-  
+
 .samples {
     width: 100%;
     display: flex;
@@ -11,21 +11,165 @@
     .graph_row {
         width: 100%;
     }
-
-    .right {
-        margin-right: 40px;
-    }
-
-    canvas {
-        margin-top: 50px;
-    }
-}
-
-.samples.bottom {
-    margin-bottom: 50px;
 }
 
 h1.graph_title {
     text-align: center;
     margin-top: 20px;
 }
+
+.content_flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.search_flex {
+    display: flex;
+}
+
+.calendar_width {
+    width: 50%;
+}
+
+.schedule_width {
+    width: 50%;
+}
+
+.schedule_height {
+    height: 610px;
+}
+
+.content_scroll {
+    overflow-y: scroll;
+    height: 465px;
+}
+
+.schedule_title {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.schedule_created {
+    text-align: right;
+}
+
+.content_scroll::-webkit-scrollbar {
+    display: none !important;
+}
+
+
+/* タブメニュー */
+.tab-menu {
+    display: flex;
+    margin: 0 -5px;
+  }
+
+.tab-menu__item {
+    box-sizing: border-box;
+    margin: -1px 0px;
+    padding: 0 5px;
+}
+
+
+.tab-trigger {
+    width: 90px;
+    text-align: center;
+    cursor: pointer;
+    display: block;
+    padding: 7px;
+    border: 1px solid #ccc;
+    border-bottom: 0;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    // background-color: lightgray;
+    position: relative;
+}
+
+.tab-trigger.is-active {
+    background-color: rgba(229, 231, 235, var(--tw-bg-opacity));
+    color: black;
+}
+
+
+/* タブコンテンツ */
+.tab-content {
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border: 1px solid #ccc;
+}
+.tab-content__item {
+    box-sizing: border-box;
+    padding: 20px;
+    display: none;
+    text-align: left;
+}
+.tab-content__item.is-active {
+    display: block;
+    animation: fade 0.5s ease;
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.width-50 {
+    width: 50%;
+}
+
+.bmi {
+    display: flex;
+    margin-top: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 25px;
+}
+
+.bmi_content {
+    width: 100%;
+}
+
+.today_bmi {
+    position: absolute;
+    width: 12%;
+}
+
+table.bmi_table{
+  width: 60%;
+  float: right;
+  border-collapse:collapse;
+
+  td {
+      padding: 4px 12px;
+  }
+}
+
+
+
+table.bmi_table th{
+  border:1px solid #000066;
+  background:royalblue;
+}
+
+table.bmi_table td{
+  border:1px solid #000066;
+  background:#ffffff;
+}
+
+
+.bmi_title {
+    font-size: 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+.bmi_value {
+    font-size: 20px;
+    margin-bottom: 1rem;
+}
+
