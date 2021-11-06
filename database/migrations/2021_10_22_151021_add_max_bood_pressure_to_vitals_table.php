@@ -26,7 +26,7 @@ class AddMaxBoodPressureToVitalsTable extends Migration
     public function down()
     {
         Schema::table('vitals', function (Blueprint $table) {
-            $table->integer('max_blood_pressure')->nullable();
+            $table->dropColumn('max_blood_pressure')->nullable();
         });
     }
 }

@@ -26,7 +26,7 @@ class AddAvgBoodPressureToVitalsTable extends Migration
     public function down()
     {
         Schema::table('vitals', function (Blueprint $table) {
-            $table->integer('avg_blood_pressure')->nullable(); 
+            $table->dropColumn('avg_blood_pressure')->nullable();
         });
     }
 }
