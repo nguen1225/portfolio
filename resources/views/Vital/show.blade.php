@@ -1,5 +1,4 @@
 @extends('layouts.detail')
-@include('vital.components.show-detail')
 @section('body')
 
 <!-- This example requires Tailwind CSS v2.0+ -->
@@ -13,7 +12,7 @@
                 作成日:{{$post_detail->created_at}}の詳細です。
             </p>
         </div>
-        @yield('show-detail')
+        @include('vital.components.show-detail')
     </div>
     <div class="btn-sort mt-6">
         <button class="py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-gray-500 hover:bg-gray-900 mr-3">

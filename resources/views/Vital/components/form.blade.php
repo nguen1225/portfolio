@@ -1,4 +1,3 @@
-@section('form')
 <form action="{{route('vital.post')}}" method="post">
     @csrf
     <div class="">
@@ -96,4 +95,3 @@
         </button>
     </div>
 </form>
-@endsection
