@@ -21,9 +21,15 @@ class VitalController extends Controller
         ->where('created_at', "LIKE", "%{$now}%")
         ->first();
 
-        $bmi = $this->bmi($today_date->height, $today_date->body_weight);
-        $standard_weight = $this->standardWeight($today_date->height);
-        $weight_difference = $this->weightDifference($today_date->body_weight, $standard_weight);
+        if ($today_date) {
+            $bmi = $this->bmi($today_date->height, $today_date->body_weight);
+            $standard_weight = $this->standardWeight($today_date->height);
+            $weight_difference = $this->weightDifference($today_date->body_weight, $standard_weight);
+        } else {
+            $bmi = 0;
+            $standard_weight = 0;
+            $weight_difference = 0;
+        }
 
         $posts = Vital::query()
         ->where("user_id", session()->get('id'))
