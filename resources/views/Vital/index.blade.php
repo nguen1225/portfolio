@@ -8,10 +8,12 @@
             @include('vital.components.graph')
             @include('vital.components.bmi')
         </div>
-        <div class="shadow overflow-hidden sm:rounded-lg width-50">
-            @include('vital.components.body-recorde')
+        <div class="width-50">
+            <div class="shadow overflow-hidden sm:rounded-lg">
+                @include('vital.components.body-recorde')
+            </div>
+            {{ $posts->links() }}
         </div>
     </div>
-    {{ $posts->links() }}
 </div>
 @endsection

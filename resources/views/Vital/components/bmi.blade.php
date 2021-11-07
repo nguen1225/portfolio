@@ -22,9 +22,9 @@
     <div class="bmi_content">
         <table class="bmi_table">
             <thead>
-                <tr>
-                <th class="bg-gray-700 font-semibold text-white">範囲</th>
-                <th class="bg-gray-700 font-semibold text-white">肥満度</th>
+                <tr class="bg-gray-700">
+                <th class=" font-semibold text-white">範囲</th>
+                <th class=" font-semibold text-white">肥満度</th>
                 </tr>
             </thead>
             <tbody>

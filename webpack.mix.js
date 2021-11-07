@@ -21,7 +21,10 @@ mix
         require("tailwindcss"),
     ])
     .sass('resources/scss/calendar/app.scss', 'public/css/custom.css')
-    .sass('resources/scss/vital/app.scss', 'public/css/custom.css')
-    .sass('resources/scss/schedule/app.scss', 'public/css/custom.css');
+    .sass('resources/scss/vital/graph.scss', 'public/css/custom.css')
+    .sass('resources/scss/vital/tab.scss', 'public/css/custom.css')
+    .sass('resources/scss/vital/bmi.scss', 'public/css/custom.css')
+    .sass('resources/scss/schedule/app.scss', 'public/css/custom.css')
+    .sass('resources/scss/app.scss', 'public/css/custom.css');
 
 ;
