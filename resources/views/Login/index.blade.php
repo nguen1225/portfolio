@@ -1,5 +1,4 @@
-@extends('base')
-
+@extends('layouts.detail')
 @section('body')
     <div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div class="max-w-md w-full space-y-8 bg-gray-700 p-6 rounded-lg shadow-2xl">

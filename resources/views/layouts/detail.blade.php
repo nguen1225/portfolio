@@ -6,7 +6,9 @@
 <html lang="ja">
 @yield('header')
 <body>
+    @if (session()->get('id'))
     @yield('dashboard')
+    @endif
     <main>
         @if(session()->has('message'))
             <aside class="message">
@@ -19,6 +21,5 @@
         @show
     </main>
     @yield('footer')
-    <script src="{{ mix('js/custom.js') }}"></script>
 </body>
 </html>

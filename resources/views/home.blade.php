@@ -1,7 +1,4 @@
-@extends('base')
-@include('dashboard')
-@section('title', 'HOME')
-
+@extends('layouts.detail')
 @section('body')
 
 @endsection
