@@ -74,8 +74,6 @@ class HUMAN_HEIGHT {
         }]
     }
 
-
-
     config = {
         type: 'line',
         data: this.data,
@@ -136,8 +134,6 @@ class HUMAN_WEIGHT {
             data: this.data
         }]
     }
-
-
 
     config = {
         type: 'line',
@@ -246,8 +242,6 @@ class HUMAN_BLOOD_PRESSURE {
         }],
     }
 
-
-
     config = {
         type: 'line',
         data: this.data,
@@ -297,8 +291,6 @@ class HUMAN_HEART_RATE {
         }]
     }
 
-
-
     config = {
         type: 'line',
         data: this.data,
@@ -347,8 +339,6 @@ class HUMAN_HEART_RATE {
     }
 }
 
-
-
 // function get(url) {
 //     return fetch(url)
 // }
@@ -366,29 +356,4 @@ class HUMAN_HEART_RATE {
 //     console.log(await Promise.all(urls.map(get)));
 // }
 // fn();
-
-
-document.addEventListener('DOMContentLoaded', () => {
-    const tabTriggers = document.querySelectorAll('.js-tab-trigger');
-    const tabTargets = document.querySelectorAll('.js-tab-target');
-
-    for (let i = 0; i < tabTriggers.length; i++) {
-        tabTriggers[i].addEventListener('click', (e) => {
-            let currentMenu = e.currentTarget;
-            let currentContent = document.getElementById(currentMenu.dataset.id);
-
-            for (let i = 0; i < tabTriggers.length; i++) {
-                tabTriggers[i].classList.remove('is-active');
-            }
-            currentMenu.classList.add('is-active');
-
-            for (let i = 0; i < tabTargets.length; i++) {
-                tabTargets[i].classList.remove('is-active');
-            }
-            if(currentContent !== null) {
-                currentContent.classList.add('is-active');
-            }
-        });
-    }
-});
 

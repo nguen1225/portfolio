@@ -1,0 +1,39 @@
+.content_flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.search_flex {
+    display: flex;
+}
+
+.calendar_width {
+    width: 50%;
+}
+
+.schedule_width {
+    width: 50%;
+}
+
+.schedule_height {
+    height: 610px;
+}
+
+.content_scroll {
+    overflow-y: scroll;
+    height: 465px;
+}
+
+.schedule_title {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.schedule_created {
+    text-align: right;
+}
+
+.content_scroll::-webkit-scrollbar {
+    display: none !important;
+}

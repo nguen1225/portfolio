@@ -18,48 +18,6 @@ h1.graph_title {
     margin-top: 20px;
 }
 
-.content_flex {
-    display: flex;
-    justify-content: space-between;
-}
-
-.search_flex {
-    display: flex;
-}
-
-.calendar_width {
-    width: 50%;
-}
-
-.schedule_width {
-    width: 50%;
-}
-
-.schedule_height {
-    height: 610px;
-}
-
-.content_scroll {
-    overflow-y: scroll;
-    height: 465px;
-}
-
-.schedule_title {
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-}
-
-.schedule_created {
-    text-align: right;
-}
-
-.content_scroll::-webkit-scrollbar {
-    display: none !important;
-}
-
-
-/* タブメニュー */
 .tab-menu {
     display: flex;
     margin: 0 -5px;
@@ -70,7 +28,6 @@ h1.graph_title {
     margin: -1px 0px;
     padding: 0 5px;
 }
-
 
 .tab-trigger {
     width: 90px;
@@ -91,8 +48,6 @@ h1.graph_title {
     color: black;
 }
 
-
-/* タブコンテンツ */
 .tab-content {
     border-bottom-right-radius: 8px;
     border-bottom-left-radius: 8px;
@@ -150,8 +105,6 @@ table.bmi_table{
   }
 }
 
-
-
 table.bmi_table th{
   border:1px solid #000066;
   background:royalblue;
@@ -172,4 +125,3 @@ table.bmi_table td{
     font-size: 20px;
     margin-bottom: 1rem;
 }
-
