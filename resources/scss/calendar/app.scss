@@ -294,6 +294,7 @@ When it's NOT activated, the fc-button classes won't even be in the DOM.
   }
 .fc .fc-toolbar-title {
     font-size: 1.75em;
+    font-weight: bold;
     margin: 0;
   }
 .fc-direction-ltr .fc-toolbar > * > :not(:first-child) {
@@ -739,16 +740,16 @@ A HORIZONTAL event
 .fc .fc-daygrid-day-number {
     position: relative;
     z-index: 4;
-    padding: 4px;
+    padding: 2px;
   }
 .fc {
 
   /* event container */
 
 }
-.fc .fc-daygrid-day-events {
-    margin-top: 1px; /* needs to be margin, not padding, so that available cell height can be computed */
-  }
+// .fc .fc-daygrid-day-events {
+//     margin-top: 1px; /* needs to be margin, not padding, so that available cell height can be computed */
+//   }
 .fc {
 
   /* positioning for balanced vs natural */
@@ -761,7 +762,7 @@ A HORIZONTAL event
     }
 .fc .fc-daygrid-body-unbalanced .fc-daygrid-day-events {
       position: relative; /* for containing abs positioned event harnesses */
-      min-height: 2em; /* in addition to being a min-height during natural height, equalizes the heights a little bit */
+      min-height: 4.6em; /* in addition to being a min-height during natural height, equalizes the heights a little bit */
     }
 .fc .fc-daygrid-body-natural { /* can coexist with -unbalanced */
   }
@@ -1862,20 +1863,37 @@ vertical slots in both the header AND the body
     display: none !important;
 }
 
-td.fc-daygrid-day.fc-day.fc-day-sat.fc-day-past {
+th.fc-day-sat {
     background-color: #eaf4ff;
 }
-
-th.fc-col-header-cell.fc-day.fc-day-sat {
+th.fc-day-sun {
+    background-color: #ffeaea;
+}
+th.fc-day-sat .fc-col-header-cell-cushion {
+    color: blue;
+}
+th.fc-day-sun .fc-col-header-cell-cushion{
+    color: red;
+}
+td.fc-day-sat {
     background-color: #eaf4ff;
 }
-
-td.fc-daygrid-day.fc-day.fc-day-sun.fc-day-past {
+td.fc-day-sun {
     background-color: #ffeaea;
 }
-
-th.fc-col-header-cell.fc-day.fc-day-sun {
-    background-color: #ffeaea;
+.fc-col-header-cell-cushion {
+    color: black;
 }
+.fc-daygrid-day-number {
+    color: black;
+}
+td.fc-day-sat .fc-daygrid-day-number {
+    color: blue;
+}
+td.fc-day-sun .fc-daygrid-day-number {
+    color: red;
+}
+
+
 
 
