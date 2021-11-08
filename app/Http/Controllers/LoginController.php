@@ -18,7 +18,7 @@ class LoginController extends Controller
         $inputPassword = $request->input('password');
         $user = User::where('name', $inputName)->first();
         // dd($user);
-        
+
         if ($user === null) {
             session()->flash('flash_message', '入力されたIDやパスワードが正しくありません。確認してからやりなおしてください。');
             return redirect('login');
@@ -31,6 +31,12 @@ class LoginController extends Controller
 
         session()->flash('flash_message', '入力されたIDやパスワードが正しくありません。確認してからやりなおしてください。');
         return redirect('login');
+    }
 
+    public function logout()
+    {
+        session()->forget('id');
+        session()->flash('logout', 'ログアウトしました。');
+        return redirect('login');
     }
 }

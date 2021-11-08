@@ -17,7 +17,7 @@
 
               <a href="#" class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">?????</a>
 
-              <a href="#" class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">?????</a>
+              <a href="{{ route('logout')}}" class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">logout</a>
             </div>
           </div>
         </div>
@@ -36,7 +36,7 @@
 
         <a href="#" class="text-white hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">?????</a>
 
-        <a href="#" class="text-white hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">?????</a>
+        <a href="{{ route('logout')}}" class="text-white hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">logout</a>
       </div>
     </div>
   </nav>

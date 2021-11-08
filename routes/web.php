@@ -22,6 +22,9 @@ Route::group(['prefix' => '/login'], static function (): void {
     Route::post('/', 'App\Http\Controllers\LoginController@logincheck')->name('login');
 });
 
+Route::group(['prefix' => 'logout',], static function (): void {
+    Route::get('/', 'App\Http\Controllers\LoginController@logout')->name('logout');
+});
 
 Route::group(['prefix' => '/', 'middleware' => 'loggedInCheck'], static function (): void {
 
