@@ -10,6 +10,6 @@ class HomeController extends Controller
     public function home()
     {
         $user = User::query()->where("id", session()->get('id'))->first();
-        return view('home')->with('user', $user);
+        return view('home.index')->with('user', $user);
     }
 }
