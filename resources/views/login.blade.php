@@ -22,12 +22,12 @@
                 </div>
             </div>
             <div class="text-sm">
-                <a href="/admin/password/change" class="font-medium text-white hover:text-indigo-500">
+                <a href="{{ route('password.send-email') }}" class="font-medium text-white hover:text-indigo-500">
                 パスワードを忘れた方はこちら
                 </a>
             </div>
             <div>
-                <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text- bg-gray-50 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-50">
+                <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text- bg-gray-50 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-5">
                 ログイン
                 </button>
             </div>

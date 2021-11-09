@@ -13,17 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
+// ログイン関係
 Route::get('/', 'App\Http\Controllers\LoginController@login')->name('login');
 Route::post('/', 'App\Http\Controllers\LoginController@logincheck')->name('login.check');
 
-// Route::group(['prefix' => '/login'], static function (): void {
-// });
+// パスワード変更
+Route::group(['prefix' => 'password'], static function ():void {
+   Route::get('/send-email', 'App\Http\Controllers\PasswordController@sendEmailForm')->name('password.send-email');
+});
 
-Route::group(['prefix' => 'logout',], static function (): void {
+Route::group(['prefix' => 'logout'], static function (): void {
     Route::get('/', 'App\Http\Controllers\LoginController@logout')->name('logout');
 });
 
