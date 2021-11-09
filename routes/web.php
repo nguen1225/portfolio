@@ -23,6 +23,8 @@ Route::group(['prefix' => 'password'], static function ():void {
    Route::post('/send-email', 'App\Http\Controllers\PasswordController@generateUrl')->name('password.generate-url');
    Route::get('/send-completely', 'App\Http\Controllers\PasswordController@sendCompletely')->name('password.send-completely');
    Route::get('/{id}/edit', 'App\Http\Controllers\PasswordController@edit')->name('password.edit');
+   Route::post('/{id}/edit', 'App\Http\Controllers\PasswordController@update')->name('password.update');
+   Route::get('/completed', 'App\Http\Controllers\PasswordController@completed')->name('password.completed');
 });
 
 Route::group(['prefix' => 'logout'], static function (): void {

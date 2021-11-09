@@ -6,7 +6,7 @@
         <div>
             <h2 class="text-center text-3xl font-extrabold text-gray-50">
                 <a href="{{ route('login') }}">
-                    送信が完了しました。
+                    パスワード変更が完了しました
                 </a>
             </h2>
             <p class="mt-2 text-gray-600 text-center">
@@ -18,8 +18,5 @@
         </div>
     </div>
 </div>
-
 @endsection
-
-
 
