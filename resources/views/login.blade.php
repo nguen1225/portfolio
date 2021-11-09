@@ -15,19 +15,28 @@
             @csrf
             <input type="hidden" name="remember" value="true">
             <div class="rounded-md shadow-sm -space-y-px">
-                <div>
-                <label for="name" class="sr-only">Name</label>
-                <input id="name" name="name" type="name"  required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="name">
+                <div class="mb-6">
+                    <label for="name" class="sr-only">Name</label>
+                    <input id="name" name="name" type="name"  required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="name">
                 </div>
                 <div>
-                <label for="password" class="sr-only">Password</label>
-                <input id="password" name="password" type="password"  required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="password">
+                    <label for="password" class="sr-only">Password</label>
+                    <input id="password" name="password" type="password"  required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="password">
                 </div>
             </div>
             <div class="text-sm">
-                <a href="{{ route('password.send-email') }}" class="font-medium text-white hover:text-indigo-500">
-                パスワードを忘れた方はこちら
-                </a>
+                <p>
+                    <a href="{{ route('password.send-email') }}" class="font-medium text-white hover:text-indigo-500">
+                        パスワードを忘れた方はこちら
+                    </a>
+                </p>
+                <p>
+                    <a href="" class="font-medium text-white hover:text-indigo-500">
+                        新規作成はこちら
+                    </a>
+                </p>
+            </div>
+            <div class="text-sm">
             </div>
             <div>
                 <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text- bg-gray-50 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-5">
