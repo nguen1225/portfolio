@@ -17,15 +17,19 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::group(['prefix' => '/login'], static function (): void {
-    Route::get('/', 'App\Http\Controllers\LoginController@login');
-    Route::post('/', 'App\Http\Controllers\LoginController@logincheck')->name('login');
-});
+Route::get('/', 'App\Http\Controllers\LoginController@login')->name('login');
+Route::post('/', 'App\Http\Controllers\LoginController@logincheck')->name('login.check');
 
+// Route::group(['prefix' => '/login'], static function (): void {
+// });
+
+Route::group(['prefix' => 'logout',], static function (): void {
+    Route::get('/', 'App\Http\Controllers\LoginController@logout')->name('logout');
+});
 
 Route::group(['prefix' => '/', 'middleware' => 'loggedInCheck'], static function (): void {
 
-    Route::get('/', 'App\Http\Controllers\HomeController@home')->name('home');
+    Route::get('/home', 'App\Http\Controllers\HomeController@home')->name('home');
 
     // スケジュール帳
     Route::group(['prefix' => '/schedule'], static function (): void {
@@ -47,8 +51,6 @@ Route::group(['prefix' => '/', 'middleware' => 'loggedInCheck'], static function
     Route::group(['prefix' => '/vital'], static function (): void {
         Route::get('/', 'App\Http\Controllers\VitalController@index')->name('vital');
         Route::get('/health', 'App\Http\Controllers\VitalController@health');
-
-
 
         Route::group(['prefix' => '/post'], static function (): void {
             Route::get('/', 'App\Http\Controllers\VitalController@from')->name('vital.from');

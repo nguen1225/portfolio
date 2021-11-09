@@ -20,6 +20,7 @@ mix
     .postCss('resources/css/app.css', 'public/css', [
         require("tailwindcss"),
     ])
+    .sass('resources/scss/home/app.scss', 'public/css/custom.css')
     .sass('resources/scss/calendar/app.scss', 'public/css/custom.css')
     .sass('resources/scss/vital/graph.scss', 'public/css/custom.css')
     .sass('resources/scss/vital/tab.scss', 'public/css/custom.css')
