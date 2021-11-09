@@ -8,7 +8,10 @@
                 </h2>
             </div>
             <form class="mt-8 space-y-6" action="{{ route('login') }}" method="POST">
-                {{ session('flash_message') }}
+                <p class="mt-2 text-sm text-gray-600 text-center">
+                    <a class="font-medium  text-gray-50">
+                        {{ session('flash_message') }}
+                    </a>
             @csrf
             <input type="hidden" name="remember" value="true">
             <div class="rounded-md shadow-sm -space-y-px">
