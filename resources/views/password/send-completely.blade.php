@@ -10,7 +10,7 @@
                 </a>
             </h2>
             <p class="mt-2 text-gray-600 text-center">
-            <a href="{{ route('login') }}" class=" text-gray-50 hover:text-indigo-500">
+            <a href="{{ route('login') }}" class=" text-gray-50 hover:text-purple-200">
                 ログイン画面に戻る
             </a>
             </p>

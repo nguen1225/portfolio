@@ -4,7 +4,7 @@
     <div class="min-h-full flex items-center justify-center bg-gray-700 p-6 rounded-lg shadow-2xl">
         <div class="max-w-md w-full space-y-8">
         <div>
-            <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-50">
+            <h2 class="mt-2 text-center text-3xl font-extrabold text-gray-50">
             パスワード変更
             </h2>
             <p class="mt-2 text-sm text-gray-600 text-center">
@@ -32,7 +32,7 @@
             </div>
 
             <div>
-            <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text- bg-gray-50 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-5">
+            <button type="submit" class="submit_button group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text- bg-gray-50 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-5">
                 送信
             </button>
             </div>
