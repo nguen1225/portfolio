@@ -44,6 +44,7 @@
 ```bash
 ##フロント
 ・HTML
+・SCSS
 ・tailwindcss
 ・JavaScript(fullcalendar、chart.js)
 
