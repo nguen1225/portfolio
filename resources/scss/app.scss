@@ -1,0 +1,41 @@
+.global-contents {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.width-50 {
+    width: 50%;
+}
+
+.width-100 {
+    width: 100%;
+}
+
+.content_scroll {
+    overflow-y: scroll;
+    height: 426px;
+}
+
+.created_at {
+    text-align: right;
+}
+
+footer {
+    text-align: end;
+    padding: 5px 20px 0px 0px;
+    font-size: 16px;
+    color: black;
+    opacity: 0.6;
+    font-weight: bold;
+}
+
+.flex-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+.submit_button {
+    font-size: 17px;
+    font-weight: bold;
+}

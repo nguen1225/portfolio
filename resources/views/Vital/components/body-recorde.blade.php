@@ -9,18 +9,20 @@
         <a href="{{ route('vital.from') }}">記録作成</a>
     </button>
 </div>
-@foreach ($posts as $post)
-<dl>
-    <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 border-b border-gray-200">
-        <dt class="text-sm font-medium text-gray-500">
-            <a href="{{ route('vital.show', $post->id)}}">
-                    {!! nl2br(htmlspecialchars($post->title)) !!}
-                </a>
-            </p>
-        </dt>
-        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-            作成日 : {{$post->created_at->format('Y年m月d日')}}
-        </dd>
-    </div>
-</dl>
-@endforeach
+<div class="content_scroll">
+    @foreach ($posts as $post)
+    <dl>
+        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 border-b border-gray-200">
+            <dt class="text-sm font-medium text-gray-500">
+                <a href="{{ route('vital.show', $post->id)}}">
+                        {!! nl2br(htmlspecialchars($post->title)) !!}
+                    </a>
+                </p>
+            </dt>
+            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 created_at">
+                作成日 : {{$post->created_at->format('Y年m月d日')}}
+            </dd>
+        </div>
+    </dl>
+    @endforeach
+</div>

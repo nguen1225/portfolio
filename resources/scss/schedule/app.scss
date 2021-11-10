@@ -1,0 +1,33 @@
+#calendar {
+    height: 592px;
+}
+
+.search_flex {
+    display: flex;
+}
+
+.calendar_width {
+    padding: 20px;
+    width: 50%;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.schedule_height {
+    height: 453px;
+}
+
+.content_scroll {
+    overflow-y: scroll;
+    height: 465px;
+}
+
+.schedule_title {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.content_scroll::-webkit-scrollbar {
+    display: none !important;
+}

@@ -13,19 +13,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+// ログイン関係
+Route::get('/', 'App\Http\Controllers\LoginController@login')->name('login');
+Route::post('/', 'App\Http\Controllers\LoginController@logincheck')->name('login.check');
 
-Route::group(['prefix' => '/login'], static function (): void {
-    Route::get('/', 'App\Http\Controllers\LoginController@login');
-    Route::post('/', 'App\Http\Controllers\LoginController@logincheck')->name('login');
+// パスワード変更
+Route::group(['prefix' => 'password'], static function ():void {
+   Route::get('/send-email', 'App\Http\Controllers\PasswordController@sendEmailForm')->name('password.send-email');
+   Route::post('/send-email', 'App\Http\Controllers\PasswordController@generateUrl')->name('password.generate-url');
+   Route::get('/send-completely', 'App\Http\Controllers\PasswordController@sendCompletely')->name('password.send-completely');
+   Route::get('/{id}/edit', 'App\Http\Controllers\PasswordController@edit')->name('password.edit');
+   Route::post('/{id}/edit', 'App\Http\Controllers\PasswordController@update')->name('password.update');
+   Route::get('/completed', 'App\Http\Controllers\PasswordController@completed')->name('password.completed');
 });
 
+Route::group(['prefix' => 'logout'], static function (): void {
+    Route::get('/', 'App\Http\Controllers\LoginController@logout')->name('logout');
+});
 
 Route::group(['prefix' => '/', 'middleware' => 'loggedInCheck'], static function (): void {
 
-    Route::get('/', 'App\Http\Controllers\HomeController@home')->name('home');
+    Route::get('/home', 'App\Http\Controllers\HomeController@home')->name('home');
 
     // スケジュール帳
     Route::group(['prefix' => '/schedule'], static function (): void {
@@ -47,8 +55,6 @@ Route::group(['prefix' => '/', 'middleware' => 'loggedInCheck'], static function
     Route::group(['prefix' => '/vital'], static function (): void {
         Route::get('/', 'App\Http\Controllers\VitalController@index')->name('vital');
         Route::get('/health', 'App\Http\Controllers\VitalController@health');
-
-
 
         Route::group(['prefix' => '/post'], static function (): void {
             Route::get('/', 'App\Http\Controllers\VitalController@from')->name('vital.from');

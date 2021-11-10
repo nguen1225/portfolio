@@ -1,8 +1,8 @@
 <ul class="tab-menu">
-    <li class="tab-menu__item"><span class="tab-trigger js-tab-trigger bg-gray-700 font-semibold text-white is-active" data-id="tab01">身長</span></li>
-    <li class="tab-menu__item"><span class="tab-trigger js-tab-trigger bg-gray-700 font-semibold text-white" data-id="tab02">体重</span></li>
-    <li class="tab-menu__item"><span class="tab-trigger js-tab-trigger bg-gray-700 font-semibold text-white" data-id="tab03">血圧</span></li>
-    <li class="tab-menu__item"><span class="tab-trigger js-tab-trigger bg-gray-700 font-semibold text-white" data-id="tab04">心拍数</span></li>
+    <li class="tab-menu__item"><span class="tab-trigger js-tab-trigger bg-gray-700 hover:bg-gray-900 font-semibold text-white is-active" data-id="tab01">身長</span></li>
+    <li class="tab-menu__item"><span class="tab-trigger js-tab-trigger bg-gray-700 hover:bg-gray-900 font-semibold text-white" data-id="tab02">体重</span></li>
+    <li class="tab-menu__item"><span class="tab-trigger js-tab-trigger bg-gray-700 hover:bg-gray-900 font-semibold text-white" data-id="tab03">血圧</span></li>
+    <li class="tab-menu__item"><span class="tab-trigger js-tab-trigger bg-gray-700 hover:bg-gray-900 font-semibold text-white" data-id="tab04">心拍数</span></li>
     {{-- <li class="tab-menu__item"><span class="tab-trigger js-tab-trigger" data-id="tab05">全体</span></li> --}}
 </ul>
 <div class="tab-content">
