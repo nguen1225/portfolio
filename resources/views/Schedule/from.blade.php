@@ -1,19 +1,20 @@
 @extends('layouts.detail')
 @section('body')
-<div class="container mx-auto mt-6">
-    <div class="bg-gray-200 shadow overflow-hidden sm:rounded-lg">
-        <div class="px-4 py-5 sm:px-6 border-b border-gray-200">
-            <h3 class="text-lg leading-6 font-xl font-semibold text-gray-900">
+<div class="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-center bg-gray-700 p-6 rounded-lg shadow-2xl">
+        <div class="max-w-md lg:w-96 md:w-96 sm:w-full space-y-8">
+        <div>
+            <h2>
                 新規作成
-            </h3>
-            <p class="mt-1 max-w-2xl text-sm text-gray-500">
+            </h2>
+            <p class="mt-2 text-sm text-gray-600 text-center">
+            <a class="explanation_white">
                 日程を作成します。
+            </a>
+            {{ session('flash_message') }}
             </p>
         </div>
-        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 border-b border-gray-200">
-            <dt class="text-sm font-medium text-gray-500">
-                @include('schedule.components.form')
-            </dt>
+        @include('schedule.components.form')
         </div>
     </div>
 </div>

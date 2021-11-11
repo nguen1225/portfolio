@@ -4,11 +4,11 @@
     <div class="min-h-full flex items-center justify-center bg-gray-700 p-6 rounded-lg shadow-2xl">
         <div class="max-w-md w-full space-y-8">
         <div>
-            <h2 class="mt-2 text-center text-3xl font-extrabold text-gray-50">
+            <h2>
             パスワード変更
             </h2>
             <p class="mt-4 text-sm text-gray-600 text-center">
-            <a class="font-medium  text-gray-50">
+            <a class="explanation_white">
                 ご登録頂いているメールアドレスを入力してください。<br>
                 <span class="text-xs">
                     ※　受信設定等によりメールが届かない場合がございます、受信許可に設定してください。
@@ -18,7 +18,7 @@
         </div>
         <form class="mt-8 space-y-6" action="{{ route('password.generate-url') }}" method="POST">
             <p class="mt-2 text-sm text-gray-600 text-center">
-                <a class="font-medium  text-gray-50">
+                <a class="explanation_white">
                 {{ session('flash_message') }}
                 </a>
             @csrf

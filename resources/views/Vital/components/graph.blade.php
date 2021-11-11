@@ -5,7 +5,7 @@
     <li class="tab-menu__item"><span class="tab-trigger js-tab-trigger bg-gray-700 hover:bg-gray-900 font-semibold text-white" data-id="tab04">心拍数</span></li>
     {{-- <li class="tab-menu__item"><span class="tab-trigger js-tab-trigger" data-id="tab05">全体</span></li> --}}
 </ul>
-<div class="tab-content">
+<div class="tab-content bg-white">
     <div class="tab-content__item js-tab-target is-active" id="tab01">
         <p>
         <div class="samples">
