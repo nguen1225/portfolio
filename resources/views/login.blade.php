@@ -3,13 +3,13 @@
     <div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div class="max-w-md w-full space-y-8 bg-gray-700 p-6 rounded-lg shadow-2xl">
             <div>
-                <h2 class="mt-2 text-center text-3xl font-extrabold text-gray-50">
+                <h2>
                     ログイン
                 </h2>
             </div>
             <form class="mt-8 space-y-6" action="{{ route('login') }}" method="POST">
                 <p class="mt-2 text-sm text-gray-600 text-center">
-                    <a class="font-medium  text-gray-50">
+                    <a class="explanation_white">
                         {{ session('flash_message') }}
                     </a>
             @csrf

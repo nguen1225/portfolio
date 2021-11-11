@@ -1,33 +1,43 @@
 @extends('layouts.detail')
 @section('body')
-
-<!-- This example requires Tailwind CSS v2.0+ -->
-<div class="container mx-auto mt-6">
-    <div class="bg-gray-200 shadow overflow-hidden sm:rounded-lg">
-        <div class="px-4 py-5 sm:px-6 border-b border-gray-200">
-            <h3 class="text-lg leading-6 font-xl font-semibold text-gray-900">
-                身体記録詳細
+<div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div class="min-h-full flex items-center justify-center bg-gray-700 p-6 rounded-lg shadow-2xl">
+        <div class="max-w-md lg:w-96 sm:w-full space-y-8 ">
+            <div>
+                <h2>
+                    身体記録詳細
+                </h2>
+                <p class="mt-2 text-sm text-gray-600 text-center">
+                    <a class="explanation_white">
+                        作成日 : {{$post_detail->created_at->format('Y年m月d日')}}の詳細です。
+                    </a>
+                </p>
+                <p class="mt-2 text-sm text-gray-600 text-center">
+                    <a class="explanation_white">
+                        {{ session('flash_message') }}
+                    </a>
+                </p>
+            </div>
+            <h3 class="underline text-3xl break-words text-center font-extrabold text-gray-50">
+                {!! nl2br(htmlspecialchars($post_detail->title)) !!}
             </h3>
-            <p class="mt-1 max-w-2xl text-sm text-gray-500">
-                作成日:{{$post_detail->created_at}}の詳細です。
-            </p>
-        </div>
-        @include('vital.components.show-detail')
-    </div>
-    <div class="btn-sort mt-6">
-        <button class="py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-gray-500 hover:bg-gray-900 mr-3">
-            <a href="{{ route('vital.edit', $post_detail->id) }}">編集</a>
-        </button>
-        <form action="{{ route('vital.delete', $post_detail->id) }}" method="POST">
-            @csrf
-            @method('DELETE')
-            <button class="py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-gray-600 hover:bg-gray-900 mr-3" value="{{ $post_detail->id }}" onclick="return window.confirm('削除しますか？')">
-                削除
+            @include('vital.components.show-detail')
+            <a href="{{ route('vital.edit', $post_detail->id) }}">
+                <button class="submit_button">
+                    編集
+                </button>
+            </a>
+            <form action="{{ route('vital.delete', $post_detail->id) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button class="submit_button" value="{{ $post_detail->id }}" onclick="return window.confirm('削除しますか？')">
+                    削除
+                </button>
+            </form>
+            <button class="submit_button" type="reset" onclick='window.history.back(-1);'>
+                戻る
             </button>
-        </form>
-        <button type="reset" onclick='window.history.back(-1);'>
-            戻る
-        </button>
+        </div>
     </div>
 </div>
 @endsection
