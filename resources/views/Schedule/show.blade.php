@@ -14,6 +14,11 @@
             </p>
             <p class="mt-2 text-sm text-gray-600 text-center">
                 <a class="explanation_white">
+                    ジャンル : {{ $post_detail->genreName }}
+                </a>
+            </p>
+            <p class="mt-2 text-sm text-gray-600 text-center">
+                <a class="explanation_white">
                     {{ session('flash_message') }}
                 </a>
             </p>

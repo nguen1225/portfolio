@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DiaryGenre;
 use Illuminate\Http\Request;
 use App\Models\Schedule;
 use App\Models\User;
@@ -57,13 +58,15 @@ class ScheduleController extends Controller
 
     public function from()
     {
-        return view('schedule.from');
+        $get_genres = DiaryGenre::select('name', 'id')->get();
+        return view('schedule.from')->with('get_genres', $get_genres);
     }
 
     public function post(Request $request)
     {
         $post = new Schedule;
         $post->user_id = session()->get('id');
+        $post->genre_id = $request->input('genre_id');
         $post->title = $request->input('title');
         $post->content = $request->input('content');
         $post->save();
@@ -73,7 +76,17 @@ class ScheduleController extends Controller
 
     public function show(Request $request)
     {
-        $post_detail = Schedule::find($request->id);
+        $post_detail = Schedule::select(DB::raw('
+            schedules.id as id,
+            schedules.title as title,
+            schedules.content as content,
+            schedules.created_at as created_at,
+            diary_genres.name as genreName
+        '))
+        ->join('diary_genres', 'genre_id', '=', 'diary_genres.id')
+        ->groupBy('id', 'title', 'content', 'genreName', 'created_at')
+        ->where('schedules.id', $request->id)
+        ->first();
 
         return view('schedule.show')->with('post_detail', $post_detail);
     }

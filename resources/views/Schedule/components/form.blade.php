@@ -15,6 +15,15 @@
               />
             </label>
             <label class="block mt-8">
+                <span class="form_title">ジャンル</span>
+                <select id="genre_id" type="text" class="schedule_form" name="genre_id">
+                    @foreach($get_genres as $key => $genre)
+                        <option value='' hidden>ジャンルを選択してください</option>
+                        <option value="{{ $genre->id }}">{{$genre->name}}</option>
+                    @endforeach
+                </select>
+            </label>
+            <label class="block mt-8">
               <span class="form_title">本文</span>
               <textarea
                 name="content" id="content"
