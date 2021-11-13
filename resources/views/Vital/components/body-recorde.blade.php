@@ -23,7 +23,7 @@
             </dt>
             <dd class="day created_at">
                 <a href="{{ route('vital.show', $post->id)}}">
-                    作成日 : {{$post->created_at->format('Y年m月d日')}}
+                    作成日 : {{date('Y年m月d日', strtotime($post->registered_at))}}
                 </a>
             </dd>
         </div>

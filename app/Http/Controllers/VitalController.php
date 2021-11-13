@@ -18,7 +18,7 @@ class VitalController extends Controller
     {
         $now = now()->format('Y-m-d');
         $today_date = Vital::select(DB::raw('height, body_weight'))
-        ->where('created_at', "LIKE", "%{$now}%")
+        ->where('registered_at', "LIKE", "%{$now}%")
         ->first();
 
         if ($today_date) {
@@ -33,7 +33,7 @@ class VitalController extends Controller
 
         $posts = Vital::query()
         ->where("user_id", session()->get('id'))
-        ->orderByDesc('created_at')
+        ->orderByDesc('registered_at')
         ->paginate(7);
 
         return view('vital.index')
@@ -46,23 +46,27 @@ class VitalController extends Controller
     // BMI計算
     public function bmi($height, $weight)
     {
-        $bmi = $weight / (($height / 100) * ($height / 100));
-        $result = number_format( $bmi, 1, '.', '' );
-        return $result;
+        $result = $weight / (($height / 100) * ($height / 100));
+        return number_format( $result, 1, '.', '' );
     }
 
     // 標準体重計算
     public function standardWeight($height){
-        $weight = ($height / 100) * ($height / 100) * 22;
-        $result = number_format($weight, 2, '.', '');
-        return $result;
+        $result = ($height / 100) * ($height / 100) * 22;
+        return number_format($result, 2, '.', '');;
     }
 
     // 適正体重との比較
     public function weightDifference($weight, $standard_weight) {
-       $weight_difference = $standard_weight - $weight;
-       $result = number_format($weight_difference, 2, '.', '');
-       return $result;
+       $result = $standard_weight - $weight;
+       return number_format($result, 2, '.', '');;
+    }
+
+    // 平均血圧
+    public function avgBloodPressrue($min_blood_pressure, $max_blood_pressure)
+    {
+        $result = $min_blood_pressure + ($max_blood_pressure - $min_blood_pressure) / 3;
+        return number_format($result, 0, '.', '');
     }
 
     public function from()
@@ -72,8 +76,8 @@ class VitalController extends Controller
 
     public function post(PostVitalRequest $request)
     {
-        $now = now()->format('Y-m-d');
-        $created_date = Vital::query()->where('created_at', "LIKE", "%{$now}%")->first();
+        $now = $request->input('registered_at');
+        $created_date = Vital::query()->where('registered_at', "LIKE", "%{$now}%")->first();
 
         if (!$created_date) {
             $post = new Vital;
@@ -83,12 +87,13 @@ class VitalController extends Controller
             $post->height = $request->input('height');
             $post->max_blood_pressure = $request->input('max_blood_pressure');
             $post->min_blood_pressure = $request->input('min_blood_pressure');
-            $post->avg_blood_pressure = $request->input('avg_blood_pressure');
             $post->body_weight = $request->input('body_weight');
             $post->heart_rate = $request->input('heart_rate');
+            $post->registered_at = $request->input('registered_at');
             $post->save();
             return redirect('vital');
         }
+
         session()->flash('flash_message', '検査結果の入力は1日1回です。本日の内容を変えたい場合は編集もしくは削除して再度入力してください。');
         return redirect('vital/post');
     }
@@ -96,7 +101,8 @@ class VitalController extends Controller
     public function show(Request $request)
     {
         $post_detail = Vital::find($request->id);
-        return view('vital.show')->with('post_detail', $post_detail);
+        $avg_blood_pressure = $this->avgBloodPressrue($post_detail->min_blood_pressure, $post_detail->max_blood_pressure);
+        return view('vital.show')->with('post_detail', $post_detail)->with('avg_blood_pressure', $avg_blood_pressure);
     }
 
     public function edit(Request $request)
@@ -113,11 +119,9 @@ class VitalController extends Controller
         $post_detail->height = $request->input('height');
         $post_detail->max_blood_pressure = $request->input('max_blood_pressure');
         $post_detail->min_blood_pressure = $request->input('min_blood_pressure');
-        $post_detail->avg_blood_pressure = $request->input('avg_blood_pressure');
         $post_detail->body_weight = $request->input('body_weight');
         $post_detail->heart_rate = $request->input('heart_rate');
         $post_detail->save();
-
         return redirect('vital');
 
     }
@@ -126,7 +130,6 @@ class VitalController extends Controller
     {
         $post_detail = Vital::find($request->id);
         $post_detail->delete();
-
         return redirect('vital');
     }
 
@@ -135,16 +138,17 @@ class VitalController extends Controller
     {
         $user = User::where('id', session()->get('id'))->first();
         $get_health = Vital::select(DB::raw('
-            DATE_FORMAT(vitals.created_at, "%c月%e日") as date,
+            DATE_FORMAT(vitals.registered_at, "%c月%e日") as date,
             vitals.height as height,
             vitals.body_weight as weight,
             vitals.max_blood_pressure as max_blood_pressure,
             vitals.min_blood_pressure as min_blood_pressure,
-            vitals.avg_blood_pressure as avg_blood_pressure,
+            TRUNCATE(min_blood_pressure + (max_blood_pressure - min_blood_pressure) /3, 0) as avg_blood_pressure,
             vitals.heart_rate as heart_rate
         '))
         ->join('users', 'user_id', '=', 'users.id')
         ->where('vitals.user_id', $user->id)
+        ->orderBy('date', 'asc')
         ->groupBy(
             'users.id',
             'height',
@@ -173,7 +177,6 @@ class VitalController extends Controller
         }
 
         $health = array_merge($rows, $event);
-
         return response()->json($health);
     }
 }
