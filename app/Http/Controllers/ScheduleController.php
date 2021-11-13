@@ -25,9 +25,20 @@ class ScheduleController extends Controller
     {
         $rows = [];
         $key_word = trim($request->input("key_word"));
-        $results = Schedule::query()
-        ->where('content', 'LIKE', "%{$key_word}%")
-        ->orderByDesc('created_at')
+
+        $results = Schedule::select(DB::raw('
+            schedules.id as id,
+            schedules.title as title,
+            schedules.content as content,
+            schedules.created_at as created_at,
+            diary_genres.name as genreName
+        '))
+        ->join('diary_genres', 'genre_id', '=', 'diary_genres.id')
+        ->groupBy('id', 'title', 'content', 'genreName', 'created_at')
+        ->where('schedules.title', 'LIKE', "%{$key_word}%")
+        ->orWhere('schedules.content', 'LIKE', "%{$key_word}%")
+        ->orWhere('diary_genres.name', 'LIKE', "%{$key_word}%")
+
         ->paginate(8);
 
         foreach ($results as $item) {
