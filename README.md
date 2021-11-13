@@ -2,9 +2,9 @@
 ---
 
 ## 定義書
-[db仕様書](https://docs.google.com/spreadsheets/d/1p4i_Ajhom7o7MJFoEdKQFIV8wAGmPRBjRyauppTjaNA/edit#gid=2044204095)
+[db仕様書](https://docs.google.com/spreadsheets/d/1PR9s_cDnP35ugRIphE39m26ItjIcajQ85kHMjIzOfag/edit?usp=sharing)
 
-[アプリケーション詳細設計]()
+[アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1XzlIWw6Ce78BYS5AP9YMXUlZOi9XMgaMH_mFbRGaCYU/edit?usp=sharing)
 
 ---
 
