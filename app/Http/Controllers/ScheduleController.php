@@ -38,7 +38,6 @@ class ScheduleController extends Controller
         ->where('schedules.title', 'LIKE', "%{$key_word}%")
         ->orWhere('schedules.content', 'LIKE', "%{$key_word}%")
         ->orWhere('diary_genres.name', 'LIKE', "%{$key_word}%")
-
         ->paginate(8);
 
         foreach ($results as $item) {
@@ -60,6 +59,7 @@ class ScheduleController extends Controller
             DATE_FORMAT(created_at, "%Y-%m-%d") as start
         '))
         ->get();
+
         foreach ($posts as $post) {
             $rows[] = $post;
         }
