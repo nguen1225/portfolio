@@ -55,16 +55,6 @@
                 />
             </label>
             <label class="block mt-4">
-                <span class="form_title">平均血圧</span>
-                <input
-                name="avg_blood_pressure" id="avg_blood_pressure"
-                value="{{old('avg_blood_pressure')  ?? $post_detail->avg_blood_pressure}}"
-                class="vital_form"
-                type="text"
-                placeholder="平均血圧を入力してください"
-                />
-            </label>
-            <label class="block mt-4">
                 <span class="form_title">心拍数(1分間)</span>
                 <input
                 name="heart_rate" id="heart_rate"

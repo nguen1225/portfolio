@@ -9,7 +9,7 @@
                 </h2>
                 <p class="mt-2 text-sm text-gray-600 text-center">
                     <a class="explanation_white">
-                        作成日 : {{$post_detail->created_at->format('Y年m月d日')}}の詳細です。
+                        作成日 : {{date('Y年m月d日', strtotime($post_detail->registered_at))}}の詳細です。
                     </a>
                 </p>
                 <p class="mt-2 text-sm text-gray-600 text-center">

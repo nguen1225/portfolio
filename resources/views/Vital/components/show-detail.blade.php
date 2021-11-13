@@ -25,7 +25,7 @@
             </tr>
             <tr>
             <td class="p-1.5 border border-black ...">平均血圧</td>
-            <td class="p-1.5 border border-black ...">{!! nl2br(htmlspecialchars($post_detail->avg_blood_pressure)) !!}mmHg</td>
+            <td class="p-1.5 border border-black ...">{!! nl2br(htmlspecialchars($avg_blood_pressure)) !!}mmHg</td>
             </tr>
             <tr>
             <td class="p-1.5 border border-black ...">心拍数(1分間)</td>
