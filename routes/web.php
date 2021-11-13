@@ -34,6 +34,7 @@ Route::group(['prefix' => 'logout'], static function (): void {
 Route::group(['prefix' => '/', 'middleware' => 'loggedInCheck'], static function (): void {
 
     Route::get('/home', 'App\Http\Controllers\HomeController@home')->name('home');
+    // Route::get('/home', 'App\Http\Controllers\DiaryGenreController@index')->name('genre');
 
     // スケジュール帳
     Route::group(['prefix' => '/schedule'], static function (): void {
@@ -64,6 +65,11 @@ Route::group(['prefix' => '/', 'middleware' => 'loggedInCheck'], static function
             Route::patch('/{id}/edit', 'App\Http\Controllers\VitalController@update')->name('vital.update');
             Route::delete('/{id}/edit', 'App\Http\Controllers\VitalController@delete')->name('vital.delete');
         });
+    });
+
+    Route::group(['prefix' => '/genre'], static function (): void {
+        Route::get('/', 'App\Http\Controllers\DiaryGenreController@form')->name('genre');
+        Route::post('/', 'App\Http\Controllers\DiaryGenreController@post')->name('genre.post');
     });
 });
 
