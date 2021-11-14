@@ -11,7 +11,11 @@
             <a class="explanation_white">
                 日程を作成します。
             </a>
-            {{ session('flash_message') }}
+            <p class="mt-2 text-sm text-gray-600 text-center">
+                <a class="explanation_white">
+                    {!! nl2br(session('flash_message'), false) !!}<br>
+                </a>
+            </p>
             </p>
         </div>
         @include('schedule.components.form')

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Schedule\DiaryCreationRequest;
 use App\Models\DiaryGenre;
 use Illuminate\Http\Request;
 use App\Models\Schedule;
@@ -73,13 +74,16 @@ class ScheduleController extends Controller
         return view('schedule.from')->with('get_genres', $get_genres);
     }
 
-    public function post(Request $request)
+    public function post(DiaryCreationRequest $request)
     {
+        $validated = $request->validated();
+
         $post = new Schedule;
         $post->user_id = session()->get('id');
         $post->genre_id = $request->input('genre_id');
-        $post->title = $request->input('title');
-        $post->content = $request->input('content');
+        $post->title = $validated["title"];
+        $post->content = $validated["content"];
+        dd($validated);
         $post->save();
 
         return redirect('schedule');
@@ -109,11 +113,13 @@ class ScheduleController extends Controller
         return view('schedule.edit')->with('post_detail', $post_detail);
     }
 
-    public function update(Request $request)
+    public function update(DiaryCreationRequest $request)
     {
+        $validated = $request->validated();
+
         $post_detail = Schedule::find($request->id);
-        $post_detail->title = $request->input('title');
-        $post_detail->content = $request->input('content');
+        $post_detail->title = $validated["title"];
+        $post_detail->content = $validated["content"];
         $post_detail->save();
 
         return redirect('schedule');
