@@ -4,7 +4,7 @@ namespace App\Rules\Password;
 
 use Illuminate\Contracts\Validation\Rule;
 
-class CharacterLengthRule implements Rule
+class LimitCharacterTypesRule implements Rule
 {
     /**
      * Determine if the validation rule passes.
@@ -15,11 +15,10 @@ class CharacterLengthRule implements Rule
      */
     public function passes($attribute, $value)
     {
-        if (mb_strlen($value) < 6)
-        {
-            return false;
+        if (preg_match('/[a-z]/', $value) && preg_match('/[A-Z]/', $value) && preg_match('/\d/', $value)) {
+            return true;
         }
-        return true;
+        return false;
     }
 
     /**
@@ -29,6 +28,6 @@ class CharacterLengthRule implements Rule
      */
     public function message()
     {
-        return trans('validation.password_character_length');
+        return trans('validation.password_limit_character_type');
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Password\ChangePasswordRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -49,20 +50,22 @@ class PasswordController extends Controller
         return view('password.edit')->with('get_user', $get_user);
     }
 
-    public function update(Request $request)
+    public function update(ChangePasswordRequest $request)
     {
         $user = User::query()->find($request->id);
         $new_password = $request->input('change_password');
         $reconfirmation_password = $request->input('reconfirmation_password');
 
+        $validated = $request->validated();
+
         if ($new_password === $reconfirmation_password) {
-            $user->password = password_hash($new_password, PASSWORD_BCRYPT);
+            $user->password = password_hash($validated["change_password"], PASSWORD_BCRYPT);
             $user->save();
 
             return view('password.completed');
         }
 
-        session()->flash('flash_message', '入力されたパスワードに相違があります。再度入力してください。');
+        session()->flash('flash_message', '入力されたパスワードに相違があります。<br>再度入力してください。');
         return redirect()->to(session()->get('current_url'))->with('get_user', $user);
     }
 
