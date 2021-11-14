@@ -31,9 +31,17 @@ Route::group(['prefix' => 'logout'], static function (): void {
     Route::get('/', 'App\Http\Controllers\LoginController@logout')->name('logout');
 });
 
+// 新規登録
+Route::group(['prefix' => 'sign_up'], static function (): void {
+    Route::get('/', 'App\Http\Controllers\UserController@form')->name('sign_up.form');
+    Route::post('/', 'App\Http\Controllers\UserController@signUp')->name('sign_up');
+    Route::get('/completed', 'App\Http\Controllers\UserController@completed')->name('sign_up.completed');
+});
+
 Route::group(['prefix' => '/', 'middleware' => 'loggedInCheck'], static function (): void {
 
     Route::get('/home', 'App\Http\Controllers\HomeController@home')->name('home');
+    // Route::get('/home', 'App\Http\Controllers\DiaryGenreController@index')->name('genre');
 
     // スケジュール帳
     Route::group(['prefix' => '/schedule'], static function (): void {
@@ -64,6 +72,11 @@ Route::group(['prefix' => '/', 'middleware' => 'loggedInCheck'], static function
             Route::patch('/{id}/edit', 'App\Http\Controllers\VitalController@update')->name('vital.update');
             Route::delete('/{id}/edit', 'App\Http\Controllers\VitalController@delete')->name('vital.delete');
         });
+    });
+
+    Route::group(['prefix' => '/genre'], static function (): void {
+        Route::get('/', 'App\Http\Controllers\DiaryGenreController@form')->name('genre');
+        Route::post('/', 'App\Http\Controllers\DiaryGenreController@post')->name('genre.post');
     });
 });
 

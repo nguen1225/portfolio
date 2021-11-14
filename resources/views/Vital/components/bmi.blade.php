@@ -1,4 +1,4 @@
-<div class="bmi">
+<div class="bmi bg-white">
     <div class="today_bmi">
         <p class="bmi_title font-semibold">
             本日のBMI
@@ -20,37 +20,37 @@
         </p>
     </div>
     <div class="bmi_content">
-        <table class="bmi_table">
+        <table class="bmi_table max-w-md w-full border-separate border border-black ...">
             <thead>
-                <tr class="bg-gray-700">
-                <th class=" font-semibold text-white">範囲</th>
-                <th class=" font-semibold text-white">肥満度</th>
+                <tr>
+                  <th class="ont-semibold text-white bg-gray-700 border border-black ...">範囲</th>
+                  <th class="ont-semibold text-white bg-gray-700 border border-black ...">肥満度</th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="">
-                <td>18.5未満</td>
-                <td>低体重</td>
+                <tr>
+                <td class="p-0.5 border border-black ...">18.5未満</td>
+                <td class="p-0.5 border border-black ...">低体重</td>
                 </tr>
-                <tr class="">
-                <td>18.5〜25未満</td>
-                <td>普通体重</td>
+                <tr>
+                <td class="p-0.5 border border-black ...">18.5〜25未満</td>
+                <td class="p-0.5 border border-black ...">普通体重</td>
                 </tr>
-                <tr class="">
-                <td>30〜35未満</td>
-                <td>肥満（１度）</td>
+                <tr>
+                <td class="p-0.5 border border-black ...">25〜30未満</td>
+                <td class="p-0.5 border border-black ...">肥満(1度)</td>
                 </tr>
-                <tr class="">
-                <td>25〜30未満</td>
-                <td>肥満（２度）</td>
+                <tr>
+                <td class="p-0.5 border border-black ...">30〜35未満</td>
+                <td class="p-0.5 border border-black ...">肥満(2度)</td>
                 </tr>
-                <tr class="">
-                <td>35〜40未満</td>
-                <td>肥満（３度）</td>
+                <tr>
+                <td class="p-0.5 border border-black ...">35〜40未満</td>
+                <td class="p-0.5 border border-black ...">肥満(3度)</td>
                 </tr>
-                <tr class="">
-                <td>40以上</td>
-                <td>肥満（４度）</td>
+                <tr>
+                <td class="p-0.5 border border-black ...">40以上</td>
+                <td class="p-0.5 border border-black ...">肥満(4度)</td>
                 </tr>
             </tbody>
         </table>

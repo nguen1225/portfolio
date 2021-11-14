@@ -1,0 +1,12 @@
+.select {
+    @apply bg-white px-4 py-5 sm:grid sm:grid-cols-3 border-b border-gray-200 hover:bg-gray-100;
+}
+
+.select_title {
+    @apply text-sm font-medium text-gray-500 hover:text-gray-900 truncate;
+    width: 260px;
+}
+
+.day {
+    @apply mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2;
+}

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Schedule\DiaryCreationRequest;
+use App\Models\DiaryGenre;
 use Illuminate\Http\Request;
 use App\Models\Schedule;
 use App\Models\User;
@@ -24,9 +26,19 @@ class ScheduleController extends Controller
     {
         $rows = [];
         $key_word = trim($request->input("key_word"));
-        $results = Schedule::query()
-        ->where('content', 'LIKE', "%{$key_word}%")
-        ->orderByDesc('created_at')
+
+        $results = Schedule::select(DB::raw('
+            schedules.id as id,
+            schedules.title as title,
+            schedules.content as content,
+            schedules.created_at as created_at,
+            diary_genres.name as genreName
+        '))
+        ->join('diary_genres', 'genre_id', '=', 'diary_genres.id')
+        ->groupBy('id', 'title', 'content', 'genreName', 'created_at')
+        ->where('schedules.title', 'LIKE', "%{$key_word}%")
+        ->orWhere('schedules.content', 'LIKE', "%{$key_word}%")
+        ->orWhere('diary_genres.name', 'LIKE', "%{$key_word}%")
         ->paginate(8);
 
         foreach ($results as $item) {
@@ -48,6 +60,7 @@ class ScheduleController extends Controller
             DATE_FORMAT(created_at, "%Y-%m-%d") as start
         '))
         ->get();
+
         foreach ($posts as $post) {
             $rows[] = $post;
         }
@@ -57,15 +70,20 @@ class ScheduleController extends Controller
 
     public function from()
     {
-        return view('schedule.from');
+        $get_genres = DiaryGenre::select('name', 'id')->get();
+        return view('schedule.from')->with('get_genres', $get_genres);
     }
 
-    public function post(Request $request)
+    public function post(DiaryCreationRequest $request)
     {
+        $validated = $request->validated();
+
         $post = new Schedule;
         $post->user_id = session()->get('id');
-        $post->title = $request->input('title');
-        $post->content = $request->input('content');
+        $post->genre_id = $request->input('genre_id');
+        $post->title = $validated["title"];
+        $post->content = $validated["content"];
+        dd($validated);
         $post->save();
 
         return redirect('schedule');
@@ -73,7 +91,17 @@ class ScheduleController extends Controller
 
     public function show(Request $request)
     {
-        $post_detail = Schedule::find($request->id);
+        $post_detail = Schedule::select(DB::raw('
+            schedules.id as id,
+            schedules.title as title,
+            schedules.content as content,
+            schedules.created_at as created_at,
+            diary_genres.name as genreName
+        '))
+        ->join('diary_genres', 'genre_id', '=', 'diary_genres.id')
+        ->groupBy('id', 'title', 'content', 'genreName', 'created_at')
+        ->where('schedules.id', $request->id)
+        ->first();
 
         return view('schedule.show')->with('post_detail', $post_detail);
     }
@@ -85,11 +113,13 @@ class ScheduleController extends Controller
         return view('schedule.edit')->with('post_detail', $post_detail);
     }
 
-    public function update(Request $request)
+    public function update(DiaryCreationRequest $request)
     {
+        $validated = $request->validated();
+
         $post_detail = Schedule::find($request->id);
-        $post_detail->title = $request->input('title');
-        $post_detail->content = $request->input('content');
+        $post_detail->title = $validated["title"];
+        $post_detail->content = $validated["content"];
         $post_detail->save();
 
         return redirect('schedule');

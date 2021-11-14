@@ -1,22 +1,23 @@
 @extends('layouts.detail')
 @section('body')
-<div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-    <div class="min-h-full flex items-center justify-center bg-gray-700 p-6 rounded-lg shadow-2xl">
-        <div class="max-w-md w-full space-y-8">
+<div class="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-center bg-gray-700 p-6 rounded-lg shadow-2xl">
+        <div class="max-w-md lg:w-96 md:w-96 sm:w-full space-y-8">
         <div>
-            <h2 class="mt-2 text-center text-3xl font-extrabold text-gray-50">
+            <h2>
             パスワード変更
             </h2>
             <p class="mt-2 text-sm text-gray-600 text-center">
-            <a class="font-medium  text-gray-50">
-                大文字・英字・数字・記号 ({{ implode(', ', config('app.available_symbols_for_password')) }})をそれぞれ1つ以上含む、8文字以上の半角英数字で入力してください。
+            <a class="explanation_white">
+                大文字・小文字・数字をそれぞれ1つ以上含む、<br>6文字以上の半角英数字で入力してください。
             </a>
             </p>
         </div>
         <form class="mt-8 space-y-6" action="{{ route('password.update', $get_user->id) }}" method="POST">
             <p class="mt-2 text-sm text-gray-600 text-center">
-                <a class="font-medium  text-gray-50">
-                    {{ session('flash_message') }}
+                <a class="explanation_white">
+                    {!! nl2br(session('flash_message'), false) !!}
+                    {!! nl2br($errors->first('change_password'), false) !!}
                 </a>
             @csrf
             <input type="hidden" name="remember" value="true">

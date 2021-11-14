@@ -17,7 +17,22 @@ mix
     .js('resources/js/vital/components/graph.js', 'public/js/custom.js')
     .js('resources/js/vital/components/tab.js', 'public/js/custom.js')
     .js('resources/js/vital/app.js', 'public/js/custom.js')
-    .postCss('resources/css/app.css', 'public/css', [
+    .postCss('resources/css/app.css', 'public/css/app.css', [
+        require("tailwindcss"),
+    ])
+    .postCss('resources/css/components/UI/button.css', 'public/css/app.css', [
+        require("tailwindcss"),
+    ])
+    .postCss('resources/css/components/UI/form.css', 'public/css/app.css', [
+        require("tailwindcss"),
+    ])
+    .postCss('resources/css/components/UI/label.css', 'public/css/app.css', [
+        require("tailwindcss"),
+    ])
+    .postCss('resources/css/components/layout/header.css', 'public/css/app.css', [
+        require("tailwindcss"),
+    ])
+    .postCss('resources/css/components/UI/selector.css', 'public/css/app.css', [
         require("tailwindcss"),
     ])
     .sass('resources/scss/home/app.scss', 'public/css/custom.css')
