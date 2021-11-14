@@ -16,7 +16,8 @@
         <form class="mt-8 space-y-6" action="{{ route('sign_up') }}" method="POST">
             <p class="mt-2 text-sm text-gray-600 text-center">
                 <a class="explanation_white">
-                {{ session('flash_message') }}
+                {!! nl2br(session('flash_message'), false) !!}
+                {!! nl2br($errors->first('password'), false) !!}
                 </a>
             @csrf
             <input type="hidden" name="remember" value="true">
