@@ -31,7 +31,7 @@
                     </a>
                 </p>
                 <p>
-                    <a href="" class="font-medium text-white hover:text-purple-200">
+                    <a href="{{ route('sign_up.form') }}" class="font-medium text-white hover:text-purple-200">
                         新規作成はこちら
                     </a>
                 </p>
