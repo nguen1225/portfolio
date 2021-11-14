@@ -6,6 +6,9 @@
         <div class="max-w-md">
             <label class="block mt-8">
               <span class="form_title">タイトル</span>
+              <p class="explanation_white text-sm">
+                {!! nl2br($errors->first('title'), false) !!}
+              </p>
               <input
                 name="title" id="title"
                 value="{{old('title') ?? $post_detail->title}}"
@@ -17,6 +20,9 @@
             </label>
             <label class="block mt-8">
               <span class="form_title">本文</span>
+              <p class="explanation_white text-sm">
+                {!! nl2br($errors->first('content'), false) !!}
+              </p>
               <textarea
                 name="content" id="content"
                 value="{{old('content') ?? $post_detail->content}}"
