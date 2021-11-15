@@ -83,7 +83,6 @@ class ScheduleController extends Controller
         $post->genre_id = $request->input('genre_id');
         $post->title = $validated["title"];
         $post->content = $validated["content"];
-        dd($validated);
         $post->save();
 
         return redirect('schedule');
