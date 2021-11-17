@@ -83,16 +83,18 @@ class VitalController extends Controller
         $now = $request->input('registered_at');
         $created_date = Vital::query()->where('registered_at', "LIKE", "%{$now}%")->first();
 
+        $validated = $request->validated();
+
         if (!$created_date) {
             $post = new Vital;
             $post->user_id = session()->get('id');
-            $post->title = $request->input('title');
-            $post->content = $request->input('content');
-            $post->height = $request->input('height');
-            $post->max_blood_pressure = $request->input('max_blood_pressure');
-            $post->min_blood_pressure = $request->input('min_blood_pressure');
-            $post->body_weight = $request->input('body_weight');
-            $post->heart_rate = $request->input('heart_rate');
+            $post->title = $validated["title"];;
+            $post->content = $validated["content"];;
+            $post->height = $validated["height"];;
+            $post->max_blood_pressure = $validated["max_blood_pressure"];;
+            $post->min_blood_pressure = $validated["min_blood_pressure"];;
+            $post->body_weight = $validated["body_weight"];;
+            $post->heart_rate = $validated["heart_rate"];;
             $post->registered_at = $request->input('registered_at');
             $post->save();
             return redirect('vital');
@@ -115,16 +117,18 @@ class VitalController extends Controller
         return view('vital.edit')->with('post_detail', $post_detail);
     }
 
-    public function update(Request $request)
+    public function update(PostVitalRequest $request)
     {
+        $validated = $request->validated();
+
         $post_detail = Vital::find($request->id);
-        $post_detail->title = $request->input('title');
-        $post_detail->content = $request->input('content');
-        $post_detail->height = $request->input('height');
-        $post_detail->max_blood_pressure = $request->input('max_blood_pressure');
-        $post_detail->min_blood_pressure = $request->input('min_blood_pressure');
-        $post_detail->body_weight = $request->input('body_weight');
-        $post_detail->heart_rate = $request->input('heart_rate');
+        $post_detail->title = $validated["title"];
+        $post_detail->content = $validated["content"];;
+        $post_detail->height = $validated["height"];;
+        $post_detail->max_blood_pressure = $validated["max_blood_pressure"];;
+        $post_detail->min_blood_pressure = $validated["min_blood_pressure"];;
+        $post_detail->body_weight = $validated["body_weight"];;
+        $post_detail->heart_rate = $validated["heart_rate"];;
         $post_detail->save();
         return redirect('vital');
 
