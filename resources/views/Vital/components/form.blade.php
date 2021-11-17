@@ -5,6 +5,9 @@
         <div class="max-w-md">
             <label class="block mt-4">
                 <span class="form_title">タイトル</span>
+                <p class="explanation_white text-sm">
+                    {!! nl2br($errors->first('title'), false) !!}
+                </p>
                 <input
                     id="title"
                     name="title"
@@ -30,17 +33,27 @@
             </label>
             <label class="block mt-4">
                 <span class="form_title">身長</span>
-                    <input
-                    id="height"
-                    name="height"
-                    value="{{old('height')}}"
-                    type="text"
-                    class="vital_form"
-                    placeholder="身長を入力してください"
+                @if (old('height'))
+                <p class="explanation_white text-sm">
+                    {!! nl2br($errors->first('height'), false) !!}
+                </p>
+                @endif
+                <input
+                id="height"
+                name="height"
+                value="{{old('height')}}"
+                type="text"
+                class="vital_form"
+                placeholder="身長を入力してください"
                 />
             </label>
             <label class="block mt-4">
                 <span class="form_title">体重</span>
+                @if (old('body_weight'))
+                <p class="explanation_white text-sm">
+                    {!! nl2br($errors->first('body_weight'), false) !!}
+                </p>
+                @endif
                 <input
                     id="body_weight"
                     name="body_weight"
@@ -52,6 +65,11 @@
             </label>
             <label class="block mt-4">
                 <span class="form_title">最高血圧</span>
+                @if (old('max_blood_pressure'))
+                <p class="explanation_white text-sm">
+                    {!! nl2br($errors->first('max_blood_pressure'), false) !!}
+                </p>
+                @endif
                 <input
                     id="max_blood_pressure"
                     name="max_blood_pressure"
@@ -63,6 +81,11 @@
             </label>
             <label class="block mt-4">
                 <span class="form_title">最低血圧</span>
+                @if (old('min_blood_pressure'))
+                <p class="explanation_white text-sm">
+                    {!! nl2br($errors->first('min_blood_pressure'), false) !!}
+                </p>
+                @endif
                 <input
                     id="min_blood_pressure"
                     name="min_blood_pressure"
@@ -74,6 +97,11 @@
             </label>
             <label class="block mt-4">
                 <span class="form_title">心拍数(1分間)</span>
+                @if (old('heart_rate'))
+                <p class="explanation_white text-sm">
+                    {!! nl2br($errors->first('heart_rate'), false) !!}
+                </p>
+                @endif
                 <input
                     id="heart_rate"
                     name="heart_rate"
@@ -83,8 +111,13 @@
                     placeholder="心拍数を入力してください"
                 />
             </label>
-            <label class="block mt-4">
+            <label class="block mt-8">
                 <span class="form_title">備考</span>
+                @if (old('content'))
+                <p class="explanation_white text-sm">
+                    {!! nl2br($errors->first('content'), false) !!}
+                </p>
+                @endif
                 <textarea
                     id="content"
                     name="content"
@@ -92,9 +125,8 @@
                     class="vital_form"
                     rows="5"
                     placeholder="本文を入力してください"
-                    >{{old('content')}}
-                </textarea>
-            </label>
+                ></textarea>
+              </label>
         </div>
         <button type="submit" class="submit_button">
             記録
