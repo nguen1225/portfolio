@@ -46,6 +46,10 @@ class VitalController extends Controller
     // BMI計算
     public function bmi($height, $weight)
     {
+        if($height === null || $weight === null){
+            return 0;
+        }
+
         $result = $weight / (($height / 100) * ($height / 100));
         return number_format( $result, 1, '.', '' );
     }

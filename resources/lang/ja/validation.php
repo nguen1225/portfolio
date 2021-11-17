@@ -98,7 +98,7 @@ return [
     'password' => 'The password is incorrect.',
     'present' => 'The :attribute field must be present.',
     'regex' => 'The :attribute format is invalid.',
-    'required' => 'The :attribute field is required.',
+    // 'required' => 'The :attribute field is required.',
     'required_if' => 'The :attribute field is required when :other is :value.',
     'required_unless' => 'The :attribute field is required unless :other is in :values.',
     'required_with' => 'The :attribute field is required when :values is present.',
@@ -158,5 +158,6 @@ return [
     'password_symbol' => 'パスワードに特殊な文字は使えません、<br>大文字、小文字、数字のみです。',
     'form_title_length' => ': 50文字までです。',
     'form_text_length' => ': 10000文字までです。',
+    'form_numerical' => ': 不適切な文字が含まれています。記号は「.」のみ使えます。',
 
 ];
