@@ -4,14 +4,14 @@
     <div class="select">
         <dt class="text-sm font-medium text-gray-500">
             <p class="hover:text-gray-900">
-                <a href="{{ route('schedule.show', $item->id)}}">
-                    {!! nl2br(htmlspecialchars($item->title)) !!}
+                <a href="{{ route('schedule.show', $item->s_id)}}">
+                    {!! nl2br(htmlspecialchars($item->s_title)) !!}
                 </a>
             </p>
         </dt>
         <dd class="day created_at">
-            <a href="{{ route('schedule.show', $item->id)}}">
-                作成日:{{$item->created_at->format('Y年m月d日')}}
+            <a href="{{ route('schedule.show', $item->s_id)}}">
+                作成日:{{$item->s_created}}
             </a>
         </dd>
     </div>

@@ -27,18 +27,19 @@ class ScheduleController extends Controller
         $rows = [];
         $key_word = trim($request->input("key_word"));
 
+
         $results = Schedule::select(DB::raw('
-            schedules.id as id,
-            schedules.title as title,
-            schedules.content as content,
-            schedules.created_at as created_at,
-            diary_genres.name as genreName
+            schedules.id as s_id,
+            schedules.user_id as s_user_id,
+            schedules.title as s_title,
+            schedules.content as s_content,
+            DATE_FORMAT(schedules.created_at, "%Y年%m月%d日") as s_created
+
         '))
-        ->join('diary_genres', 'genre_id', '=', 'diary_genres.id')
-        ->groupBy('id', 'title', 'content', 'genreName', 'created_at')
+        ->join('users', 'schedules.user_id', '=', 'users.id')
+        ->groupBy('s_id', 's_user_id')
+        ->where('schedules.user_id', session()->get('id'))
         ->where('schedules.title', 'LIKE', "%{$key_word}%")
-        ->orWhere('schedules.content', 'LIKE', "%{$key_word}%")
-        ->orWhere('diary_genres.name', 'LIKE', "%{$key_word}%")
         ->paginate(8);
 
         foreach ($results as $item) {
@@ -55,10 +56,12 @@ class ScheduleController extends Controller
     {
         $rows = [];
         $posts = Schedule::select(DB::raw('
-            id,
-            title,
-            DATE_FORMAT(created_at, "%Y-%m-%d") as start
+            schedules.id as id,
+            schedules.title as title,
+            DATE_FORMAT(schedules.created_at, "%Y-%m-%d") as start
         '))
+        ->join('users', 'user_id', '=', 'users.id')
+        ->where('users.id', session()->get('id'))
         ->get();
 
         foreach ($posts as $post) {
@@ -70,7 +73,14 @@ class ScheduleController extends Controller
 
     public function from()
     {
-        $get_genres = DiaryGenre::select('name', 'id')->get();
+        // $get_genres = DiaryGenre::select('name', 'id')->get();
+        $get_genres = DiaryGenre::select(DB::raw('
+            diary_genres.id,
+            diary_genres.name
+        '))
+        ->join('users', 'user_id', '=', 'users.id')
+        ->where('users.id', session()->get('id'))
+        ->get();
         return view('schedule.from')->with('get_genres', $get_genres);
     }
 
