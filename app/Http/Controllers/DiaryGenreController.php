@@ -7,12 +7,6 @@ use Illuminate\Http\Request;
 
 class DiaryGenreController extends Controller
 {
-    // public function index()
-    // {
-    //     $genres = DiaryGenre::query()->where('user_id', session()->get('id'));
-    //     return view('home.index')->with('user', $genres);
-    // }
-
     public function form()
     {
         return view('genre.form');
