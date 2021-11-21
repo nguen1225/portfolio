@@ -15,7 +15,7 @@ class ScheduleController extends Controller
     {
         $posts = Schedule::query()
         ->where("user_id", session()->get('id'))
-        ->orderByDesc('created_at')
+        ->orderByDesc('registered_at')
         ->paginate(10);
 
         return view('schedule.index')
@@ -34,7 +34,7 @@ class ScheduleController extends Controller
                     schedules.user_id as s_user_id,
                     schedules.title as s_title,
                     schedules.content as s_content,
-                    DATE_FORMAT(schedules.created_at, "%Y年%m月%d日") as s_created
+                    DATE_FORMAT(schedules.registered_at, "%Y年%m月%d日") as s_created
 
                 '))
                 ->join('users', 'schedules.user_id', '=', 'users.id')
@@ -50,7 +50,7 @@ class ScheduleController extends Controller
                     schedules.user_id as s_user_id,
                     schedules.title as s_title,
                     schedules.content as s_content,
-                    DATE_FORMAT(schedules.created_at, "%Y年%m月%d日") as s_created
+                    DATE_FORMAT(schedules.registered_at, "%Y年%m月%d日") as s_created
 
                 '))
                 ->join('users', 'schedules.user_id', '=', 'users.id')
@@ -66,7 +66,7 @@ class ScheduleController extends Controller
                     schedules.user_id as s_user_id,
                     schedules.title as s_title,
                     schedules.content as s_content,
-                    DATE_FORMAT(schedules.created_at, "%Y年%m月%d日") as s_created
+                    DATE_FORMAT(schedules.registered_at, "%Y年%m月%d日") as s_created
                 '))
                 ->join('users', 'schedules.user_id', '=', 'users.id')
                 ->join('diary_genres', 'genre_id', '=', 'diary_genres.id')
@@ -82,7 +82,7 @@ class ScheduleController extends Controller
                 schedules.user_id as s_user_id,
                 schedules.title as s_title,
                 schedules.content as s_content,
-                DATE_FORMAT(schedules.created_at, "%Y年%m月%d日") as s_created
+                DATE_FORMAT(schedules.registered_at, "%Y年%m月%d日") as s_created
 
             '))
             ->join('users', 'schedules.user_id', '=', 'users.id')
@@ -107,7 +107,7 @@ class ScheduleController extends Controller
         $posts = Schedule::select(DB::raw('
             schedules.id as id,
             schedules.title as title,
-            DATE_FORMAT(schedules.created_at, "%Y-%m-%d") as start
+            DATE_FORMAT(schedules.registered_at, "%Y-%m-%d") as start
         '))
         ->join('users', 'user_id', '=', 'users.id')
         ->where('users.id', session()->get('id'))
@@ -137,12 +137,13 @@ class ScheduleController extends Controller
     {
         $validated = $request->validated();
 
-        $post = new Schedule;
-        $post->user_id = session()->get('id');
-        $post->genre_id = $request->input('genre_id');
-        $post->title = $validated["title"];
-        $post->content = $validated["content"];
-        $post->save();
+        Schedule::create([
+            'user_id' => session()->get('id'),
+            'registered_at' => $request->input('registered_at'),
+            'genre_id' => $request->input('genre_id'),
+            'title' => $validated["title"],
+            'content' => $validated["content"],
+        ]);
 
         return redirect('schedule');
     }
@@ -153,11 +154,11 @@ class ScheduleController extends Controller
             schedules.id as id,
             schedules.title as title,
             schedules.content as content,
-            schedules.created_at as created_at,
+            DATE_FORMAT(schedules.registered_at, "%Y年%m月%d日") as registered_at,
             diary_genres.name as genreName
         '))
         ->join('diary_genres', 'genre_id', '=', 'diary_genres.id')
-        ->groupBy('id', 'title', 'content', 'genreName', 'created_at')
+        ->groupBy('id', 'title', 'content', 'genreName', 'registered_at')
         ->where('schedules.id', $request->id)
         ->first();
 
