@@ -97,6 +97,7 @@ class VitalController extends Controller
                 'max_blood_pressure' => $validated["max_blood_pressure"],
                 'min_blood_pressure' => $validated["min_blood_pressure"],
                 'body_weight' => $validated["body_weight"],
+                'heart_rate' => $validated["heart_rate"],
                 'registered_at' => $request->input('registered_at')
             ]);
             return redirect('vital');
