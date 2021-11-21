@@ -27,20 +27,69 @@ class ScheduleController extends Controller
         $rows = [];
         $key_word = trim($request->input("key_word"));
 
+        switch ($request->input("deposit")){
+            case 'title':
+                $results = Schedule::select(DB::raw('
+                    schedules.id as s_id,
+                    schedules.user_id as s_user_id,
+                    schedules.title as s_title,
+                    schedules.content as s_content,
+                    DATE_FORMAT(schedules.created_at, "%Y年%m月%d日") as s_created
 
-        $results = Schedule::select(DB::raw('
-            schedules.id as s_id,
-            schedules.user_id as s_user_id,
-            schedules.title as s_title,
-            schedules.content as s_content,
-            DATE_FORMAT(schedules.created_at, "%Y年%m月%d日") as s_created
+                '))
+                ->join('users', 'schedules.user_id', '=', 'users.id')
+                ->groupBy('s_id', 's_user_id')
+                ->where('schedules.user_id', session()->get('id'))
+                ->where('schedules.title', 'LIKE', "%{$key_word}%")
+                ->paginate(8);
+            break;
 
-        '))
-        ->join('users', 'schedules.user_id', '=', 'users.id')
-        ->groupBy('s_id', 's_user_id')
-        ->where('schedules.user_id', session()->get('id'))
-        ->where('schedules.title', 'LIKE', "%{$key_word}%")
-        ->paginate(8);
+            case 'content':
+                $results = Schedule::select(DB::raw('
+                    schedules.id as s_id,
+                    schedules.user_id as s_user_id,
+                    schedules.title as s_title,
+                    schedules.content as s_content,
+                    DATE_FORMAT(schedules.created_at, "%Y年%m月%d日") as s_created
+
+                '))
+                ->join('users', 'schedules.user_id', '=', 'users.id')
+                ->groupBy('s_id', 's_user_id')
+                ->where('schedules.user_id', session()->get('id'))
+                ->where('schedules.content', 'LIKE', "%{$key_word}%")
+                ->paginate(8);
+            break;
+
+            case 'genre':
+                $results = Schedule::select(DB::raw('
+                    schedules.id as s_id,
+                    schedules.user_id as s_user_id,
+                    schedules.title as s_title,
+                    schedules.content as s_content,
+                    DATE_FORMAT(schedules.created_at, "%Y年%m月%d日") as s_created
+                '))
+                ->join('users', 'schedules.user_id', '=', 'users.id')
+                ->join('diary_genres', 'genre_id', '=', 'diary_genres.id')
+                ->groupBy('s_id', 's_user_id')
+                ->where('schedules.user_id', session()->get('id'))
+                ->Where('diary_genres.name', 'LIKE', "%{$key_word}%")
+                ->paginate(8);
+            break;
+
+            default:
+            $results = Schedule::select(DB::raw('
+                schedules.id as s_id,
+                schedules.user_id as s_user_id,
+                schedules.title as s_title,
+                schedules.content as s_content,
+                DATE_FORMAT(schedules.created_at, "%Y年%m月%d日") as s_created
+
+            '))
+            ->join('users', 'schedules.user_id', '=', 'users.id')
+            ->groupBy('s_id', 's_user_id')
+            ->where('schedules.user_id', session()->get('id'))
+            ->paginate(8);
+        }
 
         foreach ($results as $item) {
             $rows[] = $item;
