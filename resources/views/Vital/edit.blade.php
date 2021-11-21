@@ -14,7 +14,7 @@
             </p>
             <p class="mt-2 text-sm text-gray-600 text-center">
                 <a class="explanation_white">
-                    {{ session('flash_message') }}
+                    {!! nl2br(session('flash_message')) !!}
                 </a>
             </p>
         </div>
