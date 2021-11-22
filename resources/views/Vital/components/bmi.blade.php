@@ -1,30 +1,32 @@
+@include('vital.components.script.odometer')
+
 <div class="bmi bg-white">
     <div class="today_bmi">
         <p class="bmi_title font-semibold">
             本日のBMI
         </p>
         <p class="bmi_value">
-            {{ $bmi }}
+            <div class="odometer bmi_meter">00</div>
         </p>
         <p class="bmi_title font-semibold">
             適正体重
         </p>
         <p class="bmi_value">
-            {{ $standard_weight }} kg
+            <div class="odometer standard_weight_meter">00.00</div><span class="text-xl font-medium mx-1">kg</span>
         </p>
         <p class="bmi_title font-semibold">
             適性体重と比較
         </p>
         <p class="bmi_value">
-            {{ $weight_difference }} kg
+            <div class="odometer weight_difference_meter">00.00</div><span class="text-xl font-medium mx-1">kg</span>
         </p>
     </div>
     <div class="bmi_content">
         <table class="bmi_table max-w-md w-full border-separate border border-black ...">
             <thead>
                 <tr>
-                  <th class="ont-semibold text-white bg-gray-700 border border-black ...">範囲</th>
-                  <th class="ont-semibold text-white bg-gray-700 border border-black ...">肥満度</th>
+                    <th class="ont-semibold text-white bg-gray-700 border border-black ...">範囲</th>
+                    <th class="ont-semibold text-white bg-gray-700 border border-black ...">肥満度</th>
                 </tr>
             </thead>
             <tbody>
