@@ -22,6 +22,6 @@ class CheckAuthenticated
             return $next($request);
         }
 
-        return redirect('login');
+        return redirect()->route('login');
     }
 }

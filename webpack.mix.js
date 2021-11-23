@@ -15,6 +15,8 @@ mix
     .js('resources/js/schedule/components/calendar.js', 'public/js/custom.js')
     .js('resources/js/schedule/app.js', 'public/js/custom.js')
     .js('resources/js/vital/components/graph.js', 'public/js/custom.js')
+    .js('resources/js/vital/components/odometer/app.js', 'public/js/custom.js')
+    .js('resources/js/vital/components/odometer/ajax.js', 'public/js/ajax.js')
     .js('resources/js/vital/components/tab.js', 'public/js/custom.js')
     .js('resources/js/vital/app.js', 'public/js/custom.js')
     .postCss('resources/css/app.css', 'public/css/app.css', [
@@ -40,6 +42,7 @@ mix
     .sass('resources/scss/vital/graph.scss', 'public/css/custom.css')
     .sass('resources/scss/vital/tab.scss', 'public/css/custom.css')
     .sass('resources/scss/vital/bmi.scss', 'public/css/custom.css')
+    .sass('resources/scss/vital/odometer.scss', 'public/css/custom.css')
     .sass('resources/scss/schedule/app.scss', 'public/css/custom.css')
     .sass('resources/scss/app.scss', 'public/css/custom.css');
 

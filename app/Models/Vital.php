@@ -9,11 +9,21 @@ class Vital extends Model
 {
     use HasFactory;
 
-    protected $fillsble = ['title', 'content', 'user_id', 'blood_pressure', 'heart_rate', 'body_weight', 'height'];
+    protected $fillable = [
+        'user_id',
+        'registered_at',
+        'title',
+        'content',
+        'height',
+        'body_weight',
+        'max_blood_pressure',
+        'min_blood_pressure',
+        'heart_rate'
+    ];
 
 
     public function user()
     {
         return $this->belongsTo('App\Models\User');
-    }   
+    }
 }
