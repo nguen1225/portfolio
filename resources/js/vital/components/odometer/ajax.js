@@ -15,7 +15,7 @@
 
 	"use strict";
 
-	//コンパイルすると「typeof module === "object"」でpublicではmodeleが定義されないことになるので、「!==」で反転させてfalseで対応、多分良くない
+	//コンパイルすると「typeof module === "object"」でpublicではmoduleが定義されないことになるので、「!==」で反転させてfalseで対応、多分良くない
 	if ( typeof module !== "object" && typeof module.exports === "object" ) {
 
 		// For CommonJS and CommonJS-like environments where a proper `window`
