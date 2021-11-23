@@ -2,9 +2,9 @@
 ---
 
 ## 定義書
-[db仕様書](https://docs.google.com/spreadsheets/d/1PR9s_cDnP35ugRIphE39m26ItjIcajQ85kHMjIzOfag/edit?usp=sharing)
+[db仕様書](https://docs.google.com/spreadsheets/d/1PR9s_cDnP35ugRIphE39m26ItjIcajQ85kHMjIzOfag/edit#gid=0)
 
-[アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1XzlIWw6Ce78BYS5AP9YMXUlZOi9XMgaMH_mFbRGaCYU/edit?usp=sharing)
+[アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1XzlIWw6Ce78BYS5AP9YMXUlZOi9XMgaMH_mFbRGaCYU/edit#gid=0)
 
 ---
 
@@ -29,8 +29,8 @@
 
 ##手帳機能
 ・スケジュールを書くことでできる。
-・カレンダーを見ることができ、にスケジュールを反映できる。
-・検索ができる。　
+・カレンダーを見ることができ、スケジュールを反映できる。
+・部分検索ができる。　
 
 ##身体管理機能
 ・1日の身体の状態を記録できる。
@@ -46,7 +46,7 @@
 ・HTML
 ・SCSS
 ・tailwindcss
-・JavaScript(fullcalendar、chart.js)
+・JavaScript(fullcalendar、chart.js、odometer)
 
 ##バック
 ・PHP 7.4.2
