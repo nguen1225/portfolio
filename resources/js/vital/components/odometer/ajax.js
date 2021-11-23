@@ -15,7 +15,8 @@
 
 	"use strict";
 
-	if ( typeof module === "object" && typeof module.exports === "object" ) {
+	//コンパイルすると「typeof module === "object"」でpublicではmodeleが定義されないことになるので、「!==」で反転させてfalseで対応、多分良くない
+	if ( typeof module !== "object" && typeof module.exports === "object" ) {
 
 		// For CommonJS and CommonJS-like environments where a proper `window`
 		// is present, execute the factory and get jQuery.
