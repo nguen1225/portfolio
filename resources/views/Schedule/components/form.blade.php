@@ -5,9 +5,11 @@
         <div>
             <label class="block mt-8">
                 <span class="form_title">タイトル</span>
-                    <p class="explanation_white text-sm">
+                    @if ($errors->first('title'))
+                    <p class="explanation_white text-sm error">
                         {!! nl2br($errors->first('title'), false) !!}
                     </p>
+                    @endif
                 <input
                     name="title" id="title"
                     value="{{old('title')}}"
@@ -41,29 +43,31 @@
                 >
                     @foreach($get_genres as $key => $genre)
                         <option value='' hidden>ジャンルを選択してください</option>
-                        <option value="{{ $genre->id }}">{{$genre->name}}</option>
+                        <option value="{{ $genre->id }}" @if((int)old('genre_id') === $genre->id) selected @endif>{{$genre->name}}</option>
                     @endforeach
                 </select>
             </label>
             <label class="block mt-8">
             <span class="form_title">本文</span>
-                <p class="explanation_white text-sm">
-                    {!! nl2br($errors->first('content'), false) !!}
-                </p>
+            @if ($errors->first('content'))
+            <p class="explanation_white text-sm error">
+                {!! nl2br($errors->first('content'), false) !!}
+            </p>
+            @endif
             <textarea
                     name="content" id="content"
-                    value="{{old('content')}}"
+                    value=""
                     class="schedule_form"
                     rows="5"
                     placeholder="本文を入力してください"
                     required
-            ></textarea>
+            >{{old('content')}}</textarea>
             </label>
         </div>
         <button type="submit" class="submit_button">
             記録
         </button>
-        <button type="reset" onclick='window.history.back(-1);' class="submit_button">
+        <button type="reset" class="submit_button modal_close">
             キャンセル
         </button>
     </div>
