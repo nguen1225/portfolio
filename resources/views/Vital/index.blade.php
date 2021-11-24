@@ -9,7 +9,7 @@
             @include('vital.components.bmi')
         </div>
         <div class="width-50">
-            <div class="shadow overflow-hidden sm:rounded-lg">
+            <div class="shadow overflow-hidden sm:rounded-lg bg-white">
                 @include('vital.components.body-recorde')
             </div>
             {{ $posts->links() }}
