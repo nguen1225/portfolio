@@ -13,11 +13,11 @@
                         <div class="explanation">
                             全ての日程を表示します。
                         </div>
-                        <a href="{{ route('schedule.from') }}">
+                        <div id="modal_open">
                             <button class="create_new_button">
                                 日程作成
                             </button>
-                        </a>
+                        </div>
                     </div>
                     <div>
                         @include('schedule.components.search-form')
@@ -31,4 +31,5 @@
         </div>
     </div>
 </div>
+@include('schedule.from')
 @endsection

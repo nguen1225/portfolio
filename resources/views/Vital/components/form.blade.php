@@ -5,9 +5,11 @@
         <div class="max-w-md">
             <label class="block mt-4">
                 <span class="form_title">タイトル</span>
-                <p class="explanation_white text-sm">
+                @if ($errors->first('title'))
+                <p class="explanation_white text-sm error">
                     {!! nl2br($errors->first('title'), false) !!}
                 </p>
+                @endif
                 <input
                     id="title"
                     name="title"
@@ -33,8 +35,8 @@
             </label>
             <label class="block mt-4">
                 <span class="form_title">身長</span>
-                @if (old('height'))
-                <p class="explanation_white text-sm">
+                @if ($errors->first('height'))
+                <p class="explanation_white text-sm error">
                     {!! nl2br($errors->first('height'), false) !!}
                 </p>
                 @endif
@@ -49,8 +51,8 @@
             </label>
             <label class="block mt-4">
                 <span class="form_title">体重</span>
-                @if (old('body_weight'))
-                <p class="explanation_white text-sm">
+                @if ($errors->first('body_weight'))
+                <p class="explanation_white text-sm error">
                     {!! nl2br($errors->first('body_weight'), false) !!}
                 </p>
                 @endif
@@ -65,8 +67,8 @@
             </label>
             <label class="block mt-4">
                 <span class="form_title">最高血圧</span>
-                @if (old('max_blood_pressure'))
-                <p class="explanation_white text-sm">
+                @if ($errors->first('max_blood_pressure'))
+                <p class="explanation_white text-sm error">
                     {!! nl2br($errors->first('max_blood_pressure'), false) !!}
                 </p>
                 @endif
@@ -81,8 +83,8 @@
             </label>
             <label class="block mt-4">
                 <span class="form_title">最低血圧</span>
-                @if (old('min_blood_pressure'))
-                <p class="explanation_white text-sm">
+                @if ($errors->first('min_blood_pressure'))
+                <p class="explanation_white text-sm error">
                     {!! nl2br($errors->first('min_blood_pressure'), false) !!}
                 </p>
                 @endif
@@ -97,8 +99,8 @@
             </label>
             <label class="block mt-4">
                 <span class="form_title">心拍数(1分間)</span>
-                @if (old('heart_rate'))
-                <p class="explanation_white text-sm">
+                @if ($errors->first('heart_rate'))
+                <p class="explanation_white text-sm error">
                     {!! nl2br($errors->first('heart_rate'), false) !!}
                 </p>
                 @endif
@@ -113,8 +115,8 @@
             </label>
             <label class="block mt-8">
                 <span class="form_title">備考</span>
-                @if (old('content'))
-                <p class="explanation_white text-sm">
+                @if ($errors->first('content'))
+                <p class="explanation_white text-sm error">
                     {!! nl2br($errors->first('content'), false) !!}
                 </p>
                 @endif
@@ -126,12 +128,12 @@
                     rows="5"
                     placeholder="本文を入力してください"
                 ></textarea>
-              </label>
+            </label>
         </div>
         <button type="submit" class="submit_button">
             記録
         </button>
-        <button type="reset" onclick='window.history.back(-1);' class="submit_button">
+        <button type="reset" class="submit_button modal_close">
             キャンセル
         </button>
     </div>
