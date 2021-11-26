@@ -4,6 +4,10 @@ const modal_open = document.querySelector('#modal_open');
 const modal = document.querySelector('#modal_content');
 const button_close = document.querySelector('.modal_close');
 
+console.log(modal_open);
+console.log(modal);
+console.log(button_close);
+
 // 表示
 modal_open.addEventListener('click', modalOpen);
 function modalOpen() {
@@ -19,16 +23,19 @@ if(document.querySelector('.error')) {
 // 閉じる
 button_close.addEventListener('click', modalClose);
 function modalClose() {
-    modal.style.display = 'none';
+    location.reload();
 }
 
 // どこをクリックしてもイベントを閉じる
 addEventListener('click', outsideClose);
 function outsideClose(e) {
     if(e.target == modal) {
-        modal.style.display = 'none';
+        location.reload();
     }
 }
 });
+
+
+
 
 
