@@ -18,8 +18,17 @@ class ScheduleController extends Controller
         ->orderByDesc('registered_at')
         ->paginate(10);
 
+        $get_genres = DiaryGenre::select(DB::raw('
+            diary_genres.id,
+            diary_genres.name
+        '))
+        ->join('users', 'user_id', '=', 'users.id')
+        ->where('users.id', session()->get('id'))
+        ->get();
+
         return view('schedule.index')
-        ->with('posts', $posts);
+        ->with('posts', $posts)
+        ->with('get_genres', $get_genres);
     }
 
     public function search(Request $request)

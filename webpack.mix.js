@@ -18,6 +18,7 @@ mix
     .js('resources/js/vital/components/odometer/app.js', 'public/js/custom.js')
     .js('resources/js/vital/components/odometer/ajax.js', 'public/js/ajax.js')
     .js('resources/js/vital/components/tab.js', 'public/js/custom.js')
+    .js('resources/js/UI/modal.js', 'public/js/custom.js')
     .js('resources/js/vital/app.js', 'public/js/custom.js')
     .postCss('resources/css/app.css', 'public/css/app.css', [
         require("tailwindcss"),
@@ -38,6 +39,7 @@ mix
         require("tailwindcss"),
     ])
     .sass('resources/scss/home/app.scss', 'public/css/custom.css')
+    .sass('resources/scss/components/UI/modal.scss', 'public/css/custom.css')
     .sass('resources/scss/calendar/app.scss', 'public/css/custom.css')
     .sass('resources/scss/vital/graph.scss', 'public/css/custom.css')
     .sass('resources/scss/vital/tab.scss', 'public/css/custom.css')

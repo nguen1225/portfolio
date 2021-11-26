@@ -1,0 +1,24 @@
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.8);
+    animation-name: modal_open;
+    animation-duration: 0.3s;
+}
+
+@keyframes modal_open {
+    from {opacity: 0}
+    to {opacity: 1}
+}
+
+
+.modal_close:hover {
+    cursor: pointer;
+}
+

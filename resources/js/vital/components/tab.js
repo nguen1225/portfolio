@@ -1,24 +1,26 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const tabTriggers = document.querySelectorAll('.js-tab-trigger');
-    const tabTargets = document.querySelectorAll('.js-tab-target');
+    const tabTriggers = document.querySelectorAll('.trigger');
+    const tabTargets = document.querySelectorAll('.target');
 
-    for (let i = 0; i < tabTriggers.length; i++) {
-        tabTriggers[i].addEventListener('click', (e) => {
+    tabTriggers.forEach(tabTrigger => {
+        tabTrigger.addEventListener('click', (e) => {
             let currentMenu = e.currentTarget;
             let currentContent = document.getElementById(currentMenu.dataset.id);
 
-            for (let i = 0; i < tabTriggers.length; i++) {
-                tabTriggers[i].classList.remove('is-active');
-            }
+            tabTriggers.forEach(tabTrigger => {
+                tabTrigger.classList.remove('is-active');
+            });
+
             currentMenu.classList.add('is-active');
 
-            for (let i = 0; i < tabTargets.length; i++) {
-                tabTargets[i].classList.remove('is-active');
-            }
+            tabTargets.forEach(tabTarget => {
+                tabTarget.classList.remove('is-active');
+            });
+
             if(currentContent !== null) {
                 currentContent.classList.add('is-active');
             }
         });
-    }
+    });
 });
 
