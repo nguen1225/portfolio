@@ -149,7 +149,7 @@ class VitalController extends Controller
     {
         $user = User::where('id', session()->get('id'))->first();
         $get_health = Vital::select(DB::raw('
-            DATE_FORMAT(vitals.registered_at, "%c月%e日") as date,
+            DATE_FORMAT(vitals.registered_at, "%Y/%c/%e") as date,
             vitals.height as height,
             vitals.body_weight as weight,
             vitals.max_blood_pressure as max_blood_pressure,
@@ -171,23 +171,6 @@ class VitalController extends Controller
             'date'
         )
         ->get();
-
-        $endDay = date('Y-m-d', strtotime("-1 day"));
-        $startDay = date('Y-m-d', strtotime("-31 day"));
-        $period = CarbonPeriod::create($startDay, '1 days', $endDay);
-
-        $rows = [];
-
-        foreach ($period as $date) {
-            $md = $date->format('n月j日');
-            $rows[$md] = 0;
-        }
-
-        foreach ($get_health as $item) {
-            $event[$item->date] = $item;
-        }
-
-        $health = array_merge($rows, $event);
-        return response()->json($health);
+        return response()->json($get_health);
     }
 }
