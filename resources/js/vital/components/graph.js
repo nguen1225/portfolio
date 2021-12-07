@@ -13,52 +13,112 @@ fetch(location.protocol + "//" + location.host + "/vital/health").then(function 
     return health_data;
 }).then(function (health_data) {
 
+    const get_month = document.querySelector('#month');
+    const get_value = get_month.getAttribute('value');
+
     health_data_factory(health_data);
+
+    observer.observe(get_month, config);
+
     const human_height  = new HUMAN_HEIGHT();
     const human_weight  = new HUMAN_WEIGHT();
     const human_blood_pressure = new HUMAN_BLOOD_PRESSURE();
     const human_heart_rate = new HUMAN_HEART_RATE();
 
-    const BODY_HEIGHT = new Chart(
-    document.querySelector('.samples #body_height'),
+    window.BODY_HEIGHT = new Chart(
+    document.querySelector('.graph #body_height'),
     human_height.config
     );
 
-    const BODY_WEIGHT = new Chart(
-    document.querySelector('.samples #body_weight'),
+    window.BODY_WEIGHT = new Chart(
+    document.querySelector('.graph #body_weight'),
     human_weight.config
     );
 
-    const BODY_BLOOD_PRESSURE = new Chart(
-    document.querySelector('.samples #blood_pressure'),
+    window.BODY_BLOOD_PRESSURE = new Chart(
+    document.querySelector('.graph #blood_pressure'),
     human_blood_pressure.config
     );
 
-    const BODY_HEART_RATE = new Chart(
-    document.querySelector('.samples #heart_rate'),
+    window.BODY_HEART_RATE = new Chart(
+    document.querySelector('.graph #heart_rate'),
     human_heart_rate.config
     );
-
 })
 
 function health_data_factory(health_data) {
-    Object.keys(health_data).forEach(function (item) {
+    const get_month = document.querySelector('#month');
+    const get_value = get_month.getAttribute('value');
+    const sort_data = health_data.sort((a, b) => new Date(a.date) - new Date(b.date));
+    const get_month_data = sort_data.filter(
+        function(obj) {
+            return obj.date.match(get_value);
+        }
+    );
+
+    Object.keys(get_month_data).forEach(function (item) {
         height.push(this[item].height || 0);
         weight.push(this[item].weight || 0);
         max_blood_pressure.push(this[item].max_blood_pressure || 0);
         min_blood_pressure.push(this[item].min_blood_pressure || 0);
         avg_blood_pressure.push(this[item].avg_blood_pressure || 0);
         heart_rate.push(this[item].heart_rate || 0);
-        day_data.push(item);
-    }, health_data);
+        day_data.push(this[item].date);
+    }, get_month_data);
 }
-console.log(height);
-console.log(weight);
-console.log(max_blood_pressure);
-console.log(min_blood_pressure);
-console.log(avg_blood_pressure);
-console.log(heart_rate);
-console.log(day_data);
+
+const observer = new MutationObserver(function () {
+    fetch(location.protocol + "//" + location.host + "/vital/health").then(function (response) {
+        const health_data = response.json();
+        return health_data;
+    }).then(function (health_data) {
+
+        if (BODY_HEIGHT || BODY_HEIGHT || BODY_BLOOD_PRESSURE || BODY_HEART_RATE) {
+            BODY_HEIGHT.destroy();
+            BODY_WEIGHT.destroy();
+            BODY_BLOOD_PRESSURE.destroy();
+            BODY_HEART_RATE.destroy();
+            height.length = 0;
+            weight.length = 0;
+            max_blood_pressure.length = 0;
+            min_blood_pressure.length = 0;
+            avg_blood_pressure.length = 0;
+            heart_rate.length = 0;
+            day_data.length = 0;
+        }
+
+        health_data_factory(health_data);
+
+        const human_height  = new HUMAN_HEIGHT();
+        const human_weight  = new HUMAN_WEIGHT();
+        const human_blood_pressure = new HUMAN_BLOOD_PRESSURE();
+        const human_heart_rate = new HUMAN_HEART_RATE();
+
+        window.BODY_HEIGHT = new Chart(
+            document.querySelector('.graph #body_height'),
+            human_height.config
+        );
+
+        window.BODY_WEIGHT = new Chart(
+            document.querySelector('.graph #body_weight'),
+            human_weight.config
+        );
+
+        window.BODY_BLOOD_PRESSURE = new Chart(
+            document.querySelector('.graph #blood_pressure'),
+            human_blood_pressure.config
+        );
+
+        window.BODY_HEART_RATE = new Chart(
+            document.querySelector('.graph #heart_rate'),
+            human_heart_rate.config
+        );
+    })
+});
+
+const config = {
+    attributes: true
+};
 
 
 class HUMAN_HEIGHT {
@@ -338,22 +398,3 @@ class HUMAN_HEART_RATE {
         }
     }
 }
-
-// function get(url) {
-//     return fetch(url)
-// }
-
-// async function fn() {
-//     const results = [];
-//     const urls = [
-//         location.protocol + "//" + location.host + "/vital/day",
-//         location.protocol + "//" + location.host + "/vital/height",
-//         location.protocol + "//" + location.host + "/vital/weight",
-//         location.protocol + "//" + location.host + "/vital/blood-pressure",
-//         location.protocol + "//" + location.host + "/vital/heart-rate"
-//     ]
-
-//     console.log(await Promise.all(urls.map(get)));
-// }
-// fn();
-
