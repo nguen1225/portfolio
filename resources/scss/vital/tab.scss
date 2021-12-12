@@ -3,7 +3,7 @@
     margin: 0 -5px;
 }
 
-.tab-menu__item {
+.tab_menu_item {
     box-sizing: border-box;
     margin: -1px 0px;
     padding: 0 5px;
@@ -34,13 +34,13 @@
     border-top-right-radius: 8px;
     border: 1px solid #ccc;
 }
-.tab-content__item {
+.tab_content_item {
     box-sizing: border-box;
     padding: 20px;
     display: none;
     text-align: left;
 }
-.tab-content__item.is-active {
+.tab_content_item.is-active {
     display: block;
     animation: fade 0.5s ease;
 }
