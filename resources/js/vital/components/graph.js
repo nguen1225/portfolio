@@ -61,13 +61,13 @@ function health_data_factory(health_data) {
     const date_start = new Date(get_value);
     const date_end = new Date(get_value);
 
-    // 日付に1を設定する
+    // 日付を1に設定する
     date_start.setDate(1);
 
     // 1ヶ月加えて来月にする
     date_end.setMonth(date_end.getMonth() + 1);
 
-    // 日付に0をに設定、先月を月末にする
+    // 日付に0を設定、先月を月末にする(例えば今月が12月なら11月の月末を取得する)
     date_end.setDate(0);
 
     const month = new Array();
