@@ -44,13 +44,55 @@ fetch(location.protocol + "//" + location.host + "/vital/health").then(function 
     document.querySelector('.graph #heart_rate'),
     human_heart_rate.config
     );
+
 })
 
 function health_data_factory(health_data) {
     const get_month = document.querySelector('#month');
     const get_value = get_month.getAttribute('value');
-    const sort_data = health_data.sort((a, b) => new Date(a.date) - new Date(b.date));
-    const get_month_data = sort_data.filter(
+
+    const rows = new Array();
+
+    health_data.forEach(item => {
+        rows[item.date] = item;
+    });
+
+    // 月を取得
+    const date_start = new Date(get_value);
+    const date_end = new Date(get_value);
+
+    // 日付を1に設定する
+    date_start.setDate(1);
+
+    // 1ヶ月加えて来月にする
+    date_end.setMonth(date_end.getMonth() + 1);
+
+    // 日付に0を設定、先月を月末にする(例えば今月が12月なら11月の月末を取得する)
+    date_end.setDate(0);
+
+    const month = new Array();
+
+    // その月の月初めから月末まで取得
+    for(const d = date_start; d <= date_end; d.setDate(d.getDate()+1)) {
+        const formatedDate = d.getFullYear()+'/'+(d.getMonth()+1)+'/'+d.getDate();
+
+        month[formatedDate] = {
+            date:formatedDate,
+            height:0,
+            weight:0,
+            max_blood_pressure:0,
+            min_blood_pressure:0,
+            avg_blood_pressure:0,
+            heart_rate:0
+        }
+    }
+
+    // 配列を連結
+    const get_month_assign = Object.assign(month, rows);
+
+    // ソートして、欲しい月だけ検索して絞り込む
+    const sort_data = get_month_assign.sort((a, b) => new Date(a.date) - new Date(b.date));
+    const get_month_data = Object.values(sort_data).filter(
         function(obj) {
             return obj.date.match(get_value);
         }
@@ -67,6 +109,7 @@ function health_data_factory(health_data) {
     }, get_month_data);
 }
 
+// 月表示に変更があれば作動
 const observer = new MutationObserver(function () {
     fetch(location.protocol + "//" + location.host + "/vital/health").then(function (response) {
         const health_data = response.json();
