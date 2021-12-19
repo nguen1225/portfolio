@@ -14,11 +14,16 @@
             </p>
             <p class="mt-2 text-gray-600 text-center">
             <a href="{{ route('genre') }}" class=" text-gray-50 hover:text-purple-200">
-                スケジュールのジャンルを増やす。
+                スケジュールのジャンルを増やす
             </a>
             </p>
             <p class="mt-2 text-gray-600 text-center">
-            <a href="{{ route('login') }}" class=" text-gray-50 hover:text-purple-200">
+            <a href="{{ route('schedule') }}" class=" text-gray-50 hover:text-purple-200">
+                スケジュールを作成する
+            </a>
+            </p>
+            <p class="mt-2 text-gray-600 text-center">
+            <a href="{{ route('vital') }}" class=" text-gray-50 hover:text-purple-200">
                 身体の情報を記録する
             </a>
             </p>
