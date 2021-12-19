@@ -1,9 +1,9 @@
 @extends('layouts.detail')
 @section('body')
 <div class="container mx-auto mt-7">
-    <div class="flex space-x-16">
+    <div class="content_flex lg:space-x-16">
         @include('schedule.components.calendar')
-        <div class="width-50">
+        <div class="width-50 mb-5">
             <div class="shadow overflow-hidden sm:rounded-lg bg-white">
                 <div class="recorde_header flex-between">
                     <div>
@@ -13,7 +13,7 @@
                         <div class="explanation">
                             全ての日程を表示します。
                         </div>
-                        <div id="modal_open">
+                        <div id="modal_open" class="mb-3">
                             <button class="create_new_button">
                                 日程作成
                             </button>

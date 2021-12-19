@@ -25,3 +25,17 @@ h1.graph_title {
     font-weight: bold;
     margin-top: 5px;
 }
+
+.for_sp {
+    display: none;
+}
+
+@media (max-width: 639px) {
+    .for_sp {
+        display: initial;
+    }
+
+    .for_pc {
+        display: none;
+    }
+}

@@ -2,6 +2,10 @@ body {
     background-color: whitesmoke;
 }
 
+.content_flex {
+    display: flex;
+}
+
 .global-contents {
     width: 100%;
     display: flex;
@@ -26,6 +30,7 @@ body {
 }
 
 footer {
+    margin-top: 10px;
     text-align: end;
     padding: 5px 20px 0px 0px;
     font-size: 16px;
@@ -47,4 +52,18 @@ footer {
 .text-overflow-wrap {
     width:100%;
     overflow-wrap: break-word;
+}
+
+@media (max-width: 639px) {
+    .content_flex {
+        display: initial;
+    }
+
+    .width-50 {
+        width: 100%;
+    }
+
+    .flex-between {
+        display: block;
+    }
 }
