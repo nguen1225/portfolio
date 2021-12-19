@@ -6,10 +6,12 @@
 
 [アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1XzlIWw6Ce78BYS5AP9YMXUlZOi9XMgaMH_mFbRGaCYU/edit#gid=0)
 
+[テストケース](https://docs.google.com/spreadsheets/d/1g8qDJMMW_4WTHeMA8P33cKv4dRdfM-sqYHMC-rAxiZE/edit#gid=8055108)
+
 ---
 
 ## ER図
-調整中
+![ER図](https://user-images.githubusercontent.com/61786366/143537623-8fe98f88-e82d-4778-a809-ef0e2c63cc4f.png)
 
 ---
 
