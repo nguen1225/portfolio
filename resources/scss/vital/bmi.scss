@@ -17,6 +17,17 @@
     width: 12%;
 }
 
+@media (max-width: 639px) {
+    .today_bmi {
+        position: absolute;
+        width: initial;
+    }
+
+    .bmi {
+        margin-top: 2.5rem !important;
+    }
+}
+
 table.bmi_table{
     width: 60%;
     float: right;
