@@ -15,19 +15,18 @@
 
 ---
 
-## シーケンス図
-未定
+## クラウド図
+![クラウド図](https://user-images.githubusercontent.com/61786366/146944331-06f4ba36-5435-4bea-95fc-a5cd3315888f.png)
 
 ---
 ## 主な機能
 
 ```bash
-##ログイン機能
+##ログイン機能(laravelのログイン機能不使用)
 ・ログインができる。
 ・ログアウトができる。
 ・新規作成ができる。
 ・メールを送信してパスワード変更ができる。
-・退会ができる。(論理削除)
 
 ##手帳機能
 ・スケジュールを書くことでできる。
@@ -37,6 +36,7 @@
 ##身体管理機能
 ・1日の身体の状態を記録できる。
 ・記録したデータをグラフに反映することができる。
+・月ごとのデータを表示できる。
 ・データに紐付いてBMIが表示される。
 ```
 
@@ -48,18 +48,21 @@
 ・HTML
 ・SCSS
 ・tailwindcss
-・JavaScript(fullcalendar、chart.js、odometer)
+・JavaScript
+・(fullcalendar、chart.js、odometer)
 
-##バック
-・PHP 7.4.2
-・Composer 2.0
+##バック(開発環境: docker)
+・PHP 7.4.27
+・Composer 2.1.14
 ・Laravel Framework 8.51
 ・Mysql 8.0
 ・nginx
-・docker
+
+##バック(本番環境: HEROKU)
+※AWSに変える可能性あり
+・PHP 7.4.27
+・Composer 2.1.14
+・Laravel Framework 8.51
+・Mysql 8.0
+・apache
 ```
-
-
-
-
-
