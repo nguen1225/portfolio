@@ -58,8 +58,11 @@ function health_data_factory(health_data) {
     });
 
     // 月を取得
-    const date_start = new Date(get_value);
-    const date_end = new Date(get_value);
+    // Safariでnew Date()は何年何月何日まで必要
+    const date_start = new Date(get_value + "/1");
+    const date_end = new Date(get_value + "/1");
+
+    console.log(date_start);
 
     // 日付を1に設定する
     date_start.setDate(1);
@@ -202,7 +205,12 @@ class HUMAN_HEIGHT {
                         maxRotation: 0,
                         minRotation: 0,
                         callback: function (val, index) {
-                            return index % 4 === 0 ? this.getLabelForValue(val) : '';
+                            // pcとspで日にち表示数をかえる
+                            if(navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
+                                return index % 8 === 0 ? this.getLabelForValue(val) : '';
+                            } else {
+                                return index % 5 === 0 ? this.getLabelForValue(val) : '';
+                            };
                         }
                     }
                 }
@@ -213,7 +221,14 @@ class HUMAN_HEIGHT {
                     backgroundColor: "rgba(76,176,206,0.3)"
                 },
                 point: {
-                    pointRadius: 6,
+                    pointRadius: function () {
+                        // 丸の大きさをpcとspで分ける
+                        if(navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
+                            return 3;
+                        } else {
+                            return 6;
+                        };
+                    },
                     pointBorderWidth: 2,
                     pointBorderColor: "rgba(36,21,242,1)",
                     pointBackgroundColor: "rgba(255, 255, 255, 1)"
@@ -263,7 +278,12 @@ class HUMAN_WEIGHT {
                         maxRotation: 0,
                         minRotation: 0,
                         callback: function (val, index) {
-                            return index % 4 === 0 ? this.getLabelForValue(val) : '';
+                            // pcとspで日にち表示数をかえる
+                            if(navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
+                                return index % 8 === 0 ? this.getLabelForValue(val) : '';
+                            } else {
+                                return index % 5 === 0 ? this.getLabelForValue(val) : '';
+                            };
                         }
                     }
                 }
@@ -274,7 +294,14 @@ class HUMAN_WEIGHT {
                     backgroundColor: "rgba(67,249,155,0.3)"
                 },
                 point: {
-                    pointRadius: 6,
+                    pointRadius: function () {
+                        // 丸の大きさをpcとspで分ける
+                        if(navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
+                            return 3;
+                        } else {
+                            return 6;
+                        };
+                    },
                     pointBorderWidth: 2,
                     pointBorderColor: "rgba(39,147,14,1)",
                     pointBackgroundColor: "rgba(255, 255, 255, 1)"
@@ -304,7 +331,14 @@ class HUMAN_BLOOD_PRESSURE {
                     backgroundColor: "rgba(247,69,101,0.3)"
                 },
                 point: {
-                    pointRadius: 6,
+                    pointRadius: function () {
+                        // 丸の大きさをpcとspで分ける
+                        if(navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
+                            return 3;
+                        } else {
+                            return 6;
+                        };
+                    },
                     pointBorderWidth: 2,
                     pointBorderColor: "rgba(255,9,5,1)",
                     pointBackgroundColor: "rgba(255, 255, 255, 1)"
@@ -320,7 +354,13 @@ class HUMAN_BLOOD_PRESSURE {
                     backgroundColor: "rgba( 9,206,232 , 0.3 )"
                 },
                 point: {
-                    pointRadius: 6,
+                    pointRadius: function () {
+                        if(navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
+                            return 3;
+                        } else {
+                            return 6;
+                        };
+                    },
                     pointBorderWidth: 2,
                     pointBorderColor: "rgb(88,73,255)",
                     pointBackgroundColor: "rgba(255, 255, 255, 1)"
@@ -336,7 +376,13 @@ class HUMAN_BLOOD_PRESSURE {
                     backgroundColor: "rgb(200,103,252,0.3)"
                 },
                 point: {
-                    pointRadius: 6,
+                    pointRadius: function () {
+                        if(navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
+                            return 3;
+                        } else {
+                            return 6;
+                        };
+                    },
                     pointBorderWidth: 2,
                     pointBorderColor: "rgb(113,22,249,1)",
                     pointBackgroundColor: "rgba(255, 255, 255, 1)"
@@ -370,7 +416,12 @@ class HUMAN_BLOOD_PRESSURE {
                         maxRotation: 0,
                         minRotation: 0,
                         callback: function (val, index) {
-                            return index % 4 === 0 ? this.getLabelForValue(val) : '';
+                            // pcとspで日にち表示数をかえる
+                            if(navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
+                                return index % 8 === 0 ? this.getLabelForValue(val) : '';
+                            } else {
+                                return index % 5 === 0 ? this.getLabelForValue(val) : '';
+                            };
                         }
                     }
                 }
@@ -419,7 +470,12 @@ class HUMAN_HEART_RATE {
                         maxRotation: 0,
                         minRotation: 0,
                         callback: function (val, index) {
-                            return index % 4 === 0 ? this.getLabelForValue(val) : '';
+                            // pcとspで日にち表示数をかえる
+                            if(navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
+                                return index % 8 === 0 ? this.getLabelForValue(val) : '';
+                            } else {
+                                return index % 5 === 0 ? this.getLabelForValue(val) : '';
+                            };
                         }
                     }
                 }
@@ -430,7 +486,14 @@ class HUMAN_HEART_RATE {
                     backgroundColor: "rgba(251,206,110,0.3)"
                 },
                 point: {
-                    pointRadius: 6,
+                    pointRadius: function () {
+                        if(navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
+                            // 丸の大きさをpcとspで分ける
+                            return 3;
+                        } else {
+                            return 6;
+                        };
+                    },
                     pointBorderWidth: 2,
                     pointBorderColor: "rgba(240,137,17,1)",
                     pointBackgroundColor: "rgba(255, 255, 255, 1)"
