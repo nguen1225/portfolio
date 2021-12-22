@@ -104,7 +104,7 @@ class VitalController extends Controller
         }
 
         session()->flash('flash_message', '検査結果の入力は1日1回です。<br>本日の内容を変えたい場合は編集もしくは<br>削除して再度入力してください。');
-        return redirect('vital/post');
+        return redirect('vital');
     }
 
     public function show(Request $request)

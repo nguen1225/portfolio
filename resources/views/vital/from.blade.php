@@ -10,11 +10,13 @@
                     身体記録を作成します。
                 </a>
             </p>
+            @if (session('flash_message'))
             <p class="mt-2 text-sm text-gray-600 text-center">
-                <a class="explanation_white">
+                <a class="explanation_white error">
                     {!! nl2br(session('flash_message')) !!}
                 </a>
             </p>
+            @endif
         </div>
         @include('vital.components.form')
         </div>
