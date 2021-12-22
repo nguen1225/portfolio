@@ -111,7 +111,7 @@
             </label>
         </div>
         <button type="submit" class="submit_button">
-            記録
+            変更
         </button>
         <button type="reset" onclick='window.history.back(-1);' class="submit_button">
             キャンセル
