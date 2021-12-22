@@ -8,44 +8,45 @@ const avg_blood_pressure = [];
 const heart_rate = [];
 const day_data = [];
 
-fetch(location.protocol + "//" + location.host + "/vital/health").then(function (response) {
-    const health_data = response.json();
-    return health_data;
-}).then(function (health_data) {
+if (location.pathname === "/vital") {
+    fetch(location.protocol + "//" + location.host + "/vital/health").then(function (response) {
+        const health_data = response.json();
+        return health_data;
+    }).then(function (health_data) {
 
-    const get_month = document.querySelector('#month');
-    const get_value = get_month.getAttribute('value');
+        const get_month = document.querySelector('#month');
+        const get_value = get_month.getAttribute('value');
 
-    health_data_factory(health_data);
+        health_data_factory(health_data);
 
-    observer.observe(get_month, config);
+        observer.observe(get_month, config);
 
-    const human_height  = new HUMAN_HEIGHT();
-    const human_weight  = new HUMAN_WEIGHT();
-    const human_blood_pressure = new HUMAN_BLOOD_PRESSURE();
-    const human_heart_rate = new HUMAN_HEART_RATE();
+        const human_height  = new HUMAN_HEIGHT();
+        const human_weight  = new HUMAN_WEIGHT();
+        const human_blood_pressure = new HUMAN_BLOOD_PRESSURE();
+        const human_heart_rate = new HUMAN_HEART_RATE();
 
-    window.BODY_HEIGHT = new Chart(
-    document.querySelector('.graph #body_height'),
-    human_height.config
-    );
+        window.BODY_HEIGHT = new Chart(
+        document.querySelector('.graph #body_height'),
+        human_height.config
+        );
 
-    window.BODY_WEIGHT = new Chart(
-    document.querySelector('.graph #body_weight'),
-    human_weight.config
-    );
+        window.BODY_WEIGHT = new Chart(
+        document.querySelector('.graph #body_weight'),
+        human_weight.config
+        );
 
-    window.BODY_BLOOD_PRESSURE = new Chart(
-    document.querySelector('.graph #blood_pressure'),
-    human_blood_pressure.config
-    );
+        window.BODY_BLOOD_PRESSURE = new Chart(
+        document.querySelector('.graph #blood_pressure'),
+        human_blood_pressure.config
+        );
 
-    window.BODY_HEART_RATE = new Chart(
-    document.querySelector('.graph #heart_rate'),
-    human_heart_rate.config
-    );
-
-})
+        window.BODY_HEART_RATE = new Chart(
+        document.querySelector('.graph #heart_rate'),
+        human_heart_rate.config
+        );
+    })
+}
 
 function health_data_factory(health_data) {
     const get_month = document.querySelector('#month');
@@ -61,8 +62,6 @@ function health_data_factory(health_data) {
     // Safariでnew Date()は何年何月何日まで必要
     const date_start = new Date(get_value + "/1");
     const date_end = new Date(get_value + "/1");
-
-    console.log(date_start);
 
     // 日付を1に設定する
     date_start.setDate(1);
