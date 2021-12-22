@@ -6,7 +6,7 @@
     <link rel="icon" href="{{ asset('img/vital.png') }}"/>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ mix('css/custom.css') }}" rel="stylesheet">
-    <script src="{{ mix('js/ajax.js') }}"></script>
-    <script src="{{ mix('js/custom.js') }}"></script>
+    <script defer src="{{ mix('js/custom.js') }}"></script>
+    <script defer src="{{ mix('js/ajax.js') }}"></script>
 </head>
 @endsection
