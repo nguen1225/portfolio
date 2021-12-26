@@ -1,7 +1,7 @@
 @extends('layouts.detail')
 @section('body')
 <div class="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-center bg-gray-700 p-6 rounded-lg shadow-2xl width-50">
+    <div class="flex items-center justify-center bg-gray-700 p-6 rounded-lg shadow-2xl width-36">
         <div class="max-w-md lg:w-96 md:w-96 width-100 space-y-8">
         <div>
             <h2>
