@@ -11,12 +11,12 @@
 ---
 
 ## ER図
-![ER図](https://user-images.githubusercontent.com/61786366/143537623-8fe98f88-e82d-4778-a809-ef0e2c63cc4f.png)
+![ER図](https://user-images.githubusercontent.com/61786366/147398474-6ffeb172-9093-467e-b9da-c6cb51016f64.png)
 
 ---
 
-## クラウド図
-![クラウド図](https://user-images.githubusercontent.com/61786366/146944331-06f4ba36-5435-4bea-95fc-a5cd3315888f.png)
+## HEROKU図
+![HEROKU図](https://user-images.githubusercontent.com/61786366/147398470-a70e020a-8a31-4f17-aaee-c7f1fd2cf97b.png)
 
 ---
 ## 主な機能
@@ -38,6 +38,14 @@
 ・記録したデータをグラフに反映することができる。
 ・月ごとのデータを表示できる。
 ・データに紐付いてBMIが表示される。
+
+##レスポンシブ対応
+・PC
+・スマホ
+
+##対応ブラウザ
+・Google Chrome
+・Safari
 ```
 
 ---
@@ -59,7 +67,6 @@
 ・nginx
 
 ##バック(本番環境: HEROKU)
-※AWSに変える可能性あり
 ・PHP 7.4.27
 ・Composer 2.1.14
 ・Laravel Framework 8.51
