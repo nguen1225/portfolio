@@ -16,7 +16,7 @@ class ScheduleController extends Controller
         $posts = Schedule::query()
         ->where("user_id", session()->get('id'))
         ->orderByDesc('registered_at')
-        ->paginate(10);
+        ->paginate(7);
 
         $get_genres = DiaryGenre::select(DB::raw('
             diary_genres.id,
