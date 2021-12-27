@@ -1,16 +1,18 @@
 @extends('layouts.detail')
 @section('body')
-<div class="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-center bg-gray-700 p-6 rounded-lg shadow-2xl">
+<div class="lg:min-h-screen lg:flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div class="min-h-full flex items-center justify-center bg-gray-700 p-6 rounded-lg shadow-2xl">
         <div class="max-w-md lg:w-96 md:w-96 sm:w-full space-y-8">
         <div>
             <h2>
             パスワード変更
             </h2>
-            <p class="mt-2 text-sm text-gray-600 text-center">
-            <a class="explanation_white">
-                大文字・小文字・数字をそれぞれ1つ以上含む、<br>6文字以上の半角英数字で入力してください。
-            </a>
+            <p class="mt-2 text-gray-600">
+                <div class="explanation_white sm:text-xs lg:text-sm text-center">
+                    <a>
+                        大文字・小文字・数字をそれぞれ1つ以上含む、<br>6文字以上の半角英数字で入力してください。
+                    </a>
+                </div>
             </p>
         </div>
         <form class="mt-8 space-y-6" action="{{ route('password.update', $get_user->id) }}" method="POST">

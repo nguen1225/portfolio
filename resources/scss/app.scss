@@ -12,6 +12,10 @@ body {
     flex-direction: column;
 }
 
+.width-36 {
+    width: 36%;
+}
+
 .width-50 {
     width: 50%;
 }
@@ -31,6 +35,7 @@ body {
 
 footer {
     margin-top: 10px;
+    margin-bottom: 10px;
     text-align: end;
     padding: 5px 20px 0px 0px;
     font-size: 16px;
@@ -59,12 +64,20 @@ footer {
         display: initial;
     }
 
+    .width-36 {
+        width: 100%;
+    }
+
     .width-50 {
         width: 100%;
     }
 
     .flex-between {
         display: block;
+    }
+
+    .created_at {
+        text-align: initial;
     }
 }
 

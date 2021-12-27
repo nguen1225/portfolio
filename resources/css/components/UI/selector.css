@@ -7,6 +7,13 @@
     width: 260px;
 }
 
+/* @media (max-width: 639px) {
+    .select_title {
+        @apply text-sm font-medium text-gray-500 hover:text-gray-900 truncate;
+        width: 130px;
+    }
+} */
+
 .day {
     @apply mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2;
 }

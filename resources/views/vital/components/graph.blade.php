@@ -1,4 +1,4 @@
-<div class="flex justify-center">
+<div class="flex justify-center mb-2.5">
     <div id="next-prev-button" class="for_sp bg-gray-700 rounded-md">
         <button id="prev" class="month_prev bg-gray-700 hover:bg-gray-900 text-white mr-0.5 lg:mx-5 p-1.5 rounded-l-md">‹</button>
         <span id="month" class="month text-white" name="month" value=""></span>
