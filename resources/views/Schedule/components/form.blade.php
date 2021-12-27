@@ -41,11 +41,18 @@
                     name="genre_id"
                     required
                 >
-                    @foreach($get_genres as $key => $genre)
-                        <option value='' hidden>ジャンルを選択してください</option>
-                        <option value="{{ $genre->id }}" @if((int)old('genre_id') === $genre->id) selected @endif>{{$genre->name}}</option>
-                    @endforeach
-                </select>
+                @foreach($get_genres as $key => $genre)
+                    <option value='' hidden>ジャンルを選択してください</option>
+                    <option value="{{ $genre->id }}" @if((int)old('genre_id') === $genre->id) selected @endif>{{$genre->name}}</option>
+                @endforeach
+            </select>
+            @if (!count($get_genres))
+                <p class="mt-2">
+                    <a href="{{ route('genre') }}" class=" text-gray-50 hover:text-purple-200 font-bold">
+                        ジャンルの選択項目がない方はこちら
+                    </a>
+                </p>
+                @endif
             </label>
             <label class="block mt-8">
             <span class="form_title">本文</span>
