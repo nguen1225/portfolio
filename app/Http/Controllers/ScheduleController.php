@@ -131,7 +131,6 @@ class ScheduleController extends Controller
 
     public function from()
     {
-        // $get_genres = DiaryGenre::select('name', 'id')->get();
         $get_genres = DiaryGenre::select(DB::raw('
             diary_genres.id,
             diary_genres.name
@@ -159,6 +158,7 @@ class ScheduleController extends Controller
 
     public function show(Request $request)
     {
+        $user = User::where('id', session()->get('id'))->first();
         $post_detail = Schedule::select(DB::raw('
             schedules.id as id,
             schedules.title as title,
@@ -166,17 +166,41 @@ class ScheduleController extends Controller
             DATE_FORMAT(schedules.registered_at, "%Y年%m月%d日") as registered_at,
             diary_genres.name as genreName
         '))
+        ->join('users', 'user_id', '=', 'users.id')
         ->join('diary_genres', 'genre_id', '=', 'diary_genres.id')
         ->groupBy('id', 'title', 'content', 'genreName', 'registered_at')
+        ->where('schedules.user_id', $user->id)
         ->where('schedules.id', $request->id)
         ->first();
+
+        if (!$post_detail) {
+            return redirect('schedule');
+        }
+
 
         return view('schedule.show')->with('post_detail', $post_detail);
     }
 
     public function edit(Request $request)
     {
-        $post_detail = Schedule::find($request->id);
+        $user = User::where('id', session()->get('id'))->first();
+        $post_detail = Schedule::select(DB::raw('
+            schedules.id as id,
+            schedules.title as title,
+            schedules.content as content,
+            DATE_FORMAT(schedules.registered_at, "%Y年%m月%d日") as registered_at,
+            diary_genres.name as genreName
+        '))
+        ->join('users', 'user_id', '=', 'users.id')
+        ->join('diary_genres', 'genre_id', '=', 'diary_genres.id')
+        ->groupBy('id', 'title', 'content', 'genreName', 'registered_at')
+        ->where('schedules.user_id', $user->id)
+        ->where('schedules.id', $request->id)
+        ->first();
+
+        if (!$post_detail) {
+            return redirect('schedule');
+        }
 
         return view('schedule.edit')->with('post_detail', $post_detail);
     }
