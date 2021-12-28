@@ -106,7 +106,7 @@ class VitalController extends Controller
             return redirect('vital');
         }
 
-        session()->flash('flash_message', '検査結果がすでに記録されています。<br>同日に複数の登録はできません。内容を変えたい場合は編集もしくは<br>削除して再度入力してください。');
+        session()->flash('flash_message', '同日に複数の登録はできません。<br>内容を変えたい場合は編集もしくは<br>削除して再度入力してください。');
         return redirect('vital');
     }
 

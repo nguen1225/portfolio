@@ -20,6 +20,7 @@ mix
     .js('resources/js/vital/components/tab.js', 'public/js/custom.js')
     .js('resources/js/UI/modal.js', 'public/js/custom.js')
     .js('resources/js/UI/monthButton.js', 'public/js/custom.js')
+    .js('resources/js/UI/submitButton.js', 'public/js/custom.js')
     .js('resources/js/vital/app.js', 'public/js/custom.js')
     .postCss('resources/css/app.css', 'public/css/app.css', [
         require("tailwindcss"),
