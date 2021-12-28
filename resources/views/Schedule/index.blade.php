@@ -23,9 +23,7 @@
                         @include('schedule.components.search-form')
                     </div>
                 </div>
-                <div class="content_scroll">
-                    @include('schedule.components.schedule-recorde')
-                </div>
+                @include('schedule.components.schedule-recorde')
             </div>
             {{ $posts->links() }}
         </div>

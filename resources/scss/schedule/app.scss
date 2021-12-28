@@ -34,10 +34,6 @@
 
 .schedule_title {
     text-overflow: ellipsis;
-    overflow: hidden;
     white-space: nowrap;
 }
 
-.content_scroll::-webkit-scrollbar {
-    display: none !important;
-}
