@@ -24,10 +24,6 @@ body {
     width: 100%;
 }
 
-.content_scroll {
-    overflow-y: scroll;
-    height: 426px;
-}
 
 .created_at {
     text-align: right;
@@ -52,6 +48,10 @@ footer {
 .submit_button {
     font-size: 17px;
     font-weight: bold;
+}
+
+.wait {
+    display: none;
 }
 
 .text-overflow-wrap {

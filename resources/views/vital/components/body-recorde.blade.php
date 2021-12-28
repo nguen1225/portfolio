@@ -11,22 +11,17 @@
         </button>
     </div>
 </div>
-<div class="content_scroll">
-    @foreach ($posts as $post)
-    <dl>
-        <div class="select">
-            <dt class="select_title">
-                <a href="{{ route('vital.show', $post->id)}}">
-                        {!! nl2br(htmlspecialchars($post->title)) !!}
-                    </a>
-                </p>
-            </dt>
-            <dd class="day created_at">
-                <a href="{{ route('vital.show', $post->id)}}">
-                    作成日 : {{date('Y年m月d日', strtotime($post->registered_at))}}
-                </a>
-            </dd>
-        </div>
-    </dl>
-    @endforeach
-</div>
+@foreach ($posts as $post)
+<dl class="select">
+    <dt class="select_title">
+        <a href="{{ route('vital.show', $post->id)}}">
+                {!! nl2br(htmlspecialchars($post->title)) !!}
+        </a>
+    </dt>
+    <dd class="day created_at">
+        <a href="{{ route('vital.show', $post->id)}}">
+            作成日 : {{date('Y年m月d日', strtotime($post->registered_at))}}
+        </a>
+    </dd>
+</dl>
+@endforeach

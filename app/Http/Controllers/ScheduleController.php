@@ -50,7 +50,7 @@ class ScheduleController extends Controller
                 ->groupBy('s_id', 's_user_id')
                 ->where('schedules.user_id', session()->get('id'))
                 ->where('schedules.title', 'LIKE', "%{$key_word}%")
-                ->paginate(8);
+                ->get();
             break;
 
             case 'content':
@@ -66,7 +66,7 @@ class ScheduleController extends Controller
                 ->groupBy('s_id', 's_user_id')
                 ->where('schedules.user_id', session()->get('id'))
                 ->where('schedules.content', 'LIKE', "%{$key_word}%")
-                ->paginate(8);
+                ->get();
             break;
 
             case 'genre':
@@ -75,14 +75,15 @@ class ScheduleController extends Controller
                     schedules.user_id as s_user_id,
                     schedules.title as s_title,
                     schedules.content as s_content,
-                    DATE_FORMAT(schedules.registered_at, "%Y年%m月%d日") as s_created
+                    DATE_FORMAT(schedules.registered_at, "%Y年%m月%d日") as s_created,
+                    diary_genres.name as g_name
                 '))
                 ->join('users', 'schedules.user_id', '=', 'users.id')
                 ->join('diary_genres', 'genre_id', '=', 'diary_genres.id')
                 ->groupBy('s_id', 's_user_id')
                 ->where('schedules.user_id', session()->get('id'))
                 ->Where('diary_genres.name', 'LIKE', "%{$key_word}%")
-                ->paginate(8);
+                ->get();
             break;
 
             default:
@@ -97,7 +98,7 @@ class ScheduleController extends Controller
             ->join('users', 'schedules.user_id', '=', 'users.id')
             ->groupBy('s_id', 's_user_id')
             ->where('schedules.user_id', session()->get('id'))
-            ->paginate(8);
+            ->get();
         }
 
         foreach ($results as $item) {
@@ -131,7 +132,6 @@ class ScheduleController extends Controller
 
     public function from()
     {
-        // $get_genres = DiaryGenre::select('name', 'id')->get();
         $get_genres = DiaryGenre::select(DB::raw('
             diary_genres.id,
             diary_genres.name
@@ -159,6 +159,7 @@ class ScheduleController extends Controller
 
     public function show(Request $request)
     {
+        $user = User::where('id', session()->get('id'))->first();
         $post_detail = Schedule::select(DB::raw('
             schedules.id as id,
             schedules.title as title,
@@ -166,17 +167,40 @@ class ScheduleController extends Controller
             DATE_FORMAT(schedules.registered_at, "%Y年%m月%d日") as registered_at,
             diary_genres.name as genreName
         '))
+        ->join('users', 'user_id', '=', 'users.id')
         ->join('diary_genres', 'genre_id', '=', 'diary_genres.id')
         ->groupBy('id', 'title', 'content', 'genreName', 'registered_at')
+        ->where('schedules.user_id', $user->id)
         ->where('schedules.id', $request->id)
         ->first();
+
+        if (!$post_detail) {
+            return redirect('schedule');
+        }
 
         return view('schedule.show')->with('post_detail', $post_detail);
     }
 
     public function edit(Request $request)
     {
-        $post_detail = Schedule::find($request->id);
+        $user = User::where('id', session()->get('id'))->first();
+        $post_detail = Schedule::select(DB::raw('
+            schedules.id as id,
+            schedules.title as title,
+            schedules.content as content,
+            DATE_FORMAT(schedules.registered_at, "%Y年%m月%d日") as registered_at,
+            diary_genres.name as genreName
+        '))
+        ->join('users', 'user_id', '=', 'users.id')
+        ->join('diary_genres', 'genre_id', '=', 'diary_genres.id')
+        ->groupBy('id', 'title', 'content', 'genreName', 'registered_at')
+        ->where('schedules.user_id', $user->id)
+        ->where('schedules.id', $request->id)
+        ->first();
+
+        if (!$post_detail) {
+            return redirect('schedule');
+        }
 
         return view('schedule.edit')->with('post_detail', $post_detail);
     }
@@ -190,8 +214,26 @@ class ScheduleController extends Controller
         $post_detail->content = $validated["content"];
         $post_detail->save();
 
-        return redirect('schedule');
+        $user = User::where('id', session()->get('id'))->first();
+        $post_detail = Schedule::select(DB::raw('
+            schedules.id as id,
+            schedules.title as title,
+            schedules.content as content,
+            DATE_FORMAT(schedules.registered_at, "%Y年%m月%d日") as registered_at,
+            diary_genres.name as genreName
+        '))
+        ->join('users', 'user_id', '=', 'users.id')
+        ->join('diary_genres', 'genre_id', '=', 'diary_genres.id')
+        ->groupBy('id', 'title', 'content', 'genreName', 'registered_at')
+        ->where('schedules.user_id', $user->id)
+        ->where('schedules.id', $request->id)
+        ->first();
 
+        if (!$post_detail) {
+            return redirect('schedule');
+        }
+
+        return view('schedule.show')->with('post_detail', $post_detail);
     }
 
     public function delete(Request $request)

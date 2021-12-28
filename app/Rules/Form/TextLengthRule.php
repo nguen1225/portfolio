@@ -15,7 +15,7 @@ class TextLengthRule implements Rule
      */
     public function passes($attribute, $value)
     {
-        if (mb_strlen($value) < 10000)
+        if (mb_strlen($value) < 500)
         {
             return true;
         }
