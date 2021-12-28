@@ -106,7 +106,7 @@ class VitalController extends Controller
             return redirect('vital');
         }
 
-        session()->flash('flash_message', '検査結果がすでに記録されています。<br>同日に複数の登録はできません。内容を変えたい場合は編集もしくは<br>削除して再度入力してください。');
+        session()->flash('flash_message', '同日に複数の登録はできません。<br>内容を変えたい場合は編集もしくは<br>削除して再度入力してください。');
         return redirect('vital');
     }
 
@@ -154,7 +154,19 @@ class VitalController extends Controller
         $post_detail->body_weight = $validated["body_weight"];;
         $post_detail->heart_rate = $validated["heart_rate"];;
         $post_detail->save();
-        return redirect('vital');
+
+        $user = User::where('id', session()->get('id'))->first();
+        $post_detail = Vital::select(DB::raw('vitals.id, user_id, title, content, height, body_weight, max_blood_pressure, min_blood_pressure, heart_rate, registered_at'))
+        ->join('users', 'user_id', '=', 'users.id')
+        ->where('vitals.user_id', $user->id)
+        ->where('vitals.id', $request->id)
+        ->first();
+
+        if (!$post_detail) {
+            return redirect('vital');
+        }
+        $avg_blood_pressure = $this->avgBloodPressrue($post_detail->min_blood_pressure, $post_detail->max_blood_pressure);
+        return view('vital.show')->with('post_detail', $post_detail)->with('avg_blood_pressure', $avg_blood_pressure);
 
     }
 

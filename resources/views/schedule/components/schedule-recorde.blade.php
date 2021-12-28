@@ -13,7 +13,7 @@
         </dt>
         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 created_at">
             <a href="{{ route('schedule.show', $post->id)}}">
-                作成日:{{$post->created_at->format('Y年m月d日')}}
+                作成日:{{date('Y年m月d日', strtotime($post->registered_at))}}
             </a>
         </dd>
     </div>

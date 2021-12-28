@@ -1,8 +1,8 @@
 @extends('layouts.detail')
 @section('body')
 <div class="container mx-auto mt-6">
-    <div class="bg-gray-200 shadow overflow-hidden sm:rounded-lg">
-        <div class="flex-between px-4 py-5 sm:px-6 border-b border-gray-200">
+    <div class="shadow overflow-hidden sm:rounded-lg bg-white">
+        <div class="recorde_header flex-between">
             <div>
                 <h3>
                     検索結果
@@ -20,8 +20,9 @@
                 @include('schedule.components.search-form')
             </div>
         </div>
-        @include('schedule.components.search-results')
+        <div class="content_scroll">
+            @include('schedule.components.search-results')
+        </div>
     </div>
-    {{ $paginate->links() }}
 </div>
 @endsection
