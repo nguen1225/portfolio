@@ -2,6 +2,10 @@ body {
     background-color: whitesmoke;
 }
 
+#genre_id, #registered_at {
+    color: #6a7380;
+}
+
 .content_flex {
     display: flex;
 }
@@ -85,3 +89,4 @@ footer {
     width: 20% !important;
     margin: 0 auto;
 }
+

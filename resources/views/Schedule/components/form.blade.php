@@ -28,7 +28,7 @@
                     type="date"
                     class="schedule_form"
                     required
-                    min="1900-01-01"
+                    min="2021-01-01"
                     max="3000-12-31"
                 >
             </label>
@@ -41,8 +41,8 @@
                     name="genre_id"
                     required
                 >
+                <option class="select_color" value='' hidden >ジャンルを選択してください</option>
                 @foreach($get_genres as $key => $genre)
-                    <option value='' hidden>ジャンルを選択してください</option>
                     <option value="{{ $genre->id }}" @if((int)old('genre_id') === $genre->id) selected @endif>{{$genre->name}}</option>
                 @endforeach
             </select>

@@ -29,7 +29,7 @@
                     type="date"
                     class="vital_form"
                     required
-                    min="1900-01-01"
+                    min="2021-01-01"
                     max="3000-12-31"
                 >
             </label>
