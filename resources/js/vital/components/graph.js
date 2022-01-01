@@ -225,7 +225,7 @@ class HUMAN_HEIGHT {
                         if(navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
                             return 3;
                         } else {
-                            return 6;
+                            return 5;
                         };
                     },
                     pointBorderWidth: 2,
@@ -298,7 +298,7 @@ class HUMAN_WEIGHT {
                         if(navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
                             return 3;
                         } else {
-                            return 6;
+                            return 5;
                         };
                     },
                     pointBorderWidth: 2,
@@ -335,7 +335,7 @@ class HUMAN_BLOOD_PRESSURE {
                         if(navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
                             return 3;
                         } else {
-                            return 6;
+                            return 5;
                         };
                     },
                     pointBorderWidth: 2,
@@ -357,7 +357,7 @@ class HUMAN_BLOOD_PRESSURE {
                         if(navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
                             return 3;
                         } else {
-                            return 6;
+                            return 5;
                         };
                     },
                     pointBorderWidth: 2,
@@ -379,7 +379,7 @@ class HUMAN_BLOOD_PRESSURE {
                         if(navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
                             return 3;
                         } else {
-                            return 6;
+                            return 5;
                         };
                     },
                     pointBorderWidth: 2,
@@ -490,7 +490,7 @@ class HUMAN_HEART_RATE {
                             // 丸の大きさをpcとspで分ける
                             return 3;
                         } else {
-                            return 6;
+                            return 5;
                         };
                     },
                     pointBorderWidth: 2,
