@@ -1,6 +1,6 @@
 @extends('layouts.detail')
 @section('body')
-<div class="container mx-auto mt-7">
+<div class="container mx-auto mt-24">
     <div class="content_flex lg:space-x-16">
         @include('schedule.components.calendar')
         <div class="width-50 mb-5">
