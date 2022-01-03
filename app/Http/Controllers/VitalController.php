@@ -60,13 +60,13 @@ class VitalController extends Controller
     // 標準体重計算
     public function standardWeight($height){
         $result = ($height / 100) * ($height / 100) * 22;
-        return number_format($result, 2, '.', '');;
+        return number_format($result, 1, '.', '');;
     }
 
     // 適正体重との比較
     public function weightDifference($weight, $standard_weight) {
         $result = $standard_weight - $weight;
-        return number_format($result, 2, '.', '');;
+        return number_format($result, 1, '.', '');;
     }
 
     // 平均血圧
