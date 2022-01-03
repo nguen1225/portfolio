@@ -1,6 +1,6 @@
 @extends('layouts.detail')
 @section('body')
-<div class="container mx-auto mt-6">
+<div class="container mx-auto mt-24">
     <div class="shadow overflow-hidden sm:rounded-lg bg-white">
         <div class="recorde_header flex-between">
             <div>
@@ -10,11 +10,11 @@
                 <div class="explanation">
                     検索結果が表示されます。
                 </div>
-                <a href="{{ route('schedule.from') }}">
+                <div id="modal_open" class="mb-3">
                     <button class="create_new_button">
                         日程作成
                     </button>
-                </a>
+                </div>
             </div>
             <div>
                 @include('schedule.components.search-form')
@@ -25,4 +25,5 @@
         </div>
     </div>
 </div>
+@include('schedule.from')
 @endsection

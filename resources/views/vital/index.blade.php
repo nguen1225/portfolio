@@ -1,9 +1,9 @@
 @extends('layouts.detail')
 @section('body')
 
-<div class="container mx-auto mt-6">
+<div class="container mx-auto mt-24">
     <div class="content_flex lg:space-x-16">
-        <div class="width-50 mb-10">
+        <div class="-mt-2.5 mb-10 width-50">
             @include('vital.components.graph')
             @include('vital.components.bmi')
         </div>
