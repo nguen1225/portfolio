@@ -1,6 +1,6 @@
 @extends('layouts.detail')
 @section('body')
-<div class="lg:min-h-screen lg:flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+<div class="lg:min-h-screen lg:flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 mt-16">
     <div class="min-h-full lg:flex items-center justify-center bg-gray-700 p-6 rounded-lg shadow-2xl">
         <div class="max-w-md lg:w-96 md:w-96 sm:w-full space-y-8">
         <div>

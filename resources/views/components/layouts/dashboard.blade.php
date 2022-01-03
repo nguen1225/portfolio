@@ -1,6 +1,9 @@
 @section('dashboard')
-<button id="dashboard_modal_open" type="button" class="md:hidden lg:hidden flex justify-end w-full fixed top-0 z-10">
-    <svg class="h-10 m-1 text-gray-500 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+<button id="dashboard_modal_open" type="button" class="bg-gray-800 fixed flex justify-between lg:hidden md:hidden top-0 w-full z-10 items-center">
+    <div class="flex-shrink-0">
+        <img class="h-auto w-10 m-2" src="{{ asset('img/vital.jpg') }}" alt="">
+    </div>
+    <svg class="h-10 m-1 text-white w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
     </svg>
 </button>
@@ -30,7 +33,7 @@
                 <div class="flex-shrink-0">
                     <img class="h-auto w-10" src="{{ asset('img/vital.jpg') }}" alt="">
                 </div>
-                <svg class="text-gray-500 h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg class="text-white h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </button>

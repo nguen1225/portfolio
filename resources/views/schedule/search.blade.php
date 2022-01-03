@@ -1,6 +1,6 @@
 @extends('layouts.detail')
 @section('body')
-<div class="container mx-auto mt-6">
+<div class="container mx-auto mt-24">
     <div class="shadow overflow-hidden sm:rounded-lg bg-white">
         <div class="recorde_header flex-between">
             <div>
