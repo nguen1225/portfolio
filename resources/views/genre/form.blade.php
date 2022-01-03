@@ -21,6 +21,11 @@
                 <div>
                     <label class="block mt-8">
                         <span class="form_title">タイトル</span>
+                        @if ($errors->first('name'))
+                        <p class="explanation_white text-sm error">
+                            {!! nl2br($errors->first('name'), false) !!}
+                        </p>
+                        @endif
                         <input
                             id="name"
                             name="name"
@@ -29,7 +34,7 @@
                             class="schedule_form"
                             placeholder="ジャンルを入力してください"
                             required
-                      />
+                    />
                     </label>
                 </div>
                 <button type="submit" class="submit_button">

@@ -156,6 +156,7 @@ return [
     'password_limit_character_type' => 'パスワードは大文字、小文字、数字を含めた<br>半角英数字で入力してください。',
     'password_character_length' => 'パスワードの文字は6文字以上です。',
     'password_symbol' => 'パスワードに特殊な文字は使えません、<br>大文字、小文字、数字のみです。',
+    'form_genre_length' => ': 10文字までです。',
     'form_title_length' => ': 50文字までです。',
     'form_text_length' => ': 500文字までです。',
     'form_numerical' => ': 不適切な文字が含まれています。<br>: 記号は「.」のみ使えます。',
