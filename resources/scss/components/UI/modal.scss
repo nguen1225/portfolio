@@ -11,6 +11,11 @@
     animation-name: modal_open;
     animation-duration: 0.3s;
 }
+.dashboard_modal {
+    display: none;
+    animation-name: modal_open;
+    animation-duration: 0.3s;
+}
 
 @keyframes modal_open {
     from {opacity: 0}
