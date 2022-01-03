@@ -105,7 +105,16 @@ class ScheduleController extends Controller
             $rows[] = $item;
         }
 
+        $get_genres = DiaryGenre::select(DB::raw('
+            diary_genres.id,
+            diary_genres.name
+        '))
+        ->join('users', 'user_id', '=', 'users.id')
+        ->where('users.id', session()->get('id'))
+        ->get();
+
         return view('schedule/search')
+        ->with('get_genres', $get_genres)
         ->with('results', $rows)
         ->with('paginate', $results);
 
