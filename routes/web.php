@@ -77,6 +77,8 @@ Route::group(['prefix' => '/', 'middleware' => 'loggedInCheck'], static function
     Route::group(['prefix' => '/genre'], static function (): void {
         Route::get('/', 'App\Http\Controllers\DiaryGenreController@form')->name('genre');
         Route::post('/', 'App\Http\Controllers\DiaryGenreController@post')->name('genre.post');
+        Route::get('/{id}/edit', 'App\Http\Controllers\DiaryGenreController@edit')->name('genre.edit');
+        Route::patch('/{id}/edit', 'App\Http\Controllers\DiaryGenreController@update')->name('genre.update');
     });
 });
 
