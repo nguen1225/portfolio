@@ -23,7 +23,7 @@
                 </a>
             </p>
         </div>
-        <h3 class="underline text-3xl break-words text-center font-extrabold text-gray-50">
+        <h3 class="border-b-4 text-3xl break-words text-center font-extrabold text-gray-50">
             {!! nl2br(htmlspecialchars($post_detail->title)) !!}
         </h3>
         @include('schedule.components.show-detail')

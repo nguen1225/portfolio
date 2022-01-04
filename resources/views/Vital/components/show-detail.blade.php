@@ -1,5 +1,5 @@
 <div class="bg-white px-4 py-5 sm:px-2 border-b border-gray-200 rounded-lg">
-    <h4 class="underline text-xl font-semibold text-center">
+    <h4 class="text-xl font-semibold text-center">
         備考
     </h4>
     <p class="break-words mb-5 border border-black mt-3 p-4 rounded-md">
