@@ -1,7 +1,7 @@
 @section('dashboard')
 <button id="dashboard_modal_open" type="button" class="bg-gray-800 fixed flex justify-between lg:hidden md:hidden top-0 w-full z-10 items-center">
     <div class="flex-shrink-0">
-        <img class="h-auto w-10 m-2" src="{{ asset('img/vital.jpg') }}" alt="">
+        <img class="h-auto w-10 m-2" src="{{ secure_url('img/vital.jpg') }}" alt="">
     </div>
     <svg class="h-10 m-1 text-white w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -13,7 +13,7 @@
         <div class="hidden md:block">
             <div class="flex items-center space-x-4">
                     <div class="flex-shrink-0">
-                        <img class="h-auto w-10" src="{{ asset('img/vital.jpg') }}" alt="">
+                        <img class="h-auto w-10" src="{{ secure_url('img/vital.jpg') }}" alt="">
                     </div>
                     <a href="{{ route('home') }}" class="text-white font-bold hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm flex">
                         <svg class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -48,7 +48,7 @@
         <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <button type="button" class="dashboard_modal_close flex justify-between w-full mb-2">
                 <div class="flex-shrink-0">
-                    <img class="h-auto w-10" src="{{ asset('img/vital.jpg') }}" alt="">
+                    <img class="h-auto w-10" src="{{ secure_url('img/vital.jpg') }}" alt="">
                 </div>
                 <svg class="text-white h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
