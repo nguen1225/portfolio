@@ -8,7 +8,6 @@
     </svg>
 </button>
 <nav>
-
     <!-- PC menu -->
     <div class="md:bg-gray-800 lg:bg-gray-800 fixed lg:px-8 max-w-10xl mx-auto p-2.5 px-4 sm:px-6 top-0 w-full z-10">
         <div class="hidden md:block">
@@ -18,15 +17,13 @@
                     </div>
                     <a href="{{ route('home') }}" class="text-white font-bold hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm">ホーム</a>
                     <a href="{{ route('schedule') }}" class="text-white font-bold hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm">カレンダー</a>
-                    <a href="{{ route('vital')}}" class="text-white font-bold hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm">記録</a>
+                    <a href="{{ route('vital')}}" class="text-white font-bold hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm">身体記録</a>
                     <a href="{{ route('logout')}}" class="text-white font-bold hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm">ログアウト</a>
                 </div>
             </div>
     </div>
 
     <!-- Mobile menu -->
-
-
     <div id="dashboard_modal_content" class="md:hidden dashboard_modal fixed top-0 z-10 w-full bg-gray-800">
         <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <button type="button" class="dashboard_modal_close flex justify-between w-full mb-2">
@@ -39,7 +36,7 @@
             </button>
             <a href="{{ route('home') }}" class="text-white hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">ホーム</a>
             <a href="{{ route('schedule') }}" class="text-white hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">カレンダー</a>
-            <a href="{{ route('vital')}}" class="text-white hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">記録</a>
+            <a href="{{ route('vital')}}" class="text-white hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">身体記録</a>
             <a href="{{ route('logout')}}" class="text-white hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">ログアウト</a>
         </div>
     </div>

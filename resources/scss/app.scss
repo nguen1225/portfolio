@@ -1,8 +1,3 @@
-// main {
-//     margin-top: 95px;
-// }
-
-
 body {
     background-color: whitesmoke;
 }
@@ -52,6 +47,28 @@ footer {
 .flex-between {
     display: flex;
     justify-content: space-between;
+}
+
+@media (max-width: 1023px) {
+    .content_flex {
+        display: initial;
+    }
+
+    .flex-between {
+        display: block;
+    }
+
+    .width-36 {
+        width: 100%;
+    }
+
+    .width-50 {
+        width: 100%;
+    }
+
+    .flex-between {
+        display: block;
+    }
 }
 
 .submit_button {

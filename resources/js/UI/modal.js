@@ -42,11 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
             dashboard_modal_open.style.display = 'none';
         }
 
-        // バリデーションに引っ掛かったら表示
-        if(document.querySelector('.error')) {
-            dashboard_modalOpen();
-        }
-
         // 閉じる
         dashboard_button_close.addEventListener('click', dashboard_modalClose);
         function dashboard_modalClose() {
