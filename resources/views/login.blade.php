@@ -7,7 +7,7 @@
                 ログイン
             </div>
             <div>
-                <img class="h-auto w-16 m-auto ml-3" src="{{ secure_url('img/vital.png') }}" alt="">
+                <img class="h-auto w-16 m-auto ml-3" src="{{ asset('img/vital.png') }}" alt="">
             </div>
         </div>
         <form id="form" class="mt-8 space-y-6" action="{{ route('login') }}" method="POST">
