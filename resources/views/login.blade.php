@@ -2,20 +2,20 @@
 @section('body')
 <div class="lg:min-h-screen lg:flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
     <div class="bg-gray-700 items-center justify-center min-h-full p-6 rounded-lg shadow-2xl lg:w-3/6 md:w-3/6 sm:w-full m-auto">
-
-            <div class="flex justify-center">
-                <div class="text-4xl font-bold text-white flex items-center">
-                    ログイン
-                </div>
-                <div>
-                    <img class="h-auto w-16 m-auto ml-3" src="{{ asset('img/vital.png') }}" alt="">
-                </div>
+        <div class="flex justify-center">
+            <div class="text-4xl font-bold text-white flex items-center">
+                ログイン
             </div>
-            <form id="form" class="mt-8 space-y-6" action="{{ route('login') }}" method="POST">
-                <p class="mt-2 text-sm text-gray-600 text-center">
-                    <a class="explanation_white">
-                        {{ session('flash_message') }}
-                    </a>
+            <div>
+                <img class="h-auto w-16 m-auto ml-3" src="{{ asset('img/vital.png') }}" alt="">
+            </div>
+        </div>
+        <form id="form" class="mt-8 space-y-6" action="{{ route('login') }}" method="POST">
+            <p class="mt-2 text-sm text-gray-600 text-center">
+                <a class="explanation_white">
+                    {{ session('flash_message') }}
+                </a>
+            </p>
             @csrf
             <input type="hidden" name="remember" value="true">
             <div class="rounded-md shadow-sm -space-y-px">
@@ -63,7 +63,7 @@
                     ログイン中…
                 </button>
             </div>
-            </form>
-        </div>
-        </div>
+        </form>
+    </div>
+</div>
 @endsection
