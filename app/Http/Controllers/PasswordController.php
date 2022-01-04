@@ -22,10 +22,10 @@ class PasswordController extends Controller
         $get_user = User::query()->where('email', $get_email)->first();
 
         if ($get_user) {
-            $generete_url = URL::temporarySignedRoute(
+            $generate_url = URL::temporarySignedRoute(
                 'password.edit', now()->addMinutes(60), ['id' => $get_user->id]
             );
-            Mail::to($get_email)->send(new ChangePasswordEmail($generete_url));
+            Mail::to($get_email)->send(new ChangePasswordEmail($generate_url));
 
             return redirect('password/send-completely');
         }
