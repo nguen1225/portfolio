@@ -11,7 +11,7 @@
                             日程管理
                         </h3>
                         <div class="explanation">
-                            全ての日程を表示します。
+                            日程を表示、作成をします。
                         </div>
                         <div id="modal_open" class="mb-3">
                             <button class="create_new_button">

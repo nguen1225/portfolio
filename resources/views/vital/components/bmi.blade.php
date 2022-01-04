@@ -3,7 +3,7 @@
 <div class="bmi bg-white">
     <div class="today_bmi">
         <p class="bmi_title font-semibold">
-            本日のBMI
+            現在のBMI
         </p>
         <p class="bmi_value">
             <div class="odometer bmi_meter">00</div>

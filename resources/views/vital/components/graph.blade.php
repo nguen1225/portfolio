@@ -1,8 +1,8 @@
 <div class="flex justify-center mb-2.5">
     <div id="next-prev-button" class="for_sp bg-gray-700 rounded-md">
-        <button id="prev" class="month_prev bg-gray-700 hover:bg-gray-900 text-white mr-0.5 lg:mx-5 p-1.5 rounded-l-md">‹</button>
+        <button id="prev" class="month_prev bg-gray-700 hover:bg-gray-900 text-white mr-0.5 p-1.5 rounded-l-md">‹</button>
         <span id="month" class="month text-white" name="month" value=""></span>
-        <button id="next" class="month_next bg-gray-700 hover:bg-gray-900 text-white ml-0.5 lg:mx-5 p-1.5 rounded-r-md">›</button>
+        <button id="next" class="month_next bg-gray-700 hover:bg-gray-900 text-white ml-0.5 p-1.5 rounded-r-md">›</button>
     </div>
 </div>
 <ul class="tab-menu">

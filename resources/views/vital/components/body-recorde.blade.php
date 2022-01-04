@@ -3,13 +3,16 @@
         身体記録管理
     </h3>
     <p class="explanation">
-        日々の身体記録を表示します。
+        身体記録を表示、作成をします。
     </p>
     <div id="modal_open">
         <button class="create_new_button">
             記録作成
         </button>
     </div>
+    <p class="explanation">
+        (<span class="text-xs">※同日に複数の登録はできません。</span>)
+    </p>
 </div>
 @foreach ($posts as $post)
 <dl class="select">

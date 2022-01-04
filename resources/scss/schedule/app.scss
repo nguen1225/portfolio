@@ -23,6 +23,16 @@
     }
 }
 
+@media (max-width: 1023px) {
+    .search_flex {
+        display: initial;
+    }
+
+    .calendar_width {
+        width: 100%;
+    }
+}
+
 .schedule_height {
     height: 453px;
 }

@@ -192,10 +192,10 @@ class HUMAN_HEIGHT {
             },
             scales: {
                 y: {
-                    suggestedMin: 0,
+                    suggestedMin: 50,
                     suggestedMax: 250,
                     ticks: {
-                        stepSize: 50
+                        stepSize: 10
                     }
                 },
                 x: {
@@ -268,7 +268,7 @@ class HUMAN_WEIGHT {
                     suggestedMin: 0,
                     suggestedMax: 150,
                     ticks: {
-                        stepSize: 10
+                        stepSize: 5
                     }
                 },
                 x: {
