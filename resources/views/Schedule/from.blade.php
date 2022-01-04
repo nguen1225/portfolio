@@ -1,6 +1,6 @@
 <div id="modal_content" class="modal flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-    <div class="form">
-        <div class="max-w-md lg:w-96 md:w-96 sm:w-full space-y-8">
+    <div class="form sm:w-full md:w-2/3 lg:w-1/2">
+        <div class="max-w-md lg:w-96 md:w-96 sm:w-full space-y-8 m-auto">
         <div>
             <h2>
                 新規作成
