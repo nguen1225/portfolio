@@ -23,11 +23,21 @@ h1.graph_title {
     display: none;
 }
 
-// .for_pc {
-//     background: red;
-// }
-
 @media (max-width: 639px) {
+    .for_sp {
+        display: initial;
+    }
+
+    .for_pc {
+        display: none;
+    }
+
+    .month {
+        display: initial;
+    }
+}
+
+@media (max-width: 1189px) {
     .for_sp {
         display: initial;
     }
