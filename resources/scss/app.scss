@@ -112,3 +112,12 @@ footer {
     margin: 0 auto;
 }
 
+.content_scroll {
+    overflow-y: scroll;
+    height: 465px;
+}
+
+.content_scroll::-webkit-scrollbar {
+    display: none;
+}
+

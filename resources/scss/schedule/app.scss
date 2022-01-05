@@ -21,6 +21,10 @@
     .calendar_width {
         width: 100%;
     }
+
+    #calendar {
+        height: 692px;
+    }
 }
 
 @media (max-width: 1023px) {
@@ -31,15 +35,14 @@
     .calendar_width {
         width: 100%;
     }
+
+    #calendar {
+        height: 692px;
+    }
 }
 
 .schedule_height {
     height: 453px;
-}
-
-.content_scroll {
-    overflow-y: scroll;
-    height: 465px;
 }
 
 .schedule_title {
