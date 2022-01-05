@@ -21,6 +21,10 @@
     .calendar_width {
         width: 100%;
     }
+
+    #calendar {
+        height: 692px;
+    }
 }
 
 @media (max-width: 1023px) {
@@ -30,6 +34,10 @@
 
     .calendar_width {
         width: 100%;
+    }
+
+    #calendar {
+        height: 692px;
     }
 }
 
