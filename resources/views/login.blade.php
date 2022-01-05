@@ -1,5 +1,7 @@
 @extends('layouts.detail')
 @section('body')
+@section('title','ログイン')
+
 <div class="lg:min-h-screen lg:flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
     <div class="bg-gray-700 items-center justify-center min-h-full p-6 rounded-lg shadow-2xl lg:w-3/6 md:w-3/6 sm:w-full m-auto">
         <div class="flex justify-center">

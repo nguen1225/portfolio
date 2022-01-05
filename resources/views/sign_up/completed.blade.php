@@ -1,5 +1,6 @@
 @extends('layouts.detail')
 @section('body')
+@section('title','新規作成')
 <div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
     <div class="min-h-full flex items-center justify-center bg-gray-700 p-6 rounded-lg shadow-2xl">
         <div class="max-w-md w-full space-y-8">
