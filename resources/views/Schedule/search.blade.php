@@ -1,5 +1,6 @@
 @extends('layouts.detail')
 @section('body')
+@section('title','検索結果')
 <div class="container mx-auto mt-24">
     <div class="shadow overflow-hidden sm:rounded-lg bg-white">
         <div class="recorde_header flex-between">

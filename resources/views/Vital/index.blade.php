@@ -1,5 +1,6 @@
 @extends('layouts.detail')
 @section('body')
+@section('title','身体記録')
 
 <div class="container mx-auto mt-24">
     <div class="content_flex lg:space-x-16">
