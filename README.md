@@ -16,7 +16,7 @@
 ---
 
 ## HEROKU構成図
-![HEROKU構成図](https://user-images.githubusercontent.com/61786366/147398470-a70e020a-8a31-4f17-aaee-c7f1fd2cf97b.png)
+![HEROKU構成図](https://user-images.githubusercontent.com/61786366/149449220-bd50927f-8282-4895-8f89-e30dad51f703.png)
 
 ---
 ## 主な機能
