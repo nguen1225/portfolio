@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\UseCases\HomeViewUseCase;
+use App\UseCases\Home\HomeViewUseCase;
 
 class HomeController extends Controller
 {

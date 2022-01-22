@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\DB;
 
 class HomeRepository
 {
-
     public function home()
     {
         $user = User::query()->where("id", session()->get('id'))->first();
