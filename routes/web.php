@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 // ログイン関係
 Route::get('/', 'App\Http\Controllers\LoginController@login')->name('login');
-Route::post('/', 'App\Http\Controllers\LoginController@logincheck')->name('login.check');
+Route::post('/', 'App\Http\Controllers\LoginController@loginCheck')->name('login.check');
 
 // パスワード変更
 Route::group(['prefix' => 'password'], static function ():void {
