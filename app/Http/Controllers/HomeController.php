@@ -2,26 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use App\Models\DiaryGenre;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Http\Request;
+use App\UseCases\Home\HomeViewUseCase;
 
 class HomeController extends Controller
 {
+    private HomeViewUseCase $homeViewUseCase;
+
+    public function __construct(HomeViewUseCase $homeViewUseCase)
+    {
+        $this->homeViewUseCase = $homeViewUseCase;
+    }
+
     public function home()
     {
-        $user = User::query()->where("id", session()->get('id'))->first();
-        $get_genres = DiaryGenre::select(DB::raw('
-            diary_genres.id,
-            diary_genres.name
-        '))
-        ->join('users', 'user_id', '=', 'users.id')
-        ->where('users.id', session()->get('id'))
-        ->get();
-
-        return view('home.index')
-        ->with('get_genres', $get_genres)
-        ->with('user', $user);
+        return $this->homeViewUseCase->execute();
     }
 }
