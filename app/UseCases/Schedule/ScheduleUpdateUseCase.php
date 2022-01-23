@@ -6,7 +6,7 @@ namespace App\UseCases\Schedule;
 
 use App\Models\Repositories\ScheduleRepository;
 
-final class ScheduleDeleteSUseCase
+final class ScheduleUpdateUseCase
 {
     /**
      * @var App\Models\Repositories\ScheduleRepository
@@ -20,6 +20,6 @@ final class ScheduleDeleteSUseCase
 
     public function execute($request)
     {
-        return $this->repository->delete($request);
+        return $this->repository->update($request);
     }
 }

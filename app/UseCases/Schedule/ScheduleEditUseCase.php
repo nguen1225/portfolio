@@ -6,7 +6,7 @@ namespace App\UseCases\Schedule;
 
 use App\Models\Repositories\ScheduleRepository;
 
-final class ScheduleUpdateSUseCase
+final class ScheduleEditUseCase
 {
     /**
      * @var App\Models\Repositories\ScheduleRepository
@@ -20,6 +20,6 @@ final class ScheduleUpdateSUseCase
 
     public function execute($request)
     {
-        return $this->repository->update($request);
+        return $this->repository->edit($request);
     }
 }

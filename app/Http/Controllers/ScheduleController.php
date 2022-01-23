@@ -5,14 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\Schedule\DiaryCreationRequest;
 use App\UseCases\Schedule\ScheduleDateUseCase;
-use App\UseCases\Schedule\ScheduleDeleteSUseCase;
-use App\UseCases\Schedule\ScheduleEditSUseCase;
+use App\UseCases\Schedule\ScheduleDeleteUseCase;
+use App\UseCases\Schedule\ScheduleEditUseCase;
 use App\UseCases\Schedule\ScheduleFormUseCase;
 use App\UseCases\Schedule\ScheduleIndexUseCase;
 use App\UseCases\Schedule\SchedulePostUseCase;
 use App\UseCases\Schedule\ScheduleSearchUseCase;
 use App\UseCases\Schedule\ScheduleShowUseCase;
-use App\UseCases\Schedule\ScheduleUpdateSUseCase;
+use App\UseCases\Schedule\ScheduleUpdateUseCase;
 
 class ScheduleController extends Controller
 {
@@ -22,9 +22,9 @@ class ScheduleController extends Controller
     private ScheduleFormUseCase $scheduleFormUseCase;
     private SchedulePostUseCase $schedulePostUseCase;
     private ScheduleShowUseCase $scheduleShowUseCase;
-    private ScheduleEditSUseCase $scheduleEditSUseCase;
-    private ScheduleUpdateSUseCase $scheduleUpdateSUseCase;
-    private ScheduleDeleteSUseCase $scheduleDeleteSUseCase;
+    private ScheduleEditUseCase $scheduleEditUseCase;
+    private ScheduleUpdateUseCase $scheduleUpdateUseCase;
+    private ScheduleDeleteUseCase $scheduleDeleteUseCase;
 
     public function __construct(
         ScheduleIndexUseCase $scheduleIndexUseCase,
@@ -33,9 +33,9 @@ class ScheduleController extends Controller
         ScheduleFormUseCase $scheduleFormUseCase,
         SchedulePostUseCase $schedulePostUseCase,
         ScheduleShowUseCase $scheduleShowUseCase,
-        ScheduleEditSUseCase $scheduleEditSUseCase,
-        ScheduleUpdateSUseCase $scheduleUpdateSUseCase,
-        ScheduleDeleteSUseCase $scheduleDeleteSUseCase
+        ScheduleEditUseCase $scheduleEditUseCase,
+        ScheduleUpdateUseCase $scheduleUpdateUseCase,
+        ScheduleDeleteUseCase $scheduleDeleteUseCase
     )
     {
         $this->scheduleIndexUseCase = $scheduleIndexUseCase;
@@ -44,9 +44,9 @@ class ScheduleController extends Controller
         $this->scheduleFormUseCase = $scheduleFormUseCase;
         $this->schedulePostUseCase = $schedulePostUseCase;
         $this->scheduleShowUseCase = $scheduleShowUseCase;
-        $this->scheduleEditSUseCase = $scheduleEditSUseCase;
-        $this->scheduleUpdateSUseCase = $scheduleUpdateSUseCase;
-        $this->scheduleDeleteSUseCase = $scheduleDeleteSUseCase;
+        $this->scheduleEditUseCase = $scheduleEditUseCase;
+        $this->scheduleUpdateUseCase = $scheduleUpdateUseCase;
+        $this->scheduleDeleteUseCase = $scheduleDeleteUseCase;
     }
 
     public function index()
@@ -81,16 +81,16 @@ class ScheduleController extends Controller
 
     public function edit(Request $request)
     {
-        return $this->scheduleEditSUseCase->execute($request);
+        return $this->scheduleEditUseCase->execute($request);
     }
 
     public function update(DiaryCreationRequest $request)
     {
-        return $this->scheduleUpdateSUseCase->execute($request);
+        return $this->scheduleUpdateUseCase->execute($request);
     }
 
     public function delete(Request $request)
     {
-        return $this->scheduleDeleteSUseCase->execute($request);
+        return $this->scheduleDeleteUseCase->execute($request);
     }
 }
